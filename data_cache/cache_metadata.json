@@ -1,10 +1,10 @@
 {
-  "0dfb6e8efea71e36e79bff69b6c11c86": {
+  "948a0b7f8d7a14fbd8af46020e321d16": {
     "symbol": "RELIANCE.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:29.110200",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:38.735386",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -16,12 +16,12 @@
       "splits"
     ]
   },
-  "df1d6c82e488968fe0ce4470c6d5a5ea": {
+  "f6f5fad43354e6af50fae8166dafde37": {
     "symbol": "TCS.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:29.258935",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:38.826178",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -33,12 +33,12 @@
       "splits"
     ]
   },
-  "485f91bb15a0be9afe125fd71e7956df": {
+  "a769bef19520434ae849619101284748": {
     "symbol": "HDFCBANK.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:29.388291",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:38.925122",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -50,12 +50,12 @@
       "splits"
     ]
   },
-  "a27e4b1bc0d25c57ba15d627cfcdfdef": {
+  "29e983d18cb54b64387bc39f0db25fc3": {
     "symbol": "INFY.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:29.534860",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:39.026712",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -67,12 +67,12 @@
       "splits"
     ]
   },
-  "039d982f9fb7675f122e9e69875a5970": {
+  "4bc47a082560ad377e5dfc6c1d909664": {
     "symbol": "ICICIBANK.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:29.636565",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:39.136776",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -84,12 +84,12 @@
       "splits"
     ]
   },
-  "60ee4fdc81765ea70a088371b4671b1a": {
+  "eb7097b512df20150d99540c9a2ed539": {
     "symbol": "HINDUNILVR.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:29.740489",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:39.251050",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -101,12 +101,12 @@
       "splits"
     ]
   },
-  "39c32db600b8fb42c26806632ce94b68": {
+  "c0982aeb1b9ccfe90728175154e29518": {
     "symbol": "SBIN.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:29.831976",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:39.368481",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -118,12 +118,12 @@
       "splits"
     ]
   },
-  "2f7a430a371ad08e47bd7409a3deb452": {
+  "84417ca044b7f2187b65418a8324ab9d": {
     "symbol": "BHARTIARTL.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:29.917033",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:39.454459",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -135,12 +135,12 @@
       "splits"
     ]
   },
-  "cca71df87c2dca18b617af31c82d658b": {
+  "89a524019121173b541f6cd26f111590": {
     "symbol": "KOTAKBANK.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:30.047446",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:39.594062",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -152,12 +152,12 @@
       "splits"
     ]
   },
-  "a76e24e6b95c5c07bf448b48b25736ee": {
+  "01d79306de16acf42ebdaae8fa5ca9cd": {
     "symbol": "ITC.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:30.166374",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:39.711768",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -169,12 +169,12 @@
       "splits"
     ]
   },
-  "131a1e9001b8f22e3be43e5db2375804": {
+  "f783aaaadcd618f3a723d7d92c15b514": {
     "symbol": "LT.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:30.285798",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:39.815825",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -186,12 +186,12 @@
       "splits"
     ]
   },
-  "1d79095b7972c1271136857ffd94b872": {
+  "5dafc1d9bea2cec880b27a78851d4341": {
     "symbol": "AXISBANK.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:30.384167",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:39.952696",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -203,12 +203,12 @@
       "splits"
     ]
   },
-  "a6be549a23933540a473325a37e5ff27": {
+  "b9018f9859916051e8b55c50677b4676": {
     "symbol": "ASIANPAINT.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:30.481883",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:40.069998",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -220,12 +220,12 @@
       "splits"
     ]
   },
-  "1dc0625c638300d6c296def8e2146720": {
+  "dfc91bf8db149cb36fd0a8e974066690": {
     "symbol": "MARUTI.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:30.569837",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:40.204058",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -237,12 +237,12 @@
       "splits"
     ]
   },
-  "3f758ca9621ea4e3483ac09c71c673a6": {
+  "2add8591630782a4f551f6200c5d358a": {
     "symbol": "HCLTECH.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:30.671294",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:40.338460",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -254,12 +254,12 @@
       "splits"
     ]
   },
-  "dca22071d4333a451334f89b8a480b7c": {
+  "f599826fe85995e153a36b39697566c6": {
     "symbol": "SUNPHARMA.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:30.775457",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:40.463391",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -271,12 +271,12 @@
       "splits"
     ]
   },
-  "be0d432366d90cf179b024c76f6abc2c": {
+  "c27c73238c7566e53de85ef8706ac359": {
     "symbol": "TITAN.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:30.855264",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:40.548574",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -288,12 +288,12 @@
       "splits"
     ]
   },
-  "b45a758bb43dcc20080f2efbccfa58a0": {
+  "425f47a14597db658d0953e05d512aa9": {
     "symbol": "BAJFINANCE.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:30.979452",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:40.649242",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -305,12 +305,12 @@
       "splits"
     ]
   },
-  "d1ebfc2b88a3d3dbb0c9295534bc3820": {
+  "cb20d8f53a8421cc9fc8652cc9e8a139": {
     "symbol": "WIPRO.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:31.085432",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:40.775062",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -322,12 +322,12 @@
       "splits"
     ]
   },
-  "3980aba270f83ee01053b07db91bd078": {
+  "92763d1a2339292d7b883fe408a03b89": {
     "symbol": "ULTRACEMCO.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:31.197297",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:40.863381",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -339,12 +339,12 @@
       "splits"
     ]
   },
-  "58eb65a7020eef605329c23b6a08fe1a": {
+  "e7cca574f2417f4be322f8ffceef71b0": {
     "symbol": "NESTLEIND.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:31.298068",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:40.954568",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -356,12 +356,12 @@
       "splits"
     ]
   },
-  "3a0feec731603b5a0da129dab4c212bd": {
+  "6406d0b74f9c9c7b53fbb1d013ecf6e8": {
     "symbol": "POWERGRID.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:31.684723",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:41.186087",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -373,12 +373,12 @@
       "splits"
     ]
   },
-  "d5f84a2895af5490ca3ab027d7f07d9e": {
+  "ae727de5e811c0c8a06f9e3e7b6400ea": {
     "symbol": "NTPC.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:31.924812",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:41.291533",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -390,12 +390,12 @@
       "splits"
     ]
   },
-  "a5f8d2cc04fd279365c529797daa89e6": {
+  "9b52c672cb90efcb3f819f1366998d88": {
     "symbol": "TECHM.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:32.031931",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:41.392013",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -407,12 +407,12 @@
       "splits"
     ]
   },
-  "3084c9adb95bc80c5ad655a3b96b267f": {
+  "ae7a6a370f9f0bba37abaa529ba820e9": {
     "symbol": "M&M.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:32.138381",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:41.494050",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -424,12 +424,12 @@
       "splits"
     ]
   },
-  "37a1f8a3225097475269d661364b9edc": {
+  "e955232ec92f54fd9b3b39c99868c9ac": {
     "symbol": "TATASTEEL.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:32.239551",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:41.604950",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -441,12 +441,12 @@
       "splits"
     ]
   },
-  "7767e48e236b77b41da7d8ccf31bf361": {
+  "0b43dfda25710ea3bdab5afd94b908e8": {
     "symbol": "INDUSINDBK.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:32.336155",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:41.692052",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -458,12 +458,12 @@
       "splits"
     ]
   },
-  "e9d6e84ce1d15c2d278c3c4094f53a4e": {
+  "aa9b2fb1156b49bf08f6745a687fae70": {
     "symbol": "ONGC.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:32.484868",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:41.801855",
+    "rows": 250,
     "columns": [
       "open",
       "high",
@@ -475,12 +475,505 @@
       "splits"
     ]
   },
-  "d0a4e8df2588aa4fdad93c3a859e9715": {
+  "24cbdf00e643a52985624255e1512dcc": {
     "symbol": "JSWSTEEL.NS",
-    "start_date": "2023-01-27",
-    "end_date": "2026-01-26",
-    "cached_at": "2026-01-26T19:02:32.593024",
-    "rows": 741,
+    "start_date": "2025-01-27",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T13:21:41.907633",
+    "rows": 250,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "8dfec29a9c10e606b7f518804d4b6074": {
+    "symbol": "RELIANCE.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:48.417166",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "1e2864e5cb8ee39b9c23d2854b057c16": {
+    "symbol": "TCS.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:48.531315",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "1ff7123613fbb537d81d7440f263537b": {
+    "symbol": "HDFCBANK.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:48.669064",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "cc2823bdf002d817de3021be99919d0b": {
+    "symbol": "INFY.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:48.797020",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "376449ac1bee7438e85d312e1281a9ad": {
+    "symbol": "ICICIBANK.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:48.895853",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "151685e9d1aefd0cab7d42ad4fff4e09": {
+    "symbol": "HINDUNILVR.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:49.025733",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "90f86b0d86bede6c5f9fc41ce9dd337a": {
+    "symbol": "SBIN.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:49.183208",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "13d209e7d8fe5d5b270b082802dc6c5b": {
+    "symbol": "BHARTIARTL.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:49.319477",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "140bc985cbbd1d4927c8327e4e5dac83": {
+    "symbol": "KOTAKBANK.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:49.448754",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "11ddacdf898d4bd7ab756ea971dd3517": {
+    "symbol": "ITC.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:49.550973",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "573c6ad406889af94ae2d282d3d19714": {
+    "symbol": "LT.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:49.711431",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "5a3209208207d54b79a5dafa02ddc159": {
+    "symbol": "AXISBANK.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:49.825568",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "ff9e5631a0375ba2cd9896d30fbaf1cc": {
+    "symbol": "ASIANPAINT.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:49.982580",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "c4d46317b74c3643912ee381f4731a3d": {
+    "symbol": "MARUTI.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:50.099731",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "85fc344ebf3af0ae45c53f27dd489421": {
+    "symbol": "HCLTECH.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:50.196260",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "b5accc7f50a0507244a6b7e350f7228c": {
+    "symbol": "SUNPHARMA.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:50.369078",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "eaba774aa5e2c9a7ea679834fe0293aa": {
+    "symbol": "TITAN.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:50.477655",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "be5fa18ede30474dfce2bfe307de3b3d": {
+    "symbol": "BAJFINANCE.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:50.570765",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "a9fe8dbc99118de7d5cc608f8cfb362a": {
+    "symbol": "WIPRO.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:50.688694",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "0005ec7f9313a7ea888d70a709c7dfc1": {
+    "symbol": "ULTRACEMCO.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:50.783976",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "e9900716367fdda5387dffb42f4bb25c": {
+    "symbol": "NESTLEIND.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:50.926505",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "6f28787db36ef339fd1c2a2d1b66918a": {
+    "symbol": "POWERGRID.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:51.306550",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "2789450473411f789b432492a2dda731": {
+    "symbol": "NTPC.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:51.415346",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "820b40790e781924caa857b4324f271f": {
+    "symbol": "TECHM.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:51.555406",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "b205d4ade6b2077010cc924bb44a7763": {
+    "symbol": "M&M.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:51.678566",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "cbbec9abe232a8892f8c5ef1b2cd87c0": {
+    "symbol": "TATASTEEL.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:51.781731",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "a23350d839f985c05336db9edf813f12": {
+    "symbol": "INDUSINDBK.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:51.901132",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "1d80e4482cb4ec1e5ac2f6a19096af09": {
+    "symbol": "ONGC.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:52.067120",
+    "rows": 740,
+    "columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "adj_close",
+      "volume",
+      "dividends",
+      "splits"
+    ]
+  },
+  "f3decb0078e1bd0070c400cc734b8d38": {
+    "symbol": "JSWSTEEL.NS",
+    "start_date": "2023-01-28",
+    "end_date": "2026-01-27",
+    "cached_at": "2026-01-27T14:16:52.199007",
+    "rows": 740,
     "columns": [
       "open",
       "high",

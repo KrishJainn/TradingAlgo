@@ -95,7 +95,8 @@ class GeneticEvolution:
                initial_population: List[SuperIndicatorDNA],
                evaluate_fn: Callable[[SuperIndicatorDNA], dict],
                validate_fn: Callable[[SuperIndicatorDNA], float] = None,
-               coach_fn: Callable[[List[dict], dict], dict] = None) -> SuperIndicatorDNA:
+               coach_fn: Callable[[List[dict], dict], dict] = None,
+               on_generation_complete: Callable[[dict], None] = None) -> SuperIndicatorDNA:
         """
         Run the complete evolution process.
 
@@ -195,6 +196,12 @@ class GeneticEvolution:
 
             # 12. Log generation stats
             stats = self._log_generation(gen + 1, population, best)
+
+            if on_generation_complete:
+                try:
+                    on_generation_complete(stats, best)
+                except Exception as e:
+                    logger.error(f"Failed to run generation callback: {e}")
 
             # 13. Early stopping check
             if self.generations_without_improvement >= 20:
@@ -301,6 +308,8 @@ class GeneticEvolution:
             f"Sharpe={best.sharpe_ratio:.2f}, "
             f"Profit=${best.net_profit:.0f}"
         )
+
+
 
         return stats
 

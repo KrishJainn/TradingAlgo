@@ -125,7 +125,7 @@ class FitnessCalculator:
 
         # Apply penalties
         if win_rate < self.min_win_rate:
-            fitness *= 0.7
+            fitness *= 0.5  # Harsh penalty for low win rate
             penalties.append(f"Low win rate: {win_rate:.1%}")
 
         if max_dd > self.max_acceptable_drawdown:
@@ -133,12 +133,29 @@ class FitnessCalculator:
             penalties.append(f"High drawdown: {max_dd:.1%}")
 
         if sharpe < 0:
-            fitness *= 0.5
+            fitness *= 0.4  # Harsh penalty for negative Sharpe
             penalties.append(f"Negative Sharpe: {sharpe:.2f}")
 
         if total_trades < 50:
-            fitness *= 0.8
+            fitness *= 0.7
             penalties.append(f"Low trade count: {total_trades}")
+
+        # BONUS MULTIPLIERS for exceptional performance
+        if win_rate >= 0.70:  # 70%+ win rate
+            fitness *= 1.3
+            penalties.append(f"BONUS: Excellent win rate {win_rate:.1%}")
+
+        if win_rate >= 0.65 and sharpe >= 5.0:  # Great combo
+            fitness *= 1.2
+            penalties.append(f"BONUS: High Sharpe + Win rate combo")
+
+        if net_profit >= 100000 and win_rate >= 0.60:  # $100k+ with 60%+ WR
+            fitness *= 1.25
+            penalties.append(f"BONUS: High profit with good consistency")
+
+        if profit_factor >= 2.0:  # Profit factor 2:1 or better
+            fitness *= 1.15
+            penalties.append(f"BONUS: Excellent profit factor {profit_factor:.2f}")
 
         return FitnessResult(
             fitness_score=max(0, fitness),
@@ -185,15 +202,24 @@ class FitnessCalculator:
         Score consistency based on win rate and profit factor.
 
         High consistency = steady profits without large swings.
+        HEAVILY weighted towards win rate for predictable trading.
         """
-        # Win rate contribution (50% weight)
-        wr_score = min(1.0, win_rate / 0.6)  # 60% win rate = 1.0
+        # Win rate contribution (70% weight) - HEAVILY WEIGHTED
+        # 55% = 0.7, 60% = 0.85, 65% = 0.93, 70% = 1.0
+        if win_rate >= 0.70:
+            wr_score = 1.0
+        elif win_rate >= 0.65:
+            wr_score = 0.9 + (win_rate - 0.65) * 2  # 0.9 to 1.0
+        elif win_rate >= 0.55:
+            wr_score = 0.7 + (win_rate - 0.55) * 2  # 0.7 to 0.9
+        else:
+            wr_score = max(0, win_rate / 0.55 * 0.7)  # 0 to 0.7
 
-        # Profit factor contribution (50% weight)
+        # Profit factor contribution (30% weight)
         # PF of 1.5 = 0.75 score, PF of 2.0 = 1.0 score
         pf_score = min(1.0, profit_factor / 2.0) if profit_factor > 0 else 0
 
-        return (wr_score + pf_score) / 2
+        return (wr_score * 0.7) + (pf_score * 0.3)
 
     def compare(self, metrics1: Dict, metrics2: Dict) -> int:
         """

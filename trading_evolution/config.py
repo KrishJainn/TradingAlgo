@@ -73,30 +73,30 @@ class SignalConfig:
 @dataclass
 class EvolutionConfig:
     """Genetic algorithm configuration."""
-    population_size: int = 50
-    num_generations: int = 50
-    elite_size: int = 5  # Top individuals preserved unchanged
-    tournament_size: int = 3
-    crossover_prob: float = 0.7
-    mutation_prob: float = 0.2
-    mutation_strength: float = 0.15  # 15% max weight change
-    validation_frequency: int = 10  # Validate every N generations
-    convergence_threshold: float = 0.001  # Stop if improvement < this
-    max_indicators_active: int = 30  # Max indicators in Super Indicator
-    min_indicators_active: int = 10  # Min indicators
-    rollback_threshold: float = 0.8  # Rollback if validation < 80% of best
+    population_size: int = 100  # Large population for diversity
+    num_generations: int = 100  # Extended generations for deep optimization
+    elite_size: int = 8  # Preserve more top performers
+    tournament_size: int = 5  # Stronger selection pressure
+    crossover_prob: float = 0.75  # Slightly higher crossover
+    mutation_prob: float = 0.40  # Higher mutation for exploration
+    mutation_strength: float = 0.25  # Stronger mutations
+    validation_frequency: int = 15  # Validate every 15 generations
+    convergence_threshold: float = 0.0001  # Very low - don't stop early
+    max_indicators_active: int = 40  # Allow more complex combinations
+    min_indicators_active: int = 15  # Require minimum complexity
+    rollback_threshold: float = 0.85  # Stricter validation
 
 
 @dataclass
 class FitnessConfig:
-    """Fitness function weights."""
-    net_profit_weight: float = 0.4
-    sharpe_ratio_weight: float = 0.3
-    max_drawdown_weight: float = 0.2
-    consistency_weight: float = 0.1
-    min_trades_for_validity: int = 30
-    min_win_rate: float = 0.3
-    max_acceptable_drawdown: float = 0.25
+    """Fitness function weights - optimized for high win rate + profit."""
+    net_profit_weight: float = 0.30  # Profit matters but not everything
+    sharpe_ratio_weight: float = 0.25  # Risk-adjusted returns
+    max_drawdown_weight: float = 0.15  # Penalize large drawdowns
+    consistency_weight: float = 0.30  # HEAVILY weight win rate consistency
+    min_trades_for_validity: int = 50  # Require more trades for statistical significance
+    min_win_rate: float = 0.55  # Minimum 55% win rate required
+    max_acceptable_drawdown: float = 0.20  # Tighter drawdown limit
 
 
 @dataclass
@@ -157,7 +157,27 @@ def load_config(config_path: str = None) -> Config:
         if 'risk' in yaml_config:
             for key, value in yaml_config['risk'].items():
                 setattr(config.risk, key, value)
-        # ... repeat for other sections
+        if 'portfolio' in yaml_config:
+            for key, value in yaml_config['portfolio'].items():
+                setattr(config.portfolio, key, value)
+        if 'indicators' in yaml_config:
+            for key, value in yaml_config['indicators'].items():
+                setattr(config.indicators, key, value)
+        if 'signals' in yaml_config:
+            for key, value in yaml_config['signals'].items():
+                setattr(config.signals, key, value)
+        if 'evolution' in yaml_config:
+            for key, value in yaml_config['evolution'].items():
+                setattr(config.evolution, key, value)
+        if 'fitness' in yaml_config:
+            for key, value in yaml_config['fitness'].items():
+                setattr(config.fitness, key, value)
+        if 'database' in yaml_config:
+            for key, value in yaml_config['database'].items():
+                setattr(config.database, key, value)
+        if 'reporting' in yaml_config:
+            for key, value in yaml_config['reporting'].items():
+                setattr(config.reporting, key, value)
         return config
     return Config()
 
@@ -169,9 +189,9 @@ def save_config(config: Config, config_path: str):
         'data': {
             'symbols': config.data.symbols,
             'data_years': config.data.data_years,
-            'train_ratio': config.data.train_ratio,
-            'validation_ratio': config.data.validation_ratio,
-            'holdout_ratio': config.data.holdout_ratio,
+            'train_pct': config.data.train_pct,
+            'validation_pct': config.data.validation_pct,
+            'holdout_pct': config.data.holdout_pct,
         },
         'risk': {
             'max_risk_per_trade': config.risk.max_risk_per_trade,

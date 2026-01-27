@@ -1,0 +1,302 @@
+2026-01-27 14:16:47,931 - trading_evolution.indicators.universe - INFO - Loaded 87 indicators
+2026-01-27 14:16:47,931 - trading_evolution.indicators.universe - INFO - Loaded 87 indicators
+2026-01-27 14:16:47,931 - __main__ - INFO - EvolutionOrchestrator initialized
+2026-01-27 14:16:47,931 - __main__ - INFO - Fetching market data...
+2026-01-27 14:16:47,931 - __main__ - INFO - Fetching data for RELIANCE.NS...
+2026-01-27 14:16:47,931 - trading_evolution.data.fetcher - INFO - Fetching RELIANCE.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:48,417 - __main__ - INFO -   RELIANCE.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:48,417 - __main__ - INFO - Fetching data for TCS.NS...
+2026-01-27 14:16:48,418 - trading_evolution.data.fetcher - INFO - Fetching TCS.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:48,531 - __main__ - INFO -   TCS.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:48,531 - __main__ - INFO - Fetching data for HDFCBANK.NS...
+2026-01-27 14:16:48,532 - trading_evolution.data.fetcher - INFO - Fetching HDFCBANK.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:48,669 - __main__ - INFO -   HDFCBANK.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:48,669 - __main__ - INFO - Fetching data for INFY.NS...
+2026-01-27 14:16:48,670 - trading_evolution.data.fetcher - INFO - Fetching INFY.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:48,797 - __main__ - INFO -   INFY.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:48,798 - __main__ - INFO - Fetching data for ICICIBANK.NS...
+2026-01-27 14:16:48,798 - trading_evolution.data.fetcher - INFO - Fetching ICICIBANK.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:48,896 - __main__ - INFO -   ICICIBANK.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:48,896 - __main__ - INFO - Fetching data for HINDUNILVR.NS...
+2026-01-27 14:16:48,896 - trading_evolution.data.fetcher - INFO - Fetching HINDUNILVR.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:49,026 - __main__ - INFO -   HINDUNILVR.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:49,026 - __main__ - INFO - Fetching data for SBIN.NS...
+2026-01-27 14:16:49,026 - trading_evolution.data.fetcher - INFO - Fetching SBIN.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:49,183 - __main__ - INFO -   SBIN.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:49,183 - __main__ - INFO - Fetching data for BHARTIARTL.NS...
+2026-01-27 14:16:49,183 - trading_evolution.data.fetcher - INFO - Fetching BHARTIARTL.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:49,320 - __main__ - INFO -   BHARTIARTL.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:49,320 - __main__ - INFO - Fetching data for KOTAKBANK.NS...
+2026-01-27 14:16:49,320 - trading_evolution.data.fetcher - INFO - Fetching KOTAKBANK.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:49,449 - __main__ - INFO -   KOTAKBANK.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:49,449 - __main__ - INFO - Fetching data for ITC.NS...
+2026-01-27 14:16:49,449 - trading_evolution.data.fetcher - INFO - Fetching ITC.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:49,551 - __main__ - INFO -   ITC.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:49,551 - __main__ - INFO - Fetching data for LT.NS...
+2026-01-27 14:16:49,551 - trading_evolution.data.fetcher - INFO - Fetching LT.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:49,712 - __main__ - INFO -   LT.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:49,712 - __main__ - INFO - Fetching data for AXISBANK.NS...
+2026-01-27 14:16:49,712 - trading_evolution.data.fetcher - INFO - Fetching AXISBANK.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:49,826 - __main__ - INFO -   AXISBANK.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:49,826 - __main__ - INFO - Fetching data for ASIANPAINT.NS...
+2026-01-27 14:16:49,826 - trading_evolution.data.fetcher - INFO - Fetching ASIANPAINT.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:49,985 - __main__ - INFO -   ASIANPAINT.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:49,985 - __main__ - INFO - Fetching data for MARUTI.NS...
+2026-01-27 14:16:49,985 - trading_evolution.data.fetcher - INFO - Fetching MARUTI.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:50,100 - __main__ - INFO -   MARUTI.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:50,100 - __main__ - INFO - Fetching data for HCLTECH.NS...
+2026-01-27 14:16:50,100 - trading_evolution.data.fetcher - INFO - Fetching HCLTECH.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:50,196 - __main__ - INFO -   HCLTECH.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:50,196 - __main__ - INFO - Fetching data for SUNPHARMA.NS...
+2026-01-27 14:16:50,196 - trading_evolution.data.fetcher - INFO - Fetching SUNPHARMA.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:50,369 - __main__ - INFO -   SUNPHARMA.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:50,369 - __main__ - INFO - Fetching data for TITAN.NS...
+2026-01-27 14:16:50,369 - trading_evolution.data.fetcher - INFO - Fetching TITAN.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:50,478 - __main__ - INFO -   TITAN.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:50,478 - __main__ - INFO - Fetching data for BAJFINANCE.NS...
+2026-01-27 14:16:50,478 - trading_evolution.data.fetcher - INFO - Fetching BAJFINANCE.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:50,571 - __main__ - INFO -   BAJFINANCE.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:50,571 - __main__ - INFO - Fetching data for WIPRO.NS...
+2026-01-27 14:16:50,571 - trading_evolution.data.fetcher - INFO - Fetching WIPRO.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:50,689 - __main__ - INFO -   WIPRO.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:50,689 - __main__ - INFO - Fetching data for ULTRACEMCO.NS...
+2026-01-27 14:16:50,689 - trading_evolution.data.fetcher - INFO - Fetching ULTRACEMCO.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:50,785 - __main__ - INFO -   ULTRACEMCO.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:50,785 - __main__ - INFO - Fetching data for NESTLEIND.NS...
+2026-01-27 14:16:50,785 - trading_evolution.data.fetcher - INFO - Fetching NESTLEIND.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:50,927 - __main__ - INFO -   NESTLEIND.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:50,927 - __main__ - INFO - Fetching data for TATAMOTORS.NS...
+2026-01-27 14:16:50,927 - trading_evolution.data.fetcher - INFO - Fetching TATAMOTORS.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:51,158 - yfinance - ERROR - $TATAMOTORS.NS: possibly delisted; no price data found  (1d 2023-01-28 -> 2026-01-27) (Yahoo error = "No data found, symbol may be delisted")
+2026-01-27 14:16:51,158 - trading_evolution.data.fetcher - WARNING - No data returned for TATAMOTORS.NS
+2026-01-27 14:16:51,158 - __main__ - INFO - Fetching data for POWERGRID.NS...
+2026-01-27 14:16:51,158 - trading_evolution.data.fetcher - INFO - Fetching POWERGRID.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:51,307 - __main__ - INFO -   POWERGRID.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:51,307 - __main__ - INFO - Fetching data for NTPC.NS...
+2026-01-27 14:16:51,307 - trading_evolution.data.fetcher - INFO - Fetching NTPC.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:51,416 - __main__ - INFO -   NTPC.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:51,416 - __main__ - INFO - Fetching data for TECHM.NS...
+2026-01-27 14:16:51,416 - trading_evolution.data.fetcher - INFO - Fetching TECHM.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:51,556 - __main__ - INFO -   TECHM.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:51,556 - __main__ - INFO - Fetching data for M&M.NS...
+2026-01-27 14:16:51,556 - trading_evolution.data.fetcher - INFO - Fetching M&M.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:51,679 - __main__ - INFO -   M&M.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:51,679 - __main__ - INFO - Fetching data for TATASTEEL.NS...
+2026-01-27 14:16:51,679 - trading_evolution.data.fetcher - INFO - Fetching TATASTEEL.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:51,782 - __main__ - INFO -   TATASTEEL.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:51,782 - __main__ - INFO - Fetching data for INDUSINDBK.NS...
+2026-01-27 14:16:51,782 - trading_evolution.data.fetcher - INFO - Fetching INDUSINDBK.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:51,902 - __main__ - INFO -   INDUSINDBK.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:51,902 - __main__ - INFO - Fetching data for ONGC.NS...
+2026-01-27 14:16:51,902 - trading_evolution.data.fetcher - INFO - Fetching ONGC.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:52,067 - __main__ - INFO -   ONGC.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:52,068 - __main__ - INFO - Fetching data for JSWSTEEL.NS...
+2026-01-27 14:16:52,068 - trading_evolution.data.fetcher - INFO - Fetching JSWSTEEL.NS from 2023-01-28 to 2026-01-27
+2026-01-27 14:16:52,199 - __main__ - INFO -   JSWSTEEL.NS: 740 bars total, 495 train, 122 validation, 123 holdout
+2026-01-27 14:16:52,201 - __main__ - INFO - Starting evolution run 28: ultra_deep_v1
+2026-01-27 14:16:52,201 - __main__ - INFO - Calculating indicators...
+2026-01-27 14:16:52,201 - __main__ - INFO - Calculating indicators for RELIANCE.NS...
+2026-01-27 14:16:52,329 - __main__ - INFO - Calculating indicators for TCS.NS...
+2026-01-27 14:16:52,456 - __main__ - INFO - Calculating indicators for HDFCBANK.NS...
+2026-01-27 14:16:52,581 - __main__ - INFO - Calculating indicators for INFY.NS...
+2026-01-27 14:16:52,711 - __main__ - INFO - Calculating indicators for ICICIBANK.NS...
+2026-01-27 14:16:52,834 - __main__ - INFO - Calculating indicators for HINDUNILVR.NS...
+2026-01-27 14:16:52,959 - __main__ - INFO - Calculating indicators for SBIN.NS...
+2026-01-27 14:16:53,143 - __main__ - INFO - Calculating indicators for BHARTIARTL.NS...
+2026-01-27 14:16:53,254 - __main__ - INFO - Calculating indicators for KOTAKBANK.NS...
+2026-01-27 14:16:53,364 - __main__ - INFO - Calculating indicators for ITC.NS...
+2026-01-27 14:16:53,493 - __main__ - INFO - Calculating indicators for LT.NS...
+2026-01-27 14:16:53,606 - __main__ - INFO - Calculating indicators for AXISBANK.NS...
+2026-01-27 14:16:53,727 - __main__ - INFO - Calculating indicators for ASIANPAINT.NS...
+2026-01-27 14:16:53,848 - __main__ - INFO - Calculating indicators for MARUTI.NS...
+2026-01-27 14:16:53,964 - __main__ - INFO - Calculating indicators for HCLTECH.NS...
+2026-01-27 14:16:54,082 - __main__ - INFO - Calculating indicators for SUNPHARMA.NS...
+2026-01-27 14:16:54,201 - __main__ - INFO - Calculating indicators for TITAN.NS...
+2026-01-27 14:16:54,327 - __main__ - INFO - Calculating indicators for BAJFINANCE.NS...
+2026-01-27 14:16:54,441 - __main__ - INFO - Calculating indicators for WIPRO.NS...
+2026-01-27 14:16:54,566 - __main__ - INFO - Calculating indicators for ULTRACEMCO.NS...
+2026-01-27 14:16:54,682 - __main__ - INFO - Calculating indicators for NESTLEIND.NS...
+2026-01-27 14:16:54,797 - __main__ - INFO - Calculating indicators for POWERGRID.NS...
+2026-01-27 14:16:54,913 - __main__ - INFO - Calculating indicators for NTPC.NS...
+2026-01-27 14:16:55,042 - __main__ - INFO - Calculating indicators for TECHM.NS...
+2026-01-27 14:16:55,179 - __main__ - INFO - Calculating indicators for M&M.NS...
+2026-01-27 14:16:55,309 - __main__ - INFO - Calculating indicators for TATASTEEL.NS...
+2026-01-27 14:16:55,439 - __main__ - INFO - Calculating indicators for INDUSINDBK.NS...
+2026-01-27 14:16:55,790 - __main__ - INFO - Calculating indicators for ONGC.NS...
+2026-01-27 14:16:56,308 - __main__ - INFO - Calculating indicators for JSWSTEEL.NS...
+2026-01-27 14:16:56,750 - __main__ - INFO - Creating initial population...
+2026-01-27 14:16:56,812 - trading_evolution.evolution.population - INFO - Created initial population of 50 DNA configurations
+2026-01-27 14:16:56,812 - __main__ - INFO - Starting genetic evolution...
+2026-01-27 14:16:56,812 - trading_evolution.evolution.genetic - INFO - Starting evolution with 50 individuals
+2026-01-27 14:17:34,576 - trading_evolution.evolution.genetic - INFO - Generation 1/50
+2026-01-27 14:18:13,887 - trading_evolution.evolution.hall_of_fame - INFO - Loaded 10 Hall of Fame entries
+2026-01-27 14:18:13,890 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 1e3184ca to Hall of Fame (fitness: 0.5274)
+2026-01-27 14:18:13,905 - trading_evolution.evolution.genetic - INFO - Gen 1: Best=0.5274, Avg=0.1255, Sharpe=3.49, Profit=$77631
+2026-01-27 14:18:13,910 - __main__ - INFO - Saved stats for Run 28 Gen 1
+2026-01-27 14:18:13,910 - trading_evolution.evolution.genetic - INFO - Generation 2/50
+2026-01-27 14:19:02,544 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 7d8d1a12 to Hall of Fame (fitness: 0.5285)
+2026-01-27 14:19:02,560 - trading_evolution.evolution.genetic - INFO - Gen 2: Best=0.5285, Avg=0.2780, Sharpe=4.65, Profit=$206677
+2026-01-27 14:19:02,565 - __main__ - INFO - Saved stats for Run 28 Gen 2
+2026-01-27 14:19:02,565 - trading_evolution.evolution.genetic - INFO - Generation 3/50
+2026-01-27 14:19:51,993 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 381e1627 to Hall of Fame (fitness: 0.5299)
+2026-01-27 14:19:52,009 - trading_evolution.evolution.genetic - INFO - Gen 3: Best=0.5299, Avg=0.3705, Sharpe=4.20, Profit=$169842
+2026-01-27 14:19:52,016 - __main__ - INFO - Saved stats for Run 28 Gen 3
+2026-01-27 14:19:52,016 - trading_evolution.evolution.genetic - INFO - Generation 4/50
+2026-01-27 14:20:35,663 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA e910044b to Hall of Fame (fitness: 0.5311)
+2026-01-27 14:20:35,677 - trading_evolution.evolution.genetic - INFO - Gen 4: Best=0.5311, Avg=0.4832, Sharpe=4.52, Profit=$175548
+2026-01-27 14:20:35,682 - __main__ - INFO - Saved stats for Run 28 Gen 4
+2026-01-27 14:20:35,683 - trading_evolution.evolution.genetic - INFO - Generation 5/50
+2026-01-27 14:21:18,281 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 84aece92 to Hall of Fame (fitness: 0.5327)
+2026-01-27 14:21:18,297 - trading_evolution.evolution.genetic - INFO - Gen 5: Best=0.5327, Avg=0.3850, Sharpe=5.05, Profit=$137931
+2026-01-27 14:21:18,303 - __main__ - INFO - Saved stats for Run 28 Gen 5
+2026-01-27 14:21:18,303 - trading_evolution.evolution.genetic - INFO - Generation 6/50
+2026-01-27 14:22:02,621 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA e72a1a3d to Hall of Fame (fitness: 0.5327)
+2026-01-27 14:22:02,638 - trading_evolution.evolution.genetic - INFO - Gen 6: Best=0.5327, Avg=0.4781, Sharpe=5.05, Profit=$137931
+2026-01-27 14:22:02,647 - __main__ - INFO - Saved stats for Run 28 Gen 6
+2026-01-27 14:22:02,647 - trading_evolution.evolution.genetic - INFO - Generation 7/50
+2026-01-27 14:22:48,191 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 335418d0 to Hall of Fame (fitness: 0.5333)
+2026-01-27 14:22:48,209 - trading_evolution.evolution.genetic - INFO - Gen 7: Best=0.5333, Avg=0.4038, Sharpe=4.92, Profit=$126761
+2026-01-27 14:22:48,213 - __main__ - INFO - Saved stats for Run 28 Gen 7
+2026-01-27 14:22:48,213 - trading_evolution.evolution.genetic - INFO - Generation 8/50
+2026-01-27 14:23:36,686 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 06f0c943 to Hall of Fame (fitness: 0.5333)
+2026-01-27 14:23:36,705 - trading_evolution.evolution.genetic - INFO - Gen 8: Best=0.5333, Avg=0.3777, Sharpe=4.92, Profit=$126761
+2026-01-27 14:23:36,712 - __main__ - INFO - Saved stats for Run 28 Gen 8
+2026-01-27 14:23:36,713 - trading_evolution.evolution.genetic - INFO - Generation 9/50
+2026-01-27 14:24:19,425 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 549ea921 to Hall of Fame (fitness: 0.5334)
+2026-01-27 14:24:19,441 - trading_evolution.evolution.genetic - INFO - Gen 9: Best=0.5334, Avg=0.3770, Sharpe=5.06, Profit=$132604
+2026-01-27 14:24:19,446 - __main__ - INFO - Saved stats for Run 28 Gen 9
+2026-01-27 14:24:19,446 - trading_evolution.evolution.genetic - INFO - Generation 10/50
+2026-01-27 14:24:59,840 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 57a613c7 to Hall of Fame (fitness: 0.5334)
+2026-01-27 14:24:59,840 - trading_evolution.evolution.population - INFO - Injecting 2 new indicators: ['ROC_10', 'SMA_100']
+2026-01-27 14:24:59,856 - trading_evolution.evolution.genetic - INFO - Gen 10: Best=0.5334, Avg=0.3728, Sharpe=5.08, Profit=$132963
+2026-01-27 14:24:59,861 - __main__ - INFO - Saved stats for Run 28 Gen 10
+2026-01-27 14:24:59,861 - trading_evolution.evolution.genetic - INFO - Generation 11/50
+2026-01-27 14:25:45,078 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 04c1ddad to Hall of Fame (fitness: 0.5334)
+2026-01-27 14:25:45,086 - trading_evolution.evolution.population - INFO - Low diversity (0.249), injecting random DNA
+2026-01-27 14:25:45,095 - trading_evolution.evolution.genetic - INFO - Gen 11: Best=0.5334, Avg=0.4233, Sharpe=5.08, Profit=$132963
+2026-01-27 14:25:45,101 - __main__ - INFO - Saved stats for Run 28 Gen 11
+2026-01-27 14:25:45,101 - trading_evolution.evolution.genetic - INFO - Generation 12/50
+2026-01-27 14:26:28,084 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 363c4d68 to Hall of Fame (fitness: 0.5334)
+2026-01-27 14:26:28,093 - trading_evolution.evolution.population - INFO - Low diversity (0.286), injecting random DNA
+2026-01-27 14:26:28,101 - trading_evolution.evolution.genetic - INFO - Gen 12: Best=0.5334, Avg=0.4270, Sharpe=5.08, Profit=$132963
+2026-01-27 14:26:28,105 - __main__ - INFO - Saved stats for Run 28 Gen 12
+2026-01-27 14:26:28,105 - trading_evolution.evolution.genetic - INFO - Generation 13/50
+2026-01-27 14:27:09,591 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA eba819eb to Hall of Fame (fitness: 0.5334)
+2026-01-27 14:27:09,599 - trading_evolution.evolution.population - INFO - Low diversity (0.348), injecting random DNA
+2026-01-27 14:27:09,607 - trading_evolution.evolution.genetic - INFO - Gen 13: Best=0.5334, Avg=0.3736, Sharpe=5.08, Profit=$132963
+2026-01-27 14:27:09,612 - __main__ - INFO - Saved stats for Run 28 Gen 13
+2026-01-27 14:27:09,612 - trading_evolution.evolution.genetic - INFO - Generation 14/50
+2026-01-27 14:27:48,883 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA bf30ee93 to Hall of Fame (fitness: 0.5334)
+2026-01-27 14:27:48,891 - trading_evolution.evolution.population - INFO - Low diversity (0.426), injecting random DNA
+2026-01-27 14:27:48,899 - trading_evolution.evolution.genetic - INFO - Gen 14: Best=0.5334, Avg=0.4011, Sharpe=5.08, Profit=$132963
+2026-01-27 14:27:48,905 - __main__ - INFO - Saved stats for Run 28 Gen 14
+2026-01-27 14:27:48,905 - trading_evolution.evolution.genetic - INFO - Generation 15/50
+2026-01-27 14:28:27,317 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 77b5a332 to Hall of Fame (fitness: 0.5334)
+2026-01-27 14:28:27,664 - trading_evolution.evolution.population - INFO - Low diversity (0.076), injecting random DNA
+2026-01-27 14:28:27,673 - trading_evolution.evolution.genetic - INFO - Gen 15: Best=0.5334, Avg=0.4442, Sharpe=5.08, Profit=$132963
+2026-01-27 14:28:27,677 - __main__ - INFO - Saved stats for Run 28 Gen 15
+2026-01-27 14:28:27,677 - trading_evolution.evolution.genetic - INFO - Generation 16/50
+2026-01-27 14:29:07,510 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA a3300f56 to Hall of Fame (fitness: 0.5334)
+2026-01-27 14:29:07,518 - trading_evolution.evolution.population - INFO - Low diversity (0.249), injecting random DNA
+2026-01-27 14:29:07,526 - trading_evolution.evolution.genetic - INFO - Gen 16: Best=0.5334, Avg=0.4155, Sharpe=5.08, Profit=$132963
+2026-01-27 14:29:07,533 - __main__ - INFO - Saved stats for Run 28 Gen 16
+2026-01-27 14:29:07,533 - trading_evolution.evolution.genetic - INFO - Generation 17/50
+2026-01-27 14:29:47,190 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 107ccca2 to Hall of Fame (fitness: 0.5334)
+2026-01-27 14:29:47,207 - trading_evolution.evolution.genetic - INFO - Gen 17: Best=0.5334, Avg=0.3820, Sharpe=5.08, Profit=$132963
+2026-01-27 14:29:47,213 - __main__ - INFO - Saved stats for Run 28 Gen 17
+2026-01-27 14:29:47,213 - trading_evolution.evolution.genetic - INFO - Generation 18/50
+2026-01-27 14:30:30,989 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA f5f6c1c8 to Hall of Fame (fitness: 0.5334)
+2026-01-27 14:30:30,997 - trading_evolution.evolution.population - INFO - Low diversity (0.134), injecting random DNA
+2026-01-27 14:30:31,007 - trading_evolution.evolution.genetic - INFO - Gen 18: Best=0.5334, Avg=0.3972, Sharpe=5.08, Profit=$132963
+2026-01-27 14:30:31,015 - __main__ - INFO - Saved stats for Run 28 Gen 18
+2026-01-27 14:30:31,015 - trading_evolution.evolution.genetic - INFO - Generation 19/50
+2026-01-27 14:31:14,071 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA ae8dbff5 to Hall of Fame (fitness: 0.5334)
+2026-01-27 14:31:14,080 - trading_evolution.evolution.population - INFO - Low diversity (0.250), injecting random DNA
+2026-01-27 14:31:14,089 - trading_evolution.evolution.genetic - INFO - Gen 19: Best=0.5334, Avg=0.4646, Sharpe=5.08, Profit=$132963
+2026-01-27 14:31:14,094 - __main__ - INFO - Saved stats for Run 28 Gen 19
+2026-01-27 14:31:14,094 - trading_evolution.evolution.genetic - INFO - Generation 20/50
+2026-01-27 14:31:55,487 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA a898263b to Hall of Fame (fitness: 0.5334)
+2026-01-27 14:31:55,488 - trading_evolution.evolution.population - INFO - Injecting 3 new indicators: ['STOCH_14_3', 'EMA_20', 'SMA_10']
+2026-01-27 14:31:55,496 - trading_evolution.evolution.population - INFO - Low diversity (0.238), injecting random DNA
+2026-01-27 14:31:55,504 - trading_evolution.evolution.genetic - INFO - Gen 20: Best=0.5334, Avg=0.4566, Sharpe=5.08, Profit=$132963
+2026-01-27 14:31:55,513 - __main__ - INFO - Saved stats for Run 28 Gen 20
+2026-01-27 14:31:55,514 - trading_evolution.evolution.genetic - INFO - Generation 21/50
+2026-01-27 14:32:38,052 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA b4257458 to Hall of Fame (fitness: 0.5334)
+2026-01-27 14:32:38,060 - trading_evolution.evolution.population - INFO - Low diversity (0.040), injecting random DNA
+2026-01-27 14:32:38,069 - trading_evolution.evolution.genetic - INFO - Gen 21: Best=0.5334, Avg=0.4292, Sharpe=5.08, Profit=$132963
+2026-01-27 14:32:38,075 - __main__ - INFO - Saved stats for Run 28 Gen 21
+2026-01-27 14:32:38,075 - trading_evolution.evolution.genetic - INFO - Generation 22/50
+2026-01-27 14:33:18,299 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 3052c4ec to Hall of Fame (fitness: 0.5334)
+2026-01-27 14:33:18,316 - trading_evolution.evolution.genetic - INFO - Gen 22: Best=0.5334, Avg=0.3655, Sharpe=5.08, Profit=$132963
+2026-01-27 14:33:18,321 - __main__ - INFO - Saved stats for Run 28 Gen 22
+2026-01-27 14:33:18,321 - trading_evolution.evolution.genetic - INFO - Generation 23/50
+2026-01-27 14:34:00,411 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 0a531f5b to Hall of Fame (fitness: 0.5362)
+2026-01-27 14:34:00,419 - trading_evolution.evolution.population - INFO - Low diversity (0.101), injecting random DNA
+2026-01-27 14:34:00,428 - trading_evolution.evolution.genetic - INFO - Gen 23: Best=0.5362, Avg=0.4747, Sharpe=6.01, Profit=$80730
+2026-01-27 14:34:00,432 - __main__ - INFO - Saved stats for Run 28 Gen 23
+2026-01-27 14:34:00,432 - trading_evolution.evolution.genetic - INFO - Generation 24/50
+2026-01-27 14:34:43,477 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 0a531f5b to Hall of Fame (fitness: 0.5362)
+2026-01-27 14:34:43,488 - trading_evolution.evolution.population - INFO - Low diversity (0.096), injecting random DNA
+2026-01-27 14:34:43,498 - trading_evolution.evolution.genetic - INFO - Gen 24: Best=0.5362, Avg=0.4358, Sharpe=6.01, Profit=$80730
+2026-01-27 14:34:43,504 - __main__ - INFO - Saved stats for Run 28 Gen 24
+2026-01-27 14:34:43,504 - trading_evolution.evolution.genetic - INFO - Generation 25/50
+2026-01-27 14:35:23,941 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 0a531f5b to Hall of Fame (fitness: 0.5362)
+2026-01-27 14:35:23,950 - trading_evolution.evolution.population - INFO - Low diversity (0.335), injecting random DNA
+2026-01-27 14:35:23,958 - trading_evolution.evolution.genetic - INFO - Gen 25: Best=0.5362, Avg=0.4451, Sharpe=6.01, Profit=$80730
+2026-01-27 14:35:23,964 - __main__ - INFO - Saved stats for Run 28 Gen 25
+2026-01-27 14:35:23,964 - trading_evolution.evolution.genetic - INFO - Generation 26/50
+2026-01-27 14:36:06,908 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 0a531f5b to Hall of Fame (fitness: 0.5362)
+2026-01-27 14:36:06,917 - trading_evolution.evolution.population - INFO - Low diversity (0.366), injecting random DNA
+2026-01-27 14:36:06,925 - trading_evolution.evolution.genetic - INFO - Gen 26: Best=0.5362, Avg=0.4253, Sharpe=6.01, Profit=$80730
+2026-01-27 14:36:06,930 - __main__ - INFO - Saved stats for Run 28 Gen 26
+2026-01-27 14:36:06,930 - trading_evolution.evolution.genetic - INFO - Generation 27/50
+2026-01-27 14:36:51,905 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA cdf5892d to Hall of Fame (fitness: 0.5362)
+2026-01-27 14:36:51,928 - trading_evolution.evolution.genetic - INFO - Gen 27: Best=0.5362, Avg=0.4480, Sharpe=6.01, Profit=$80730
+2026-01-27 14:36:51,937 - __main__ - INFO - Saved stats for Run 28 Gen 27
+2026-01-27 14:36:51,937 - trading_evolution.evolution.genetic - INFO - Generation 28/50
+2026-01-27 14:37:36,382 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 1794027c to Hall of Fame (fitness: 0.5362)
+2026-01-27 14:37:36,397 - trading_evolution.evolution.genetic - INFO - Gen 28: Best=0.5362, Avg=0.4253, Sharpe=6.01, Profit=$80730
+2026-01-27 14:37:36,408 - __main__ - INFO - Saved stats for Run 28 Gen 28
+2026-01-27 14:37:36,408 - trading_evolution.evolution.genetic - INFO - Generation 29/50
+2026-01-27 14:38:20,344 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA d83d3dfa to Hall of Fame (fitness: 0.5362)
+2026-01-27 14:38:20,360 - trading_evolution.evolution.genetic - INFO - Gen 29: Best=0.5362, Avg=0.3912, Sharpe=6.01, Profit=$80730
+2026-01-27 14:38:20,366 - __main__ - INFO - Saved stats for Run 28 Gen 29
+2026-01-27 14:38:20,366 - trading_evolution.evolution.genetic - INFO - Generation 30/50
+2026-01-27 14:39:11,040 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 772efc0d to Hall of Fame (fitness: 0.5362)
+2026-01-27 14:39:11,453 - trading_evolution.evolution.population - INFO - Injecting 3 new indicators: ['STOCH_14_3', 'DEMA_20', 'CMO_14']
+2026-01-27 14:39:11,479 - trading_evolution.evolution.genetic - INFO - Gen 30: Best=0.5362, Avg=0.4375, Sharpe=6.01, Profit=$80730
+2026-01-27 14:39:11,486 - __main__ - INFO - Saved stats for Run 28 Gen 30
+2026-01-27 14:39:11,486 - trading_evolution.evolution.genetic - INFO - Convergence reached at generation 30
+2026-01-27 14:39:11,486 - trading_evolution.evolution.genetic - INFO - Evolution complete. Best fitness: 0.5195
+2026-01-27 14:39:11,486 - __main__ - INFO - Running holdout validation...
+2026-01-27 14:39:11,490 - __main__ - INFO - Generating reports...
+2026-01-27 14:39:11,765 - trading_evolution.reporting.indicator_importance - INFO - Saved fitness evolution to reports/run_28/fitness_evolution.png
+2026-01-27 14:39:11,767 - trading_evolution.evolution.hall_of_fame - INFO - Saved Hall of Fame to reports/run_28/best_dna.json
+2026-01-27 14:39:11,767 - __main__ - INFO - Reports saved to reports/run_28
+2026-01-27 14:39:11,767 - __main__ - INFO - Evolution complete. Best fitness: 0.5195
+
+======================================================================
+EVOLUTION COMPLETE
+======================================================================
+
+Best DNA: 262df23b
+Generation: 17
+
+Training Fitness: 0.5195
+Validation Fitness: N/A
+Holdout Fitness: 0.0000
+
+Performance Metrics:
+  Sharpe Ratio: 0.00
+  Net Profit: $0.00
+  Max Drawdown: 0.0%
+  Win Rate: 0.0%
+  Total Trades: 0
+
+Active Indicators: 0
+
+Top 10 Indicators by Weight:
+
+======================================================================
+
+Evolution complete. Best DNA: 262df23b

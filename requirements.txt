@@ -1,0 +1,15 @@
+pandas>=2.0.0
+numpy>=1.24.0
+pandas-ta
+yfinance>=0.2.18
+PyYAML>=6.0
+ta>=0.10.2
+scipy>=1.10.0
+matplotlib>=3.7.1
+seaborn>=0.12.2
+termcolor>=2.3.0
+tqdm>=4.65.0
+scikit-learn>=1.2.2
+statsmodels>=0.14.0
+plotly>=5.14.1
+SQLAlchemy>=2.0.0

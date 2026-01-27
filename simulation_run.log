@@ -1,0 +1,246 @@
+2026-01-26 20:46:02,137 - trading_evolution.indicators.universe - INFO - Loaded 87 indicators
+2026-01-26 20:46:02,138 - trading_evolution.indicators.universe - INFO - Loaded 87 indicators
+2026-01-26 20:46:02,138 - __main__ - INFO - EvolutionOrchestrator initialized
+2026-01-26 20:46:02,138 - __main__ - INFO - Fetching market data...
+2026-01-26 20:46:02,138 - __main__ - INFO - Fetching data for RELIANCE.NS...
+2026-01-26 20:46:02,261 - __main__ - INFO -   RELIANCE.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,261 - __main__ - INFO - Fetching data for TCS.NS...
+2026-01-26 20:46:02,266 - __main__ - INFO -   TCS.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,266 - __main__ - INFO - Fetching data for HDFCBANK.NS...
+2026-01-26 20:46:02,273 - __main__ - INFO -   HDFCBANK.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,273 - __main__ - INFO - Fetching data for INFY.NS...
+2026-01-26 20:46:02,278 - __main__ - INFO -   INFY.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,278 - __main__ - INFO - Fetching data for ICICIBANK.NS...
+2026-01-26 20:46:02,282 - __main__ - INFO -   ICICIBANK.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,283 - __main__ - INFO - Fetching data for HINDUNILVR.NS...
+2026-01-26 20:46:02,287 - __main__ - INFO -   HINDUNILVR.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,287 - __main__ - INFO - Fetching data for SBIN.NS...
+2026-01-26 20:46:02,291 - __main__ - INFO -   SBIN.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,291 - __main__ - INFO - Fetching data for BHARTIARTL.NS...
+2026-01-26 20:46:02,300 - __main__ - INFO -   BHARTIARTL.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,300 - __main__ - INFO - Fetching data for KOTAKBANK.NS...
+2026-01-26 20:46:02,304 - __main__ - INFO -   KOTAKBANK.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,304 - __main__ - INFO - Fetching data for ITC.NS...
+2026-01-26 20:46:02,308 - __main__ - INFO -   ITC.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,308 - __main__ - INFO - Fetching data for LT.NS...
+2026-01-26 20:46:02,313 - __main__ - INFO -   LT.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,314 - __main__ - INFO - Fetching data for AXISBANK.NS...
+2026-01-26 20:46:02,316 - __main__ - INFO -   AXISBANK.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,316 - __main__ - INFO - Fetching data for ASIANPAINT.NS...
+2026-01-26 20:46:02,318 - __main__ - INFO -   ASIANPAINT.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,318 - __main__ - INFO - Fetching data for MARUTI.NS...
+2026-01-26 20:46:02,320 - __main__ - INFO -   MARUTI.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,320 - __main__ - INFO - Fetching data for HCLTECH.NS...
+2026-01-26 20:46:02,323 - __main__ - INFO -   HCLTECH.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,323 - __main__ - INFO - Fetching data for SUNPHARMA.NS...
+2026-01-26 20:46:02,328 - __main__ - INFO -   SUNPHARMA.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,329 - __main__ - INFO - Fetching data for TITAN.NS...
+2026-01-26 20:46:02,336 - __main__ - INFO -   TITAN.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,336 - __main__ - INFO - Fetching data for BAJFINANCE.NS...
+2026-01-26 20:46:02,344 - __main__ - INFO -   BAJFINANCE.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,345 - __main__ - INFO - Fetching data for WIPRO.NS...
+2026-01-26 20:46:02,353 - __main__ - INFO -   WIPRO.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,353 - __main__ - INFO - Fetching data for ULTRACEMCO.NS...
+2026-01-26 20:46:02,358 - __main__ - INFO -   ULTRACEMCO.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,358 - __main__ - INFO - Fetching data for NESTLEIND.NS...
+2026-01-26 20:46:02,364 - __main__ - INFO -   NESTLEIND.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,364 - __main__ - INFO - Fetching data for TATAMOTORS.NS...
+2026-01-26 20:46:02,364 - trading_evolution.data.fetcher - INFO - Fetching TATAMOTORS.NS from 2023-01-27 to 2026-01-26
+2026-01-26 20:46:02,697 - yfinance - ERROR - $TATAMOTORS.NS: possibly delisted; no price data found  (1d 2023-01-27 -> 2026-01-26) (Yahoo error = "No data found, symbol may be delisted")
+2026-01-26 20:46:02,697 - trading_evolution.data.fetcher - WARNING - No data returned for TATAMOTORS.NS
+2026-01-26 20:46:02,698 - __main__ - INFO - Fetching data for POWERGRID.NS...
+2026-01-26 20:46:02,705 - __main__ - INFO -   POWERGRID.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,706 - __main__ - INFO - Fetching data for NTPC.NS...
+2026-01-26 20:46:02,716 - __main__ - INFO -   NTPC.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,716 - __main__ - INFO - Fetching data for TECHM.NS...
+2026-01-26 20:46:02,724 - __main__ - INFO -   TECHM.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,724 - __main__ - INFO - Fetching data for M&M.NS...
+2026-01-26 20:46:02,727 - __main__ - INFO -   M&M.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,727 - __main__ - INFO - Fetching data for TATASTEEL.NS...
+2026-01-26 20:46:02,732 - __main__ - INFO -   TATASTEEL.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,732 - __main__ - INFO - Fetching data for INDUSINDBK.NS...
+2026-01-26 20:46:02,736 - __main__ - INFO -   INDUSINDBK.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,736 - __main__ - INFO - Fetching data for ONGC.NS...
+2026-01-26 20:46:02,740 - __main__ - INFO -   ONGC.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,740 - __main__ - INFO - Fetching data for JSWSTEEL.NS...
+2026-01-26 20:46:02,743 - __main__ - INFO -   JSWSTEEL.NS: 741 bars total, 496 train, 122 validation, 123 holdout
+2026-01-26 20:46:02,747 - __main__ - INFO - Starting evolution run 24: expanded_deep_run_v4_robust
+2026-01-26 20:46:02,747 - __main__ - INFO - Calculating indicators...
+2026-01-26 20:46:02,747 - __main__ - INFO - Calculating indicators for RELIANCE.NS...
+2026-01-26 20:46:03,073 - __main__ - INFO - Calculating indicators for TCS.NS...
+2026-01-26 20:46:03,399 - __main__ - INFO - Calculating indicators for HDFCBANK.NS...
+2026-01-26 20:46:03,651 - __main__ - INFO - Calculating indicators for INFY.NS...
+2026-01-26 20:46:03,864 - __main__ - INFO - Calculating indicators for ICICIBANK.NS...
+2026-01-26 20:46:04,067 - __main__ - INFO - Calculating indicators for HINDUNILVR.NS...
+2026-01-26 20:46:04,268 - __main__ - INFO - Calculating indicators for SBIN.NS...
+2026-01-26 20:46:04,462 - __main__ - INFO - Calculating indicators for BHARTIARTL.NS...
+2026-01-26 20:46:04,659 - __main__ - INFO - Calculating indicators for KOTAKBANK.NS...
+2026-01-26 20:46:04,884 - __main__ - INFO - Calculating indicators for ITC.NS...
+2026-01-26 20:46:05,121 - __main__ - INFO - Calculating indicators for LT.NS...
+2026-01-26 20:46:05,384 - __main__ - INFO - Calculating indicators for AXISBANK.NS...
+2026-01-26 20:46:05,752 - __main__ - INFO - Calculating indicators for ASIANPAINT.NS...
+2026-01-26 20:46:05,962 - __main__ - INFO - Calculating indicators for MARUTI.NS...
+2026-01-26 20:46:06,225 - __main__ - INFO - Calculating indicators for HCLTECH.NS...
+2026-01-26 20:46:06,494 - __main__ - INFO - Calculating indicators for SUNPHARMA.NS...
+2026-01-26 20:46:06,727 - __main__ - INFO - Calculating indicators for TITAN.NS...
+2026-01-26 20:46:06,978 - __main__ - INFO - Calculating indicators for BAJFINANCE.NS...
+2026-01-26 20:46:07,229 - __main__ - INFO - Calculating indicators for WIPRO.NS...
+2026-01-26 20:46:07,429 - __main__ - INFO - Calculating indicators for ULTRACEMCO.NS...
+2026-01-26 20:46:07,636 - __main__ - INFO - Calculating indicators for NESTLEIND.NS...
+2026-01-26 20:46:07,841 - __main__ - INFO - Calculating indicators for POWERGRID.NS...
+2026-01-26 20:46:08,063 - __main__ - INFO - Calculating indicators for NTPC.NS...
+2026-01-26 20:46:08,281 - __main__ - INFO - Calculating indicators for TECHM.NS...
+2026-01-26 20:46:08,487 - __main__ - INFO - Calculating indicators for M&M.NS...
+2026-01-26 20:46:08,673 - __main__ - INFO - Calculating indicators for TATASTEEL.NS...
+2026-01-26 20:46:08,860 - __main__ - INFO - Calculating indicators for INDUSINDBK.NS...
+2026-01-26 20:46:09,047 - __main__ - INFO - Calculating indicators for ONGC.NS...
+2026-01-26 20:46:09,272 - __main__ - INFO - Calculating indicators for JSWSTEEL.NS...
+2026-01-26 20:46:09,477 - __main__ - INFO - Creating initial population...
+2026-01-26 20:46:09,482 - trading_evolution.evolution.population - INFO - Created initial population of 50 DNA configurations
+2026-01-26 20:46:09,482 - __main__ - INFO - Starting genetic evolution...
+2026-01-26 20:46:09,482 - trading_evolution.evolution.genetic - INFO - Starting evolution with 50 individuals
+2026-01-26 20:47:16,988 - trading_evolution.evolution.genetic - INFO - Generation 1/50
+2026-01-26 20:53:02,537 - trading_evolution.evolution.hall_of_fame - INFO - Loaded 10 Hall of Fame entries
+2026-01-26 20:53:02,544 - trading_evolution.evolution.hall_of_fame - WARNING - Could not save to Hall of Fame: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 20:53:02,544 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 5ae83584 to Hall of Fame (fitness: 0.4857)
+2026-01-26 20:53:02,567 - trading_evolution.evolution.genetic - INFO - Gen 1: Best=0.4857, Avg=0.1264, Sharpe=8.34, Profit=$49843
+2026-01-26 20:53:02,575 - __main__ - ERROR - Error saving generation stats: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 20:53:02,575 - trading_evolution.evolution.genetic - INFO - Generation 2/50
+2026-01-26 20:54:07,393 - trading_evolution.evolution.hall_of_fame - WARNING - Could not save to Hall of Fame: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 20:54:07,394 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 160cadea to Hall of Fame (fitness: 0.9416)
+2026-01-26 20:54:07,412 - trading_evolution.evolution.genetic - INFO - Gen 2: Best=0.9416, Avg=0.1803, Sharpe=8.08, Profit=$34221
+2026-01-26 20:54:07,416 - __main__ - ERROR - Error saving generation stats: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 20:54:07,416 - trading_evolution.evolution.genetic - INFO - Generation 3/50
+2026-01-26 20:59:52,279 - trading_evolution.evolution.hall_of_fame - WARNING - Could not save to Hall of Fame: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 20:59:52,281 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA bb2f8082 to Hall of Fame (fitness: 0.9416)
+2026-01-26 20:59:52,303 - trading_evolution.evolution.genetic - INFO - Gen 3: Best=0.9416, Avg=0.2493, Sharpe=8.08, Profit=$34221
+2026-01-26 20:59:52,310 - __main__ - ERROR - Error saving generation stats: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 20:59:52,310 - trading_evolution.evolution.genetic - INFO - Generation 4/50
+2026-01-26 21:06:42,297 - trading_evolution.evolution.hall_of_fame - WARNING - Could not save to Hall of Fame: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:06:42,299 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA bb2f8082 to Hall of Fame (fitness: 0.9416)
+2026-01-26 21:06:42,314 - trading_evolution.evolution.genetic - INFO - Gen 4: Best=0.9416, Avg=0.3496, Sharpe=8.08, Profit=$34221
+2026-01-26 21:06:42,317 - __main__ - ERROR - Error saving generation stats: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:06:42,318 - trading_evolution.evolution.genetic - INFO - Generation 5/50
+2026-01-26 21:07:43,081 - trading_evolution.evolution.hall_of_fame - WARNING - Could not save to Hall of Fame: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:07:43,083 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 1cb6a5e8 to Hall of Fame (fitness: 0.9416)
+2026-01-26 21:07:43,107 - trading_evolution.evolution.genetic - INFO - Gen 5: Best=0.9416, Avg=0.4506, Sharpe=8.08, Profit=$34221
+2026-01-26 21:07:43,111 - __main__ - ERROR - Error saving generation stats: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:07:43,111 - trading_evolution.evolution.genetic - INFO - Generation 6/50
+2026-01-26 21:08:44,913 - trading_evolution.evolution.hall_of_fame - WARNING - Could not save to Hall of Fame: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:08:44,914 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA b4015008 to Hall of Fame (fitness: 0.9552)
+2026-01-26 21:08:44,937 - trading_evolution.evolution.genetic - INFO - Gen 6: Best=0.9552, Avg=0.5067, Sharpe=9.36, Profit=$50749
+2026-01-26 21:08:44,941 - __main__ - ERROR - Error saving generation stats: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:08:44,941 - trading_evolution.evolution.genetic - INFO - Generation 7/50
+2026-01-26 21:09:48,519 - trading_evolution.evolution.hall_of_fame - WARNING - Could not save to Hall of Fame: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:09:48,521 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA c7e892d0 to Hall of Fame (fitness: 0.9601)
+2026-01-26 21:09:48,551 - trading_evolution.evolution.genetic - INFO - Gen 7: Best=0.9601, Avg=0.5390, Sharpe=8.68, Profit=$41809
+2026-01-26 21:09:48,555 - __main__ - ERROR - Error saving generation stats: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:09:48,555 - trading_evolution.evolution.genetic - INFO - Generation 8/50
+2026-01-26 21:10:56,850 - trading_evolution.evolution.hall_of_fame - WARNING - Could not save to Hall of Fame: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:10:56,850 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA c7e892d0 to Hall of Fame (fitness: 0.9601)
+2026-01-26 21:10:56,875 - trading_evolution.evolution.genetic - INFO - Gen 8: Best=0.9601, Avg=0.6616, Sharpe=8.68, Profit=$41809
+2026-01-26 21:10:56,879 - __main__ - ERROR - Error saving generation stats: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:10:56,879 - trading_evolution.evolution.genetic - INFO - Generation 9/50
+2026-01-26 21:11:55,696 - trading_evolution.evolution.hall_of_fame - WARNING - Could not save to Hall of Fame: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:11:55,696 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA c7e892d0 to Hall of Fame (fitness: 0.9601)
+2026-01-26 21:11:55,720 - trading_evolution.evolution.genetic - INFO - Gen 9: Best=0.9601, Avg=0.6912, Sharpe=8.68, Profit=$41809
+2026-01-26 21:11:55,725 - __main__ - ERROR - Error saving generation stats: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:11:55,725 - trading_evolution.evolution.genetic - INFO - Generation 10/50
+2026-01-26 21:12:43,732 - trading_evolution.evolution.hall_of_fame - WARNING - Could not save to Hall of Fame: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:12:43,733 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA c7e892d0 to Hall of Fame (fitness: 0.9601)
+2026-01-26 21:12:43,966 - trading_evolution.evolution.population - INFO - Injecting 1 new indicators: ['WILLR_14']
+2026-01-26 21:12:43,984 - trading_evolution.evolution.genetic - INFO - Gen 10: Best=0.9601, Avg=0.6793, Sharpe=8.68, Profit=$41809
+2026-01-26 21:12:43,988 - __main__ - ERROR - Error saving generation stats: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:12:43,988 - trading_evolution.evolution.genetic - INFO - Generation 11/50
+2026-01-26 21:13:27,408 - trading_evolution.evolution.hall_of_fame - WARNING - Could not save to Hall of Fame: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:13:27,409 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 6c19a26d to Hall of Fame (fitness: 0.9624)
+2026-01-26 21:13:27,427 - trading_evolution.evolution.genetic - INFO - Gen 11: Best=0.9624, Avg=0.7396, Sharpe=9.94, Profit=$53012
+2026-01-26 21:13:27,431 - __main__ - ERROR - Error saving generation stats: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:13:27,432 - trading_evolution.evolution.genetic - INFO - Generation 12/50
+2026-01-26 21:14:09,789 - trading_evolution.evolution.hall_of_fame - WARNING - Could not save to Hall of Fame: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:14:09,790 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA bb3a4b7c to Hall of Fame (fitness: 0.9624)
+2026-01-26 21:14:09,799 - trading_evolution.evolution.population - INFO - Low diversity (0.465), injecting random DNA
+2026-01-26 21:14:09,807 - trading_evolution.evolution.genetic - INFO - Gen 12: Best=0.9624, Avg=0.7609, Sharpe=9.94, Profit=$53012
+2026-01-26 21:14:09,812 - __main__ - ERROR - Error saving generation stats: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:14:09,812 - trading_evolution.evolution.genetic - INFO - Generation 13/50
+2026-01-26 21:14:52,388 - trading_evolution.evolution.hall_of_fame - WARNING - Could not save to Hall of Fame: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:14:52,389 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 450d9f56 to Hall of Fame (fitness: 0.9624)
+2026-01-26 21:14:52,408 - trading_evolution.evolution.genetic - INFO - Gen 13: Best=0.9624, Avg=0.7935, Sharpe=9.94, Profit=$53012
+2026-01-26 21:14:52,413 - __main__ - ERROR - Error saving generation stats: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:14:52,413 - trading_evolution.evolution.genetic - INFO - Generation 14/50
+2026-01-26 21:15:35,153 - trading_evolution.evolution.hall_of_fame - WARNING - Could not save to Hall of Fame: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:15:35,153 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA ddee83dd to Hall of Fame (fitness: 0.9624)
+2026-01-26 21:15:35,163 - trading_evolution.evolution.population - INFO - Low diversity (0.282), injecting random DNA
+2026-01-26 21:15:35,172 - trading_evolution.evolution.genetic - INFO - Gen 14: Best=0.9624, Avg=0.8627, Sharpe=9.94, Profit=$53012
+2026-01-26 21:15:35,176 - __main__ - ERROR - Error saving generation stats: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:15:35,176 - trading_evolution.evolution.genetic - INFO - Generation 15/50
+2026-01-26 21:16:18,035 - trading_evolution.evolution.hall_of_fame - WARNING - Could not save to Hall of Fame: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:16:18,035 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA b7a1da06 to Hall of Fame (fitness: 0.9624)
+2026-01-26 21:16:18,044 - trading_evolution.evolution.population - INFO - Low diversity (0.060), injecting random DNA
+2026-01-26 21:16:18,053 - trading_evolution.evolution.genetic - INFO - Gen 15: Best=0.9624, Avg=0.8570, Sharpe=9.94, Profit=$53012
+2026-01-26 21:16:18,058 - __main__ - ERROR - Error saving generation stats: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:16:18,058 - trading_evolution.evolution.genetic - INFO - Generation 16/50
+2026-01-26 21:17:00,137 - trading_evolution.evolution.hall_of_fame - WARNING - Could not save to Hall of Fame: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:17:00,138 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA ce16caec to Hall of Fame (fitness: 0.9624)
+2026-01-26 21:17:00,148 - trading_evolution.evolution.population - INFO - Low diversity (0.045), injecting random DNA
+2026-01-26 21:17:00,158 - trading_evolution.evolution.genetic - INFO - Gen 16: Best=0.9624, Avg=0.8348, Sharpe=9.94, Profit=$53012
+2026-01-26 21:17:00,163 - __main__ - ERROR - Error saving generation stats: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:17:00,163 - trading_evolution.evolution.genetic - INFO - Generation 17/50
+2026-01-26 21:17:42,087 - trading_evolution.evolution.hall_of_fame - WARNING - Could not save to Hall of Fame: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:17:42,089 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA ec09c8a4 to Hall of Fame (fitness: 0.9624)
+2026-01-26 21:17:42,098 - trading_evolution.evolution.population - INFO - Low diversity (0.023), injecting random DNA
+2026-01-26 21:17:42,107 - trading_evolution.evolution.genetic - INFO - Gen 17: Best=0.9624, Avg=0.8581, Sharpe=9.94, Profit=$53012
+2026-01-26 21:17:42,112 - __main__ - ERROR - Error saving generation stats: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:17:42,112 - trading_evolution.evolution.genetic - INFO - Generation 18/50
+2026-01-26 21:18:25,133 - trading_evolution.evolution.hall_of_fame - WARNING - Could not save to Hall of Fame: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:18:25,135 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA f397d3c0 to Hall of Fame (fitness: 0.9624)
+2026-01-26 21:18:25,144 - trading_evolution.evolution.population - INFO - Low diversity (0.037), injecting random DNA
+2026-01-26 21:18:25,153 - trading_evolution.evolution.genetic - INFO - Gen 18: Best=0.9624, Avg=0.8565, Sharpe=9.94, Profit=$53012
+2026-01-26 21:18:25,157 - __main__ - ERROR - Error saving generation stats: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:18:25,158 - trading_evolution.evolution.genetic - INFO - Generation 19/50
+2026-01-26 21:19:07,174 - trading_evolution.evolution.hall_of_fame - WARNING - Could not save to Hall of Fame: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:19:07,175 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 65b5b9ce to Hall of Fame (fitness: 0.9624)
+2026-01-26 21:19:07,185 - trading_evolution.evolution.population - INFO - Low diversity (0.009), injecting random DNA
+2026-01-26 21:19:07,196 - trading_evolution.evolution.genetic - INFO - Gen 19: Best=0.9624, Avg=0.8463, Sharpe=9.94, Profit=$53012
+2026-01-26 21:19:07,200 - __main__ - ERROR - Error saving generation stats: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:19:07,201 - trading_evolution.evolution.genetic - INFO - Generation 20/50
+2026-01-26 21:19:49,153 - trading_evolution.evolution.hall_of_fame - WARNING - Could not save to Hall of Fame: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:19:49,154 - trading_evolution.evolution.hall_of_fame - INFO - Added DNA 64c035eb to Hall of Fame (fitness: 0.9624)
+2026-01-26 21:19:49,400 - trading_evolution.evolution.population - INFO - Injecting 3 new indicators: ['TEMA_20', 'ADOSC_3_10', 'COPPOCK']
+2026-01-26 21:19:49,410 - trading_evolution.evolution.population - INFO - Low diversity (0.019), injecting random DNA
+2026-01-26 21:19:49,419 - trading_evolution.evolution.genetic - INFO - Gen 20: Best=0.9624, Avg=0.8580, Sharpe=9.94, Profit=$53012
+2026-01-26 21:19:49,425 - __main__ - ERROR - Error saving generation stats: UNIQUE constraint failed: hall_of_fame.rank
+2026-01-26 21:19:49,425 - trading_evolution.evolution.genetic - INFO - Convergence reached at generation 20
+2026-01-26 21:19:49,425 - trading_evolution.evolution.genetic - INFO - Evolution complete. Best fitness: 0.4749
+2026-01-26 21:19:49,425 - __main__ - INFO - Running holdout validation...
+2026-01-26 21:19:49,428 - __main__ - INFO - Generating reports...
+2026-01-26 21:19:49,623 - trading_evolution.reporting.indicator_importance - INFO - Saved fitness evolution to reports/run_24/fitness_evolution.png
+2026-01-26 21:19:49,625 - trading_evolution.evolution.hall_of_fame - INFO - Saved Hall of Fame to reports/run_24/best_dna.json
+2026-01-26 21:19:49,625 - __main__ - INFO - Reports saved to reports/run_24
+2026-01-26 21:19:49,625 - __main__ - INFO - Evolution complete. Best fitness: 0.4749
+
+======================================================================
+EVOLUTION COMPLETE
+======================================================================
+
+Best DNA: 317f8cf7
+Generation: 0
+
+Training Fitness: 0.4749
+Validation Fitness: N/A
+Holdout Fitness: 0.0000
+
+Performance Metrics:
+  Sharpe Ratio: 0.00
+  Net Profit: $0.00
+  Max Drawdown: 0.0%
+  Win Rate: 0.0%
+  Total Trades: 0
+
+Active Indicators: 0
+
+Top 10 Indicators by Weight:
+
+======================================================================
+
+Evolution complete. Best DNA: 317f8cf7

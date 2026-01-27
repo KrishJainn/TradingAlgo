@@ -1,0 +1,14 @@
+[
+  {
+    "generation": 1,
+    "best_fitness": 0.0,
+    "avg_fitness": 0.0,
+    "std_fitness": 0.0,
+    "worst_fitness": 0.0,
+    "best_dna_id": "01c61351",
+    "best_sharpe": 0,
+    "best_profit": 0,
+    "best_win_rate": 0,
+    "diversity": 4.014643297539056
+  }
+]

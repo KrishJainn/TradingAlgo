@@ -1,0 +1,12 @@
+Hall of Fame
+==================================================
+1. DNA 64727a82 (Gen 0) | Fitness: 0.0000 | Sharpe: 0.00 | Profit: $0
+2. DNA e7369a3a (Gen 2) | Fitness: 0.0000 | Sharpe: 0.00 | Profit: $0
+3. DNA 8dfa11b3 (Gen 3) | Fitness: 0.0000 | Sharpe: 0.00 | Profit: $0
+4. DNA 419006f0 (Gen 3) | Fitness: 0.0000 | Sharpe: 0.00 | Profit: $0
+5. DNA 19609439 (Gen 3) | Fitness: 0.0000 | Sharpe: 0.00 | Profit: $0
+6. DNA 0ff9e6c0 (Gen 3) | Fitness: 0.0000 | Sharpe: 0.00 | Profit: $0
+7. DNA fbe9cfd5 (Gen 3) | Fitness: 0.0000 | Sharpe: 0.00 | Profit: $0
+8. DNA e1b7a5bb (Gen 8) | Fitness: 0.0000 | Sharpe: 0.00 | Profit: $0
+9. DNA 92adee5d (Gen 9) | Fitness: 0.0000 | Sharpe: 0.00 | Profit: $0
+10. DNA 8440097e (Gen 17) | Fitness: 0.0000 | Sharpe: 0.00 | Profit: $0

@@ -297,13 +297,59 @@ class EvolutionOrchestrator:
                     }
             return {}
 
+        # Define callback for incremental saving
+        def on_gen_complete(stats: dict, gen_best_dna: SuperIndicatorDNA):
+            try:
+                # Save generation stats
+                gen_id = self.db.create_generation(
+                    run_id=run_id, 
+                    generation_num=stats['generation'],
+                    population_size=self.evolution_config.population_size
+                )
+                
+                self.db.update_generation(
+                    generation_id=gen_id,
+                    completed_at=pd.Timestamp.now().isoformat(),
+                    best_fitness=stats['best_fitness'],
+                    avg_fitness=stats['avg_fitness'],
+                    std_fitness=stats['std_fitness'],
+                    best_dna_id=stats['best_dna_id'],
+                    sharpe_ratio=stats['best_sharpe'],
+                    total_net_pnl=stats['best_profit'],
+                    win_rate=stats['best_win_rate'],
+                    status='completed'
+                )
+                
+                # Save best DNA of this generation
+                self.db.save_dna_config(run_id, stats['generation'], gen_best_dna)
+                
+                # Update Hall of Fame in DB
+                self.db.update_hall_of_fame(
+                    dna_id=gen_best_dna.dna_id,
+                    run_id=run_id,
+                    generation_num=stats['generation'],
+                    fitness_score=gen_best_dna.fitness_score,
+                    metrics={
+                        'sharpe_ratio': gen_best_dna.sharpe_ratio,
+                        'max_drawdown': gen_best_dna.max_drawdown,
+                        'net_profit': gen_best_dna.net_profit,
+                        'win_rate': gen_best_dna.win_rate,
+                        'total_trades': gen_best_dna.total_trades
+                    },
+                    weights_json=json.dumps(gen_best_dna.get_weights())
+                )
+                logger.info(f"Saved stats for Run {run_id} Gen {stats['generation']}")
+            except Exception as e:
+                logger.error(f"Error saving generation stats: {e}")
+
         # 7. Run evolution
         logger.info("Starting genetic evolution...")
         best_dna = self.genetic_evolution.evolve(
             initial_population=population,
             evaluate_fn=evaluate_fn,
             validate_fn=validate_fn,
-            coach_fn=coach_fn
+            coach_fn=coach_fn,
+            on_generation_complete=on_gen_complete
         )
 
         # 8. Final holdout validation
@@ -485,7 +531,7 @@ class EvolutionOrchestrator:
                 if 'ATR_14' in indicators.columns:
                     atr = float(indicators.iloc[i]['ATR_14'])
                 else:
-                     # Fallback to TR or 1% of price
+                    # Fallback to TR or 1% of price
                     atr = float(current_bar['high'] - current_bar['low'])
                     if atr <= 0:
                         atr = float(current_bar['close'] * 0.01)
@@ -511,18 +557,18 @@ class EvolutionOrchestrator:
         final_prices = {}
         
         for s in self.data_config.symbols:
-             if s in self._market_data and split in self._market_data[s]:
-                 d = self._market_data[s][split]
-                 if not d.empty:
-                     final_prices[s] = float(d.iloc[-1]['close'])
-                     end_time = d.index[-1]
-                     if last_timestamp is None:
-                         last_timestamp = end_time
-                     elif end_time > last_timestamp:
-                         last_timestamp = end_time
-                         
+            if s in self._market_data and split in self._market_data[s]:
+                d = self._market_data[s][split]
+                if not d.empty:
+                    final_prices[s] = float(d.iloc[-1]['close'])
+                    end_time = d.index[-1]
+                    if last_timestamp is None:
+                        last_timestamp = end_time
+                    elif end_time > last_timestamp:
+                        last_timestamp = end_time
+
         if last_timestamp is None:
-             last_timestamp = pd.Timestamp.now()
+            last_timestamp = pd.Timestamp.now()
 
         final_trades = player.close_all_positions(
             timestamp=last_timestamp,
@@ -580,8 +626,10 @@ class EvolutionOrchestrator:
         print(f"\nBest DNA: {best_dna.dna_id}")
         print(f"Generation: {best_dna.generation}")
         print(f"\nTraining Fitness: {best_dna.fitness_score:.4f}")
-        print(f"Validation Fitness: {best_dna.validation_fitness:.4f}")
-        print(f"Holdout Fitness: {best_dna.holdout_fitness:.4f}")
+        val_fit = best_dna.validation_fitness
+        print(f"Validation Fitness: {val_fit:.4f}" if val_fit is not None else "Validation Fitness: N/A")
+        hold_fit = best_dna.holdout_fitness
+        print(f"Holdout Fitness: {hold_fit:.4f}" if hold_fit is not None else "Holdout Fitness: N/A")
         print(f"\nPerformance Metrics:")
         print(f"  Sharpe Ratio: {holdout_metrics.get('sharpe_ratio', 0):.2f}")
         print(f"  Net Profit: ${holdout_metrics.get('net_profit', 0):.2f}")

@@ -1,0 +1,767 @@
+{
+  "entries": [
+    {
+      "dna_id": "317f8cf7",
+      "generation": 0,
+      "run_id": 12,
+      "genes": {},
+      "parent_ids": [
+        "",
+        ""
+      ],
+      "mutation_history": [],
+      "fitness_score": 0.47485279151820176,
+      "sharpe_ratio": 4.291522315164922,
+      "max_drawdown": 58.82475157310743,
+      "net_profit": 57113.43121756764,
+      "win_rate": 0.5178571428571429,
+      "total_trades": 0,
+      "long_trades": 0,
+      "short_trades": 0,
+      "profit_factor": 0.0,
+      "validation_fitness": null,
+      "holdout_fitness": 0.0,
+      "created_at": "2026-01-27T01:23:05.822101"
+    },
+    {
+      "dna_id": "13dc9b13",
+      "generation": 0,
+      "run_id": 12,
+      "genes": {},
+      "parent_ids": [
+        "",
+        ""
+      ],
+      "mutation_history": [],
+      "fitness_score": 0.47485279151820176,
+      "sharpe_ratio": 4.291522315164922,
+      "max_drawdown": 58.82475157310743,
+      "net_profit": 57113.43121756764,
+      "win_rate": 0.5178571428571429,
+      "total_trades": 0,
+      "long_trades": 0,
+      "short_trades": 0,
+      "profit_factor": 0.0,
+      "validation_fitness": null,
+      "holdout_fitness": null,
+      "created_at": "2026-01-27T01:23:05.822122"
+    },
+    {
+      "dna_id": "5e922010",
+      "generation": 0,
+      "run_id": 12,
+      "genes": {},
+      "parent_ids": [
+        "",
+        ""
+      ],
+      "mutation_history": [],
+      "fitness_score": 0.47485279151820176,
+      "sharpe_ratio": 4.291522315164922,
+      "max_drawdown": 58.82475157310743,
+      "net_profit": 57113.43121756764,
+      "win_rate": 0.5178571428571429,
+      "total_trades": 0,
+      "long_trades": 0,
+      "short_trades": 0,
+      "profit_factor": 0.0,
+      "validation_fitness": null,
+      "holdout_fitness": null,
+      "created_at": "2026-01-27T01:23:05.822128"
+    },
+    {
+      "dna_id": "be1db396",
+      "generation": 0,
+      "run_id": 12,
+      "genes": {},
+      "parent_ids": [
+        "",
+        ""
+      ],
+      "mutation_history": [],
+      "fitness_score": 0.47485279151820176,
+      "sharpe_ratio": 4.291522315164922,
+      "max_drawdown": 58.82475157310743,
+      "net_profit": 57113.43121756764,
+      "win_rate": 0.5178571428571429,
+      "total_trades": 0,
+      "long_trades": 0,
+      "short_trades": 0,
+      "profit_factor": 0.0,
+      "validation_fitness": null,
+      "holdout_fitness": null,
+      "created_at": "2026-01-27T01:23:05.822132"
+    },
+    {
+      "dna_id": "dbacfcfa",
+      "generation": 6,
+      "run_id": 12,
+      "genes": {},
+      "parent_ids": [
+        "",
+        ""
+      ],
+      "mutation_history": [],
+      "fitness_score": 0.47485279151820176,
+      "sharpe_ratio": 4.291522315164922,
+      "max_drawdown": 58.82475157310743,
+      "net_profit": 57113.43121756764,
+      "win_rate": 0.5178571428571429,
+      "total_trades": 0,
+      "long_trades": 0,
+      "short_trades": 0,
+      "profit_factor": 0.0,
+      "validation_fitness": null,
+      "holdout_fitness": null,
+      "created_at": "2026-01-27T01:23:05.822136"
+    },
+    {
+      "dna_id": "25c5c8bd",
+      "generation": 0,
+      "run_id": 12,
+      "genes": {},
+      "parent_ids": [
+        "",
+        ""
+      ],
+      "mutation_history": [],
+      "fitness_score": 0.47485279151820176,
+      "sharpe_ratio": 4.291522315164922,
+      "max_drawdown": 58.82475157310743,
+      "net_profit": 57113.43121756764,
+      "win_rate": 0.5178571428571429,
+      "total_trades": 0,
+      "long_trades": 0,
+      "short_trades": 0,
+      "profit_factor": 0.0,
+      "validation_fitness": null,
+      "holdout_fitness": null,
+      "created_at": "2026-01-27T01:23:05.822140"
+    },
+    {
+      "dna_id": "62ec2f31",
+      "generation": 8,
+      "run_id": 12,
+      "genes": {},
+      "parent_ids": [
+        "",
+        ""
+      ],
+      "mutation_history": [],
+      "fitness_score": 0.47485279151820176,
+      "sharpe_ratio": 4.291522315164922,
+      "max_drawdown": 58.82475157310743,
+      "net_profit": 57113.43121756764,
+      "win_rate": 0.5178571428571429,
+      "total_trades": 0,
+      "long_trades": 0,
+      "short_trades": 0,
+      "profit_factor": 0.0,
+      "validation_fitness": null,
+      "holdout_fitness": null,
+      "created_at": "2026-01-27T01:23:05.822144"
+    },
+    {
+      "dna_id": "dcacbd35",
+      "generation": 9,
+      "run_id": 12,
+      "genes": {},
+      "parent_ids": [
+        "",
+        ""
+      ],
+      "mutation_history": [],
+      "fitness_score": 0.47485279151820176,
+      "sharpe_ratio": 4.291522315164922,
+      "max_drawdown": 58.82475157310743,
+      "net_profit": 57113.43121756764,
+      "win_rate": 0.5178571428571429,
+      "total_trades": 0,
+      "long_trades": 0,
+      "short_trades": 0,
+      "profit_factor": 0.0,
+      "validation_fitness": null,
+      "holdout_fitness": null,
+      "created_at": "2026-01-27T01:23:05.822155"
+    },
+    {
+      "dna_id": "b4cfd564",
+      "generation": 10,
+      "run_id": 12,
+      "genes": {},
+      "parent_ids": [
+        "",
+        ""
+      ],
+      "mutation_history": [],
+      "fitness_score": 0.47485279151820176,
+      "sharpe_ratio": 4.291522315164922,
+      "max_drawdown": 58.82475157310743,
+      "net_profit": 57113.43121756764,
+      "win_rate": 0.5178571428571429,
+      "total_trades": 0,
+      "long_trades": 0,
+      "short_trades": 0,
+      "profit_factor": 0.0,
+      "validation_fitness": null,
+      "holdout_fitness": null,
+      "created_at": "2026-01-27T01:23:05.822160"
+    },
+    {
+      "dna_id": "e2823703",
+      "generation": 20,
+      "run_id": 25,
+      "genes": {
+        "MASS_INDEX": {
+          "name": "MASS_INDEX",
+          "weight": 0.011954252688337903,
+          "active": true,
+          "category": "volatility"
+        },
+        "CMO_20": {
+          "name": "CMO_20",
+          "weight": 0.002159118620409388,
+          "active": true,
+          "category": "momentum"
+        },
+        "MFI_20": {
+          "name": "MFI_20",
+          "weight": -0.2462196202047261,
+          "active": true,
+          "category": "volume"
+        },
+        "CCI_20": {
+          "name": "CCI_20",
+          "weight": -0.004078653399020403,
+          "active": true,
+          "category": "momentum"
+        },
+        "NATR_14": {
+          "name": "NATR_14",
+          "weight": -0.028314759346459783,
+          "active": true,
+          "category": "volatility"
+        },
+        "STOCH_14_3": {
+          "name": "STOCH_14_3",
+          "weight": 0.7537877214689145,
+          "active": true,
+          "category": "momentum"
+        },
+        "NATR_20": {
+          "name": "NATR_20",
+          "weight": 0.004252050560073904,
+          "active": true,
+          "category": "volatility"
+        },
+        "EMA_200": {
+          "name": "EMA_200",
+          "weight": -0.11225607629944698,
+          "active": true,
+          "category": "overlap"
+        },
+        "SUPERTREND_20_3": {
+          "name": "SUPERTREND_20_3",
+          "weight": -0.03707428040753177,
+          "active": true,
+          "category": "trend"
+        },
+        "WMA_10": {
+          "name": "WMA_10",
+          "weight": 0.0,
+          "active": false,
+          "category": "overlap"
+        },
+        "STOCH_5_3": {
+          "name": "STOCH_5_3",
+          "weight": -0.06161011259300593,
+          "active": true,
+          "category": "momentum"
+        },
+        "KAMA_10": {
+          "name": "KAMA_10",
+          "weight": 0.006735975840534809,
+          "active": true,
+          "category": "overlap"
+        },
+        "ZSCORE_50": {
+          "name": "ZSCORE_50",
+          "weight": -0.7573327519878046,
+          "active": true,
+          "category": "other"
+        },
+        "ADOSC_3_10": {
+          "name": "ADOSC_3_10",
+          "weight": -0.025654440285092568,
+          "active": true,
+          "category": "volume"
+        },
+        "COPPOCK": {
+          "name": "COPPOCK",
+          "weight": -0.05113778327547158,
+          "active": true,
+          "category": "momentum"
+        },
+        "MACD_12_26_9": {
+          "name": "MACD_12_26_9",
+          "weight": 0.2515994416952741,
+          "active": true,
+          "category": "momentum"
+        },
+        "DONCHIAN_50": {
+          "name": "DONCHIAN_50",
+          "weight": -0.0006672982195755175,
+          "active": true,
+          "category": "volatility"
+        },
+        "CMF_20": {
+          "name": "CMF_20",
+          "weight": -0.4408837901300057,
+          "active": true,
+          "category": "volume"
+        },
+        "ROC_20": {
+          "name": "ROC_20",
+          "weight": 0.08818019467902172,
+          "active": true,
+          "category": "momentum"
+        },
+        "CCI_14": {
+          "name": "CCI_14",
+          "weight": 0.0,
+          "active": false,
+          "category": "momentum"
+        },
+        "RSI_21": {
+          "name": "RSI_21",
+          "weight": 0.0,
+          "active": false,
+          "category": "momentum"
+        },
+        "DONCHIAN_20": {
+          "name": "DONCHIAN_20",
+          "weight": 0.6368451198870599,
+          "active": true,
+          "category": "volatility"
+        },
+        "EMA_20": {
+          "name": "EMA_20",
+          "weight": -0.11675148550774957,
+          "active": true,
+          "category": "overlap"
+        },
+        "T3_10": {
+          "name": "T3_10",
+          "weight": -0.10266498333025434,
+          "active": true,
+          "category": "overlap"
+        },
+        "STOCH_21_5": {
+          "name": "STOCH_21_5",
+          "weight": -0.7106022295819825,
+          "active": true,
+          "category": "momentum"
+        },
+        "MACD_5_35_5": {
+          "name": "MACD_5_35_5",
+          "weight": 0.0,
+          "active": false,
+          "category": "momentum"
+        },
+        "T3_5": {
+          "name": "T3_5",
+          "weight": -0.7446973900822749,
+          "active": true,
+          "category": "overlap"
+        },
+        "VWMA_10": {
+          "name": "VWMA_10",
+          "weight": 0.0017177235730930864,
+          "active": true,
+          "category": "overlap"
+        },
+        "LINREG_SLOPE_25": {
+          "name": "LINREG_SLOPE_25",
+          "weight": 0.08119564064787178,
+          "active": true,
+          "category": "trend"
+        },
+        "TEMA_20": {
+          "name": "TEMA_20",
+          "weight": 0.0,
+          "active": false,
+          "category": "overlap"
+        },
+        "PVI": {
+          "name": "PVI",
+          "weight": 0.0,
+          "active": false,
+          "category": "volume"
+        },
+        "AD": {
+          "name": "AD",
+          "weight": 0.5653679597323698,
+          "active": true,
+          "category": "volume"
+        },
+        "TRUERANGE": {
+          "name": "TRUERANGE",
+          "weight": -0.046952596550125,
+          "active": true,
+          "category": "volatility"
+        },
+        "PSAR": {
+          "name": "PSAR",
+          "weight": 0.1560084223688829,
+          "active": true,
+          "category": "trend"
+        },
+        "MOM_20": {
+          "name": "MOM_20",
+          "weight": -0.03808323134462758,
+          "active": true,
+          "category": "momentum"
+        },
+        "SUPERTREND_10_2": {
+          "name": "SUPERTREND_10_2",
+          "weight": 0.5932907944582413,
+          "active": true,
+          "category": "trend"
+        },
+        "BBANDS_20_2": {
+          "name": "BBANDS_20_2",
+          "weight": -0.4702924563272707,
+          "active": true,
+          "category": "volatility"
+        },
+        "KC_20_2": {
+          "name": "KC_20_2",
+          "weight": 0.24937553922339267,
+          "active": true,
+          "category": "volatility"
+        },
+        "PIVOTS": {
+          "name": "PIVOTS",
+          "weight": 0.8021967237735049,
+          "active": true,
+          "category": "other"
+        },
+        "EFI_13": {
+          "name": "EFI_13",
+          "weight": -0.8372741679262917,
+          "active": true,
+          "category": "volume"
+        },
+        "MFI_14": {
+          "name": "MFI_14",
+          "weight": -0.004022730248189747,
+          "active": true,
+          "category": "volume"
+        },
+        "MACD_8_17_9": {
+          "name": "MACD_8_17_9",
+          "weight": -0.0003821056719808873,
+          "active": true,
+          "category": "momentum"
+        },
+        "HMA_16": {
+          "name": "HMA_16",
+          "weight": -0.006876499898838191,
+          "active": true,
+          "category": "overlap"
+        },
+        "OBV": {
+          "name": "OBV",
+          "weight": 0.004540236045451276,
+          "active": true,
+          "category": "volume"
+        },
+        "AROON_14": {
+          "name": "AROON_14",
+          "weight": 0.0009132424870036864,
+          "active": true,
+          "category": "trend"
+        },
+        "ATR_20": {
+          "name": "ATR_20",
+          "weight": -0.015401021084654543,
+          "active": true,
+          "category": "volatility"
+        },
+        "SMA_10": {
+          "name": "SMA_10",
+          "weight": -0.04819034784456196,
+          "active": true,
+          "category": "overlap"
+        },
+        "SMA_20": {
+          "name": "SMA_20",
+          "weight": 0.0,
+          "active": false,
+          "category": "overlap"
+        },
+        "SUPERTREND_7_3": {
+          "name": "SUPERTREND_7_3",
+          "weight": -0.007151301785238837,
+          "active": true,
+          "category": "trend"
+        },
+        "ATR_14": {
+          "name": "ATR_14",
+          "weight": 0.0,
+          "active": false,
+          "category": "volatility"
+        },
+        "ZSCORE_20": {
+          "name": "ZSCORE_20",
+          "weight": -0.4280115278952785,
+          "active": true,
+          "category": "other"
+        },
+        "RSI_7": {
+          "name": "RSI_7",
+          "weight": 0.0,
+          "active": false,
+          "category": "momentum"
+        },
+        "WILLR_28": {
+          "name": "WILLR_28",
+          "weight": 0.0,
+          "active": false,
+          "category": "momentum"
+        },
+        "ROC_10": {
+          "name": "ROC_10",
+          "weight": 0.0,
+          "active": false,
+          "category": "momentum"
+        },
+        "DEMA_20": {
+          "name": "DEMA_20",
+          "weight": 0.0,
+          "active": false,
+          "category": "overlap"
+        },
+        "AROON_25": {
+          "name": "AROON_25",
+          "weight": 0.7331619046456263,
+          "active": true,
+          "category": "trend"
+        },
+        "BBANDS_10_1.5": {
+          "name": "BBANDS_10_1.5",
+          "weight": -0.41892835225688985,
+          "active": true,
+          "category": "volatility"
+        },
+        "UO_7_14_28": {
+          "name": "UO_7_14_28",
+          "weight": 0.0,
+          "active": false,
+          "category": "momentum"
+        },
+        "LINREG_SLOPE_14": {
+          "name": "LINREG_SLOPE_14",
+          "weight": 0.0,
+          "active": false,
+          "category": "trend"
+        },
+        "KAMA_20": {
+          "name": "KAMA_20",
+          "weight": 0.0,
+          "active": false,
+          "category": "overlap"
+        },
+        "EFI_20": {
+          "name": "EFI_20",
+          "weight": 0.44073642047382894,
+          "active": true,
+          "category": "volume"
+        },
+        "WILLR_14": {
+          "name": "WILLR_14",
+          "weight": 0.0,
+          "active": false,
+          "category": "momentum"
+        },
+        "SMA_200": {
+          "name": "SMA_200",
+          "weight": -0.49642631770150736,
+          "active": true,
+          "category": "overlap"
+        },
+        "AO_5_34": {
+          "name": "AO_5_34",
+          "weight": -0.7207447067100672,
+          "active": true,
+          "category": "momentum"
+        },
+        "CMF_21": {
+          "name": "CMF_21",
+          "weight": 0.04823340967790671,
+          "active": true,
+          "category": "volume"
+        },
+        "VWMA_20": {
+          "name": "VWMA_20",
+          "weight": 0.0,
+          "active": false,
+          "category": "overlap"
+        },
+        "ADX_20": {
+          "name": "ADX_20",
+          "weight": -0.11926283036375751,
+          "active": true,
+          "category": "trend"
+        },
+        "EMA_50": {
+          "name": "EMA_50",
+          "weight": -0.34111177603111076,
+          "active": true,
+          "category": "overlap"
+        },
+        "KC_20_1.5": {
+          "name": "KC_20_1.5",
+          "weight": -0.07123391353983993,
+          "active": true,
+          "category": "volatility"
+        },
+        "TSI_13_25": {
+          "name": "TSI_13_25",
+          "weight": -0.00644180066676424,
+          "active": true,
+          "category": "momentum"
+        },
+        "SMA_50": {
+          "name": "SMA_50",
+          "weight": 0.0,
+          "active": false,
+          "category": "overlap"
+        },
+        "EMA_100": {
+          "name": "EMA_100",
+          "weight": -0.2378137479182752,
+          "active": true,
+          "category": "overlap"
+        },
+        "TEMA_10": {
+          "name": "TEMA_10",
+          "weight": 0.013229235936993263,
+          "active": true,
+          "category": "overlap"
+        },
+        "KST": {
+          "name": "KST",
+          "weight": 0.028380466932295727,
+          "active": true,
+          "category": "momentum"
+        },
+        "MOM_10": {
+          "name": "MOM_10",
+          "weight": 0.003587624331212,
+          "active": true,
+          "category": "momentum"
+        },
+        "VORTEX_14": {
+          "name": "VORTEX_14",
+          "weight": 0.06582596310666698,
+          "active": true,
+          "category": "trend"
+        },
+        "HMA_9": {
+          "name": "HMA_9",
+          "weight": -0.024264179233702693,
+          "active": true,
+          "category": "overlap"
+        },
+        "DEMA_10": {
+          "name": "DEMA_10",
+          "weight": -0.0073126473672346665,
+          "active": true,
+          "category": "overlap"
+        },
+        "CMO_14": {
+          "name": "CMO_14",
+          "weight": -0.5913179023905316,
+          "active": true,
+          "category": "momentum"
+        },
+        "NVI": {
+          "name": "NVI",
+          "weight": -0.02510270549016391,
+          "active": true,
+          "category": "volume"
+        },
+        "WMA_20": {
+          "name": "WMA_20",
+          "weight": 0.4569358297511942,
+          "active": true,
+          "category": "overlap"
+        },
+        "ADX_14": {
+          "name": "ADX_14",
+          "weight": -0.16517176776322967,
+          "active": true,
+          "category": "trend"
+        },
+        "BBANDS_20_2.5": {
+          "name": "BBANDS_20_2.5",
+          "weight": -0.006772965431701069,
+          "active": true,
+          "category": "volatility"
+        },
+        "SMA_100": {
+          "name": "SMA_100",
+          "weight": 0.0,
+          "active": false,
+          "category": "overlap"
+        },
+        "ICHIMOKU": {
+          "name": "ICHIMOKU",
+          "weight": -0.07924206345511808,
+          "active": true,
+          "category": "trend"
+        },
+        "RSI_14": {
+          "name": "RSI_14",
+          "weight": 0.0,
+          "active": false,
+          "category": "momentum"
+        },
+        "EMA_10": {
+          "name": "EMA_10",
+          "weight": 0.0,
+          "active": false,
+          "category": "overlap"
+        }
+      },
+      "parent_ids": [
+        "64d9b95c",
+        ""
+      ],
+      "mutation_history": [],
+      "fitness_score": 0.0,
+      "sharpe_ratio": 0.0,
+      "max_drawdown": 0.0,
+      "net_profit": 0.0,
+      "win_rate": 0.0,
+      "total_trades": 0,
+      "long_trades": 0,
+      "short_trades": 0,
+      "profit_factor": 0.0,
+      "validation_fitness": null,
+      "holdout_fitness": null,
+      "created_at": "2026-01-27T01:36:18.555017"
+    }
+  ],
+  "stats": {
+    "count": 10,
+    "best_fitness": 0.47485279151820176,
+    "worst_fitness": 0.0,
+    "avg_fitness": 0.4273675123663816,
+    "best_sharpe": 4.291522315164922,
+    "best_profit": 57113.43121756764,
+    "generations_represented": 6,
+    "runs_represented": 2
+  }
+}

@@ -523,7 +523,10 @@ class Database:
 
             # Check if this DNA qualifies
             if len(hall) < max_size or fitness_score > hall[-1]['fitness_score']:
-                # Add to hall of fame
+                # Find an available temporary rank (use negative to avoid conflicts)
+                temp_rank = -1 * (len(hall) + 1)
+
+                # Add to hall of fame with temporary negative rank
                 cursor.execute("""
                     INSERT INTO hall_of_fame (
                         rank, dna_id, run_id, generation_num, fitness_score,
@@ -532,7 +535,7 @@ class Database:
                         weights_json
                     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """, (
-                    max_size + 1,  # Temporary rank
+                    temp_rank,
                     dna_id, run_id, generation_num, fitness_score,
                     metrics.get('sharpe_ratio', 0),
                     metrics.get('max_drawdown', 0),
@@ -554,14 +557,21 @@ class Database:
                     )
                 """, (max_size,))
 
-                # Update ranks
-                cursor.execute("""
-                    SELECT dna_id FROM hall_of_fame ORDER BY fitness_score DESC
-                """)
-                for i, row in enumerate(cursor.fetchall(), 1):
+                # Update ranks - first set all to negative to avoid conflicts
+                cursor.execute("SELECT dna_id FROM hall_of_fame ORDER BY fitness_score DESC")
+                dna_ids = [row['dna_id'] for row in cursor.fetchall()]
+
+                for i, did in enumerate(dna_ids):
                     cursor.execute(
                         "UPDATE hall_of_fame SET rank = ? WHERE dna_id = ?",
-                        (i, row['dna_id'])
+                        (-(i + 100), did)  # Use large negative to avoid conflicts
+                    )
+
+                # Now set to actual positive ranks
+                for i, did in enumerate(dna_ids, 1):
+                    cursor.execute(
+                        "UPDATE hall_of_fame SET rank = ? WHERE dna_id = ?",
+                        (i, did)
                     )
 
     def get_hall_of_fame(self) -> List[Dict]:
