@@ -1,0 +1,79 @@
+system:
+  mode: simulation  # simulation or live
+  log_level: INFO
+  data_dir: data_cache
+  db_path: aqtis.db
+  vector_db_path: aqtis_vectors
+
+risk:
+  max_position_size: 0.10
+  max_portfolio_leverage: 2.0
+  max_daily_loss: -0.05
+  max_drawdown: -0.15
+  max_correlated_exposure: 0.30
+  min_prediction_confidence: 0.60
+
+backtesting:
+  instant_backtest_lookback_days: 30
+  rolling_window_days: 90
+  min_similar_trades: 20
+  max_similar_trades: 50
+
+models:
+  ensemble_weights:
+    lstm: 0.25
+    random_forest: 0.20
+    linear_regression: 0.15
+    rules_based: 0.40
+  retraining_frequency: weekly
+  min_training_samples: 100
+  sequence_length: 60
+
+memory:
+  vector_db: chromadb
+  embedding_model: all-MiniLM-L6-v2
+  max_similar_trades: 50
+  research_relevance_threshold: 0.6
+
+llm:
+  provider: gemini
+  model: gemini-2.0-flash
+  temperature: 0.3
+  max_tokens: 4000
+  timeout_seconds: 30
+
+market_data:
+  primary_provider: yahoo
+  symbols:
+    - RELIANCE.NS
+    - TCS.NS
+    - HDFCBANK.NS
+    - INFY.NS
+    - ICICIBANK.NS
+    - HINDUNILVR.NS
+    - SBIN.NS
+    - BHARTIARTL.NS
+    - KOTAKBANK.NS
+    - ITC.NS
+    - LT.NS
+    - AXISBANK.NS
+    - ASIANPAINT.NS
+    - MARUTI.NS
+    - HCLTECH.NS
+    - SUNPHARMA.NS
+    - TITAN.NS
+    - BAJFINANCE.NS
+    - WIPRO.NS
+    - ULTRACEMCO.NS
+  data_years: 3
+  cache_ttl_hours: 24
+
+execution:
+  order_type: market
+  slippage_estimate: 0.001
+  initial_capital: 100000.0
+
+regime:
+  n_regimes: 5
+  lookback_days: 60
+  update_frequency: daily
