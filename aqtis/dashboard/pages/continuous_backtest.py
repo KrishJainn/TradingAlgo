@@ -536,8 +536,10 @@ def run_5player_backtest(
                     from aqtis.llm.gemini_provider import GeminiProvider
                     import dotenv
 
-                    # Load env from parent directory
-                    env_path = Path(__file__).parent.parent.parent.parent.parent / ".env"
+                    # Load env from project root (New Project/.env)
+                    # __file__ = .../aqtis/dashboard/pages/continuous_backtest.py
+                    # Need: .../New Project/.env (4 parents up)
+                    env_path = Path(__file__).parent.parent.parent.parent / ".env"
                     dotenv.load_dotenv(env_path)
 
                     # Initialize Gemini LLM
