@@ -20,7 +20,7 @@ class GeminiProvider(LLMProvider):
         self,
         model: str = "gemini-2.5-flash",
         temperature: float = 0.3,
-        max_tokens: int = 4000,
+        max_tokens: int = 8000,
         timeout_seconds: int = 30,
         api_key: str = None,
     ):
@@ -48,7 +48,7 @@ class GeminiProvider(LLMProvider):
                 )
         return self._client
 
-    def _call(self, prompt: str, temperature: float = None, max_tokens: int = None) -> str:
+    def _call(self, prompt: str, temperature: float = None, max_tokens: int = None, json_mode: bool = False) -> str:
         """Make a Gemini API call."""
         client = self._get_client()
 
@@ -57,6 +57,7 @@ class GeminiProvider(LLMProvider):
         config = types.GenerateContentConfig(
             temperature=temperature if temperature is not None else self.temperature,
             max_output_tokens=max_tokens if max_tokens is not None else self.max_tokens,
+            response_mime_type='application/json' if json_mode else None,
         )
 
         response = client.models.generate_content(
