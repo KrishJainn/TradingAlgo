@@ -69,7 +69,7 @@ class MemoryConfig:
 class LLMConfig:
     """LLM provider settings."""
     provider: str = "gemini"
-    model: str = "gemini-2.0-flash"
+    model: str = "gemini-3.0-flash-preview"
     temperature: float = 0.3
     max_tokens: int = 4000
     timeout_seconds: int = 30

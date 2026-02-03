@@ -70,6 +70,12 @@ class BacktestingAgent(BaseAgent):
                 context.get("variants", []),
                 context.get("signal", {}),
             )
+        elif action == "llm_interpret":
+            return self.llm_interpret_results(
+                context.get("backtest_results", {}),
+                context.get("strategy", {}),
+                context.get("current_weights", {}),
+            )
         else:
             return {"error": f"Unknown action: {action}"}
 
@@ -135,6 +141,93 @@ class BacktestingAgent(BaseAgent):
             "sample_size": len(similar_trades),
             "strategy_id": strategy.get("strategy_id", "unknown"),
         }
+
+    # ─────────────────────────────────────────────────────────────────
+    # LLM-POWERED BACKTEST INTERPRETATION
+    # ─────────────────────────────────────────────────────────────────
+
+    def llm_interpret_results(
+        self,
+        backtest_results: Dict,
+        strategy: Dict,
+        current_weights: Dict,
+    ) -> Dict:
+        """
+        Use Gemini to interpret backtest results and suggest strategy adjustments.
+
+        Analyzes rolling backtest performance, regime breakdowns, and
+        degradation signals to produce actionable weight/threshold changes.
+
+        Returns:
+            Dict with weight_adjustments, threshold_change, and reasoning.
+        """
+        if not self.llm:
+            return {"error": "No LLM available", "weight_adjustments": {}}
+
+        # Gather context from memory
+        strategy_id = strategy.get("strategy_id", "aqtis_multi_indicator")
+        asset_perf = self.memory.get_strategy_asset_performance(strategy_id)
+
+        best_assets = []
+        worst_assets = []
+        if asset_perf:
+            best_assets = [
+                f"{s['asset']} (+${s['total_pnl']:,.0f}, {s['wins']}/{s['trades']})"
+                for s in asset_perf if s.get("total_pnl", 0) > 0
+            ][:5]
+            worst_assets = [
+                f"{s['asset']} (${s['total_pnl']:,.0f}, {s['wins']}/{s['trades']})"
+                for s in reversed(asset_perf) if s.get("total_pnl", 0) < 0
+            ][:5]
+
+        # Top/bottom weights
+        sorted_w = sorted(current_weights.items(), key=lambda x: -abs(x[1]))
+        top_w = ", ".join(f"{k}={v:.3f}" for k, v in sorted_w[:8])
+        bottom_w = ", ".join(f"{k}={v:.3f}" for k, v in sorted_w[-5:])
+
+        recent_sharpe = backtest_results.get("recent_sharpe", 0)
+        hist_sharpe = backtest_results.get("historical_sharpe", 0)
+        degradation = backtest_results.get("degradation_detected", False)
+        total_trades = backtest_results.get("total_trades", 0)
+
+        prompt = f"""You are AQTIS backtesting analyst. Interpret these backtest results and recommend changes.
+
+BACKTEST RESULTS:
+- Recent Sharpe: {recent_sharpe:.2f}, Historical Sharpe: {hist_sharpe:.2f}
+- Degradation detected: {degradation}
+- Total trades evaluated: {total_trades}
+- Recommendation: {backtest_results.get("recommendation", "N/A")}
+
+CURRENT WEIGHTS (top): {top_w}
+CURRENT WEIGHTS (bottom): {bottom_w}
+
+ASSET PERFORMANCE:
+- Best: {', '.join(best_assets) if best_assets else 'N/A'}
+- Worst: {', '.join(worst_assets) if worst_assets else 'N/A'}
+
+Respond in JSON:
+{{
+  "weight_adjustments": {{"indicator_name": delta_float}},
+  "entry_threshold_delta": float (-0.05 to +0.05),
+  "assets_to_avoid": ["SYMBOL1"],
+  "assets_to_prefer": ["SYMBOL2"],
+  "reasoning": "2-3 sentences explaining changes"
+}}
+
+Rules: max 6 weight adjustments, deltas between -0.05 and +0.05."""
+
+        try:
+            result = self.llm.generate_json(prompt)
+            if not isinstance(result, dict):
+                return {"weight_adjustments": {}, "reasoning": "LLM returned non-dict"}
+
+            self.logger.info(
+                f"LLM backtest interpretation: {result.get('reasoning', '')[:100]}"
+            )
+            return result
+        except Exception as e:
+            self.logger.warning(f"LLM backtest interpretation failed: {e}")
+            return {"weight_adjustments": {}, "error": str(e)}
 
     # ─────────────────────────────────────────────────────────────────
     # ROLLING WINDOW BACKTEST

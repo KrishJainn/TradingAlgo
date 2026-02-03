@@ -144,6 +144,7 @@ class PaperTrader:
         self._trades_since_learning = 0
         self._days_since_review = 0
         self._weight_mutations: List[Dict] = []
+        self._confidence_scaling = 1.0  # Adjusted by prediction_tracker LLM
 
     # ─────────────────────────────────────────────────────────────────
     # MAIN RUN LOOP
@@ -193,6 +194,12 @@ class PaperTrader:
 
         # ── BOOTSTRAP: Load best weights from memory ──
         self._bootstrap_from_memory()
+
+        # ── REGISTER DEFAULT STRATEGY ──
+        # The strategy_generator.analyze_signal() requires at least one active
+        # strategy in memory.  Without this, it returns should_trade=False for
+        # every signal, producing 0 trades.
+        self._ensure_default_strategy_registered(symbols)
 
         # Register run in memory
         session_id = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -379,6 +386,56 @@ class PaperTrader:
         else:
             logger.info("[Bootstrap] No prior snapshots found, using default weights")
 
+    def _ensure_default_strategy_registered(self, symbols: List[str]):
+        """
+        Ensure at least one active strategy exists in memory.
+
+        The strategy_generator.analyze_signal() requires active strategies
+        to work — it immediately returns should_trade=False when none exist.
+        On a fresh DB this means 0 trades forever, preventing the learning
+        loop from ever bootstrapping.
+        """
+        existing = self.memory.get_active_strategies()
+        if existing:
+            logger.info(f"[Bootstrap] {len(existing)} active strategies already in memory")
+            return
+
+        # Register the default multi-indicator strategy
+        indicator_names = list(self._indicator_weights.keys())
+        self.memory.store_strategy({
+            "strategy_id": "aqtis_multi_indicator",
+            "strategy_name": "AQTIS Multi-Indicator Ensemble",
+            "strategy_type": "ensemble",
+            "description": (
+                "87-indicator weighted ensemble combining momentum, trend, "
+                "volatility, volume and overlap signals. Weights are mutated "
+                "by the 5-player coach model across simulation runs."
+            ),
+            # Pass as dict — store_strategy() calls json.dumps() internally
+            "parameters": {
+                "indicators": indicator_names,
+                "entry_threshold": self._entry_threshold,
+                "n_indicators": len(indicator_names),
+            },
+            "total_trades": 0,
+            "win_rate": 0.5,
+            "sharpe_ratio": 0.5,  # Neutral starting Sharpe
+            "sortino_ratio": 0.0,
+            "max_drawdown": 0.0,
+            "avg_return": 0.0,
+            "backtest_sharpe": 0.0,
+            "live_sharpe": 0.0,
+            "overfitting_score": 0.0,
+            # Pass as dict — store_strategy() calls json.dumps() internally
+            "performance_by_regime": {},
+            "is_active": 1,
+            "last_used_at": datetime.now().isoformat(),
+        })
+        logger.info(
+            f"[Bootstrap] Registered default strategy 'aqtis_multi_indicator' "
+            f"with {len(indicator_names)} indicators"
+        )
+
     # ─────────────────────────────────────────────────────────────────
     # SIGNAL PROCESSING THROUGH AGENTS
     # ─────────────────────────────────────────────────────────────────
@@ -425,7 +482,7 @@ class PaperTrader:
         if entry_price <= 0:
             return
 
-        confidence = min(abs(adjusted_score), 0.95)
+        confidence = min(abs(adjusted_score) * self._confidence_scaling, 0.95)
         regime = signal.get("regime", "unknown")
         atr = signal.get("atr", entry_price * 0.02)
 
@@ -445,30 +502,47 @@ class PaperTrader:
                 })
                 self._use_llm_call()
 
+                decision = pre_trade_decision.get("decision", "?")
+
                 self._agent_log.append({
                     "day": day_str,
                     "agent": "orchestrator.pre_trade_workflow",
                     "action": "full_analysis",
                     "symbol": symbol,
-                    "detail": f"decision={pre_trade_decision.get('decision', '?')}",
+                    "detail": f"decision={decision}",
                 })
 
-                if pre_trade_decision.get("decision") == "reject":
-                    return
-                if pre_trade_decision.get("decision") == "skip":
-                    return
+                if decision == "execute":
+                    # Use agent-provided position size if available
+                    if pre_trade_decision.get("position_size", 0) > 0:
+                        position_value = pre_trade_decision["position_size"]
+                        shares = int(position_value / entry_price)
+                        if shares < 1:
+                            pass  # Fall through to rule-based sizing
+                        else:
+                            self._execute_entry(
+                                symbol, action, entry_price, shares, atr, regime,
+                                confidence, signal, day_str, pre_trade_decision,
+                            )
+                            return
 
-                # Use agent-provided position size if available
-                if pre_trade_decision.get("position_size", 0) > 0:
-                    position_value = pre_trade_decision["position_size"]
-                    shares = int(position_value / entry_price)
-                    if shares < 1:
-                        return
-                    self._execute_entry(
-                        symbol, action, entry_price, shares, atr, regime,
-                        confidence, signal, day_str, pre_trade_decision,
-                    )
-                    return
+                # For skip/reject/error: fall through to rule-based sizing
+                # This is essential for bootstrapping — the first run has no
+                # memory, so the strategy generator is too conservative.
+                # We let rule-based trades through so the learning loop can
+                # accumulate data for future, better-informed agent decisions.
+                if decision in ("reject", "skip"):
+                    # Reduce confidence slightly when agents disagreed
+                    confidence *= 0.75
+                    self._agent_log.append({
+                        "day": day_str,
+                        "agent": "paper_trader",
+                        "action": "bootstrap_fallback",
+                        "symbol": symbol,
+                        "detail": f"Agent {decision}, falling through to rule-based "
+                                  f"sizing with reduced confidence={confidence:.3f}",
+                    })
+
             except Exception as e:
                 logger.warning(f"Pre-trade workflow error for {symbol}: {e}")
                 # Fall through to rule-based sizing
@@ -498,13 +572,16 @@ class PaperTrader:
 
         position_value = position_result.get("position_size", 0)
         if position_value <= 0:
-            # Fallback: simple sizing
-            position_frac = confidence * 0.25 * 0.1
-            position_value = self._capital * position_frac
+            # Fallback: simple sizing based on confidence and capital
+            # Use 1-5% of capital depending on confidence level
+            # This ensures at least 1 share for typical NIFTY 50 stocks
+            position_pct = max(0.01, min(confidence * 0.10, 0.05))
+            position_value = self._capital * position_pct
 
         shares = int(position_value / entry_price)
         if shares < 1:
-            return
+            # Last resort: allocate minimum 1 share if signal passed threshold
+            shares = 1
 
         self._execute_entry(
             symbol, action, entry_price, shares, atr, regime,
@@ -807,15 +884,22 @@ class PaperTrader:
         self, day_str: str, day_idx: int, total_days: int, starting_capital: float,
     ):
         """
-        Periodic review every 3 days. Uses 1 LLM call.
+        Periodic review every 3 days. Uses 3-4 LLM calls.
 
-        Runs degradation detection and rolling backtests.
+        All 6 agents participate:
+        - prediction_tracker: degradation detection + LLM calibration analysis
+        - backtester: rolling backtest + LLM interpretation
+        - risk_manager: LLM portfolio risk assessment
+        - post_mortem: weekly review (LLM)
+        - strategy_generator + researcher: via orchestrator context
         """
         if not self._can_use_llm():
             return
 
         try:
-            # Degradation detection via prediction tracker
+            metrics = self._calculate_metrics(starting_capital)
+
+            # ── 1. Prediction Tracker: degradation + LLM calibration ──
             degradation = self.orchestrator.agents["prediction_tracker"].run({
                 "action": "detect_degradation",
             })
@@ -830,36 +914,115 @@ class PaperTrader:
                 })
                 logger.warning(f"[Review] Degradation alerts: {alerts}")
 
-            # Rolling backtests for active strategies
-            strategies = self.memory.get_active_strategies()
-            for strategy in strategies:
-                sid = strategy.get("strategy_id", "")
-                if sid:
-                    bt_result = self.orchestrator.agents["backtester"].run({
-                        "action": "rolling",
-                        "strategy": strategy,
-                    })
-                    if bt_result.get("degradation_detected"):
-                        self._agent_log.append({
+            # LLM calibration analysis (prediction_tracker uses Gemini)
+            if self._can_use_llm():
+                cal_result = self.orchestrator.agents["prediction_tracker"].run({
+                    "action": "llm_calibration_analysis",
+                    "metrics": metrics,
+                    "regime_breakdown": metrics.get("regime_breakdown", {}),
+                })
+                self._use_llm_call()
+
+                # Apply confidence scaling if recommended
+                scaling = cal_result.get("confidence_scaling", 1.0)
+                if scaling != 1.0 and isinstance(scaling, (int, float)):
+                    self._confidence_scaling = max(0.5, min(1.5, scaling))
+
+                self._agent_log.append({
+                    "day": day_str,
+                    "agent": "prediction_tracker.llm_calibration",
+                    "action": "calibration_analysis",
+                    "detail": f"scaling={scaling:.2f}, "
+                              f"{cal_result.get('reasoning', '')[:120]}",
+                })
+
+            # ── 2. Backtester: rolling backtest + LLM interpretation ──
+            bt_result = self.orchestrator.agents["backtester"].run({
+                "action": "rolling",
+                "strategy": {"strategy_id": "aqtis_multi_indicator"},
+            })
+            best_bt_result = bt_result
+            if bt_result.get("degradation_detected"):
+                self._agent_log.append({
+                    "day": day_str,
+                    "agent": "backtester",
+                    "action": "rolling_backtest",
+                    "detail": f"Degradation detected: "
+                              f"sharpe={bt_result.get('recent_sharpe', 0):.2f}",
+                })
+
+            # LLM backtest interpretation (backtester uses Gemini)
+            if self._can_use_llm() and best_bt_result:
+                bt_interp = self.orchestrator.agents["backtester"].run({
+                    "action": "llm_interpret",
+                    "backtest_results": best_bt_result,
+                    "strategy": {"strategy_id": "aqtis_multi_indicator"},
+                    "current_weights": dict(self._indicator_weights),
+                })
+                self._use_llm_call()
+
+                # Apply weight adjustments from backtester
+                bt_adj = bt_interp.get("weight_adjustments", {})
+                if bt_adj:
+                    applied = 0
+                    for ind_name, delta in bt_adj.items():
+                        if ind_name in self._indicator_weights:
+                            old = self._indicator_weights[ind_name]
+                            self._indicator_weights[ind_name] = max(
+                                -0.5, min(1.0, old + delta)
+                            )
+                            applied += 1
+                    if applied:
+                        self._weight_mutations.append({
                             "day": day_str,
-                            "agent": "backtester",
-                            "action": "rolling_backtest",
-                            "detail": f"Degradation in {sid}: "
-                                      f"sharpe={bt_result.get('recent_sharpe', 0):.2f}",
+                            "source": "backtester_llm",
+                            "adjustments": bt_adj,
+                            "reasoning": [bt_interp.get("reasoning", "backtester LLM")],
                         })
 
-            # Post-mortem weekly review
-            review = self.orchestrator.agents["post_mortem"].run({
-                "action": "weekly_review",
-            })
-            self._use_llm_call()
+                self._agent_log.append({
+                    "day": day_str,
+                    "agent": "backtester.llm_interpret",
+                    "action": "backtest_interpretation",
+                    "detail": f"adj={len(bt_adj)} weights, "
+                              f"{bt_interp.get('reasoning', '')[:120]}",
+                })
 
-            self._agent_log.append({
-                "day": day_str,
-                "agent": "post_mortem",
-                "action": "periodic_review",
-                "detail": f"Review completed, day {day_idx + 1}/{total_days}",
-            })
+            # ── 3. Risk Manager: LLM portfolio risk assessment ──
+            if self._can_use_llm():
+                positions_list = [
+                    {**pos, "symbol": sym, "unrealized_pnl": 0}
+                    for sym, pos in self._positions.items()
+                ]
+                risk_result = self.orchestrator.agents["risk_manager"].run({
+                    "action": "llm_risk_assessment",
+                    "positions": positions_list,
+                    "portfolio_value": self._capital,
+                    "metrics": metrics,
+                    "current_regime": self._get_dominant_regime(),
+                })
+                self._use_llm_call()
+
+                self._agent_log.append({
+                    "day": day_str,
+                    "agent": "risk_manager.llm_risk_assessment",
+                    "action": "portfolio_risk_review",
+                    "detail": f"{risk_result.get('reasoning', '')[:150]}",
+                })
+
+            # ── 4. Post-mortem: periodic review (LLM) ──
+            if self._can_use_llm():
+                review = self.orchestrator.agents["post_mortem"].run({
+                    "action": "weekly_review",
+                })
+                self._use_llm_call()
+
+                self._agent_log.append({
+                    "day": day_str,
+                    "agent": "post_mortem",
+                    "action": "periodic_review",
+                    "detail": f"Review completed, day {day_idx + 1}/{total_days}",
+                })
 
         except Exception as e:
             logger.warning(f"Periodic review failed: {e}")
@@ -984,6 +1147,7 @@ class PaperTrader:
             },
             "metrics": metrics,
             "trade_count": len(self._all_trades),
+            "trades": self._all_trades,
             "equity_curve": self._equity_curve,
             "llm_usage": {
                 "calls_used": self._llm_calls_used,
@@ -994,6 +1158,7 @@ class PaperTrader:
                 "weight_mutations": len(self._weight_mutations),
                 "mutations_log": self._weight_mutations,
                 "final_entry_threshold": self._entry_threshold,
+                "final_confidence_scaling": self._confidence_scaling,
                 "final_weights_sample": {
                     k: round(v, 4) for k, v in
                     sorted(self._indicator_weights.items(), key=lambda x: -abs(x[1]))[:10]
@@ -1313,6 +1478,19 @@ class PaperTrader:
             return "trending_down"
         else:
             return "mean_reverting"
+
+    # ─────────────────────────────────────────────────────────────────
+    # HELPERS
+    # ─────────────────────────────────────────────────────────────────
+
+    def _get_dominant_regime(self) -> str:
+        """Get the most common regime across current positions."""
+        if not self._positions:
+            return "unknown"
+        regimes = [p.get("regime", "unknown") for p in self._positions.values()]
+        from collections import Counter
+        most_common = Counter(regimes).most_common(1)
+        return most_common[0][0] if most_common else "unknown"
 
     # ─────────────────────────────────────────────────────────────────
     # PORTFOLIO TRACKING

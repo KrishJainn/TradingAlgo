@@ -2,6 +2,7 @@
 AQTIS Vector Store (ChromaDB).
 
 Provides semantic search for research papers and trade pattern embeddings.
+Falls back gracefully to a no-op store when chromadb is not installed.
 """
 
 import json
@@ -11,6 +12,56 @@ from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional
 
 logger = logging.getLogger(__name__)
+
+# Check once at import time
+_HAS_CHROMADB = False
+try:
+    import chromadb as _chromadb
+    _HAS_CHROMADB = True
+except ImportError:
+    _chromadb = None
+
+
+class _NoOpCollection:
+    """Stub collection that silently discards writes when chromadb is unavailable."""
+
+    def __init__(self, name: str):
+        self.name = name
+        self._data: Dict[str, dict] = {}
+
+    def count(self) -> int:
+        return len(self._data)
+
+    def upsert(self, ids, documents=None, metadatas=None, **kw):
+        for i, doc_id in enumerate(ids):
+            self._data[doc_id] = {
+                "document": documents[i] if documents else "",
+                "metadata": metadatas[i] if metadatas else {},
+            }
+
+    def query(self, query_texts=None, n_results=5, **kw):
+        # Return empty results structure
+        return {"ids": [[]], "documents": [[]], "distances": [[]], "metadatas": [[]]}
+
+    def delete(self, ids=None, **kw):
+        if ids:
+            for doc_id in ids:
+                self._data.pop(doc_id, None)
+
+
+class _NoOpClient:
+    """Stub client that uses in-memory dicts when chromadb is unavailable."""
+
+    def __init__(self):
+        self._collections: Dict[str, _NoOpCollection] = {}
+
+    def get_or_create_collection(self, name, **kw):
+        if name not in self._collections:
+            self._collections[name] = _NoOpCollection(name)
+        return self._collections[name]
+
+    def delete_collection(self, name):
+        self._collections.pop(name, None)
 
 
 class VectorStore:
@@ -30,13 +81,19 @@ class VectorStore:
     @property
     def client(self):
         if self._client is None:
-            try:
-                import chromadb
-                self._client = chromadb.PersistentClient(path=str(self.persist_dir))
-            except ImportError:
-                logger.warning("chromadb not installed, using in-memory fallback")
-                import chromadb
-                self._client = chromadb.Client()
+            if _HAS_CHROMADB:
+                try:
+                    self._client = _chromadb.PersistentClient(path=str(self.persist_dir))
+                except Exception as e:
+                    logger.warning(f"ChromaDB PersistentClient failed ({e}), using in-memory")
+                    try:
+                        self._client = _chromadb.Client()
+                    except Exception:
+                        logger.warning("ChromaDB Client also failed, using no-op fallback")
+                        self._client = _NoOpClient()
+            else:
+                logger.info("chromadb not installed, using in-memory fallback store")
+                self._client = _NoOpClient()
         return self._client
 
     def _get_collection(self, name: str):

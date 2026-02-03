@@ -114,14 +114,25 @@ def create_dna(weights, dna_id):
     return SuperIndicatorDNA(dna_id=dna_id, generation=0, run_id=0, genes=genes)
 
 
-def run_backtest(player_id, config, years=1):
+def run_backtest(player_id, config, years=1, use_cache=False):
     print(f"\n{player_id}: DNA {config['dna_id']} ({config['original']})")
-    
+
     data_config = DataConfig()
     data_config.data_years = years
-    
-    cache = DataCache(data_config.cache_dir)
-    fetcher = DataFetcher(cache=cache, cache_dir=data_config.cache_dir)
+
+    # Use local data cache if requested
+    if use_cache:
+        try:
+            from data_cache.backtest_data_provider import BacktestDataProvider
+            from data_cache.cache_manager import CacheManager
+            cache_mgr = CacheManager(cache_dir="data_cache")
+            fetcher = BacktestDataProvider(cache_mgr, fallback_to_yfinance=True)
+        except Exception:
+            cache = DataCache(data_config.cache_dir)
+            fetcher = DataFetcher(cache=cache, cache_dir=data_config.cache_dir)
+    else:
+        cache = DataCache(data_config.cache_dir)
+        fetcher = DataFetcher(cache=cache, cache_dir=data_config.cache_dir)
     universe = IndicatorUniverse()
     universe.load_all()
     calc = IndicatorCalculator(universe=universe)
@@ -206,13 +217,16 @@ def main():
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument('--years', type=int, default=1)
+    parser.add_argument('--use-cache', action='store_true', help='Use local data cache')
     args = parser.parse_args()
-    
+
     print("="*60)
     print("5-PLAYER BACKTEST")
+    if args.use_cache:
+        print("  Data: LOCAL CACHE")
     print("="*60)
-    
-    results = [run_backtest(pid, cfg, args.years) for pid, cfg in PLAYERS.items()]
+
+    results = [run_backtest(pid, cfg, args.years, use_cache=args.use_cache) for pid, cfg in PLAYERS.items()]
     
     print("\n" + "="*60)
     print("RESULTS")

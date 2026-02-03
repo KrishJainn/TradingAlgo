@@ -73,8 +73,9 @@ def _get_llm():
 def run_multi_simulation(
     num_runs: int = 50,
     days: int = 60,
-    llm_budget_per_run: int = 80,
+    llm_budget_per_run: int = 200,
     config_path: str = "aqtis_config.yaml",
+    use_cache: bool = False,
 ):
     """Run multiple simulation iterations with agent-driven cross-run learning."""
 
@@ -91,18 +92,32 @@ def run_multi_simulation(
     # Gemini LLM — wired into EVERY agent via orchestrator
     llm, llm_type = _get_llm()
 
+    # Local data cache for fast backtesting
+    data_provider = None
+    if use_cache:
+        try:
+            from data_cache.cache_manager import CacheManager
+            from data_cache.backtest_data_provider import BacktestDataProvider
+            cache_mgr = CacheManager(cache_dir="data_cache")
+            data_provider = BacktestDataProvider(cache_mgr, fallback_to_yfinance=True)
+            logger.info("Using local data cache for backtesting")
+        except Exception as e:
+            logger.warning(f"Local cache unavailable, using network: {e}")
+
     symbols = config.market_data.symbols
     initial_capital = config.execution.initial_capital
 
     print("=" * 65)
     print(f"  AQTIS AGENT-DRIVEN MULTI-RUN BACKTEST")
     print("=" * 65)
+    cache_label = "LOCAL CACHE" if data_provider else "NETWORK (yfinance)"
     print(f"  Engine:     PaperTrader (all 6 agents active)")
     print(f"  Capital:    ${initial_capital:,.0f} USD")
     print(f"  Symbols:    {len(symbols)} NIFTY stocks")
     print(f"  Days/Run:   {days}")
     print(f"  Total Runs: {num_runs}")
     print(f"  LLM:        {llm_type.upper()} ({llm_budget_per_run} calls/run)")
+    print(f"  Data:       {cache_label}")
     print(f"  Learning:   Batch every 10 days, Review every 3 days")
     print("=" * 65)
     print()
@@ -128,6 +143,7 @@ def run_multi_simulation(
             memory=memory,
             orchestrator=orchestrator,
             config=config,
+            data_provider=data_provider,
             llm_budget=llm_budget_per_run,
         )
 
@@ -475,8 +491,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="AQTIS Agent-Driven Multi-Run Backtest")
     parser.add_argument("--runs", type=int, default=50, help="Number of runs (default: 50)")
     parser.add_argument("--days", type=int, default=60, help="Days per run (default: 60)")
-    parser.add_argument("--llm-budget", type=int, default=80, help="LLM calls per run (default: 80)")
+    parser.add_argument("--llm-budget", type=int, default=200, help="LLM calls per run (default: 200)")
     parser.add_argument("--config", default="aqtis_config.yaml", help="Config path")
+    parser.add_argument("--use-cache", action="store_true", help="Use local data cache (fast, no network)")
     args = parser.parse_args()
 
     logging.basicConfig(
@@ -495,4 +512,5 @@ if __name__ == "__main__":
         days=args.days,
         llm_budget_per_run=args.llm_budget,
         config_path=args.config,
+        use_cache=args.use_cache,
     )

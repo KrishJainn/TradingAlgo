@@ -44,20 +44,23 @@ class MemoryLayer:
             self.db.store_prediction(prediction)
 
         # Also store as trade pattern for semantic search
-        description = self._trade_to_description(trade)
-        self.vectors.add_trade_pattern({
-            "trade_id": trade_id,
-            "text": description,
-            "metadata": {
-                "strategy_id": trade.get("strategy_id", ""),
-                "asset": trade.get("asset", ""),
-                "action": trade.get("action", ""),
-                "market_regime": trade.get("market_regime", ""),
-                "pnl": trade.get("pnl", 0),
-                "pnl_percent": trade.get("pnl_percent", 0),
-                "outcome": "win" if (trade.get("pnl") or 0) > 0 else "loss",
-            },
-        })
+        try:
+            description = self._trade_to_description(trade)
+            self.vectors.add_trade_pattern({
+                "trade_id": trade_id,
+                "text": description,
+                "metadata": {
+                    "strategy_id": trade.get("strategy_id", ""),
+                    "asset": trade.get("asset", ""),
+                    "action": trade.get("action", ""),
+                    "market_regime": trade.get("market_regime", ""),
+                    "pnl": trade.get("pnl", 0),
+                    "pnl_percent": trade.get("pnl_percent", 0),
+                    "outcome": "win" if (trade.get("pnl") or 0) > 0 else "loss",
+                },
+            })
+        except Exception:
+            pass  # Vector store is optional, don't fail trade storage
 
         return trade_id
 
@@ -143,6 +146,14 @@ class MemoryLayer:
     def get_strategy_performance(self, strategy_id: str, regime: str = None) -> Dict:
         """Get aggregate performance for a strategy."""
         return self.db.get_strategy_performance(strategy_id, regime)
+
+    def get_strategy_asset_performance(self, strategy_id: str) -> List[Dict]:
+        """Get per-asset performance breakdown for a strategy."""
+        return self.db.get_strategy_asset_performance(strategy_id)
+
+    def get_strategy_regime_performance(self, strategy_id: str) -> List[Dict]:
+        """Get per-regime performance breakdown for a strategy."""
+        return self.db.get_strategy_regime_performance(strategy_id)
 
     # ─────────────────────────────────────────────────────────────────
     # SIMILAR TRADES (SEMANTIC SEARCH)
@@ -323,6 +334,54 @@ class MemoryLayer:
     def store_indicator_scores(self, trade_id: str, scores: List[Dict]):
         """Store per-indicator scores for a trade."""
         self.db.store_indicator_scores(trade_id, scores)
+
+    # ─────────────────────────────────────────────────────────────────
+    # LIVE PAPER TRADING (5-Player Coach Integration)
+    # ─────────────────────────────────────────────────────────────────
+
+    def store_live_player_state(self, player_id: str, state: Dict) -> str:
+        """Store or update live player state."""
+        return self.db.store_live_player_state(player_id, state)
+
+    def get_live_player_state(self, player_id: str) -> Optional[Dict]:
+        """Get live player state."""
+        return self.db.get_live_player_state(player_id)
+
+    def get_all_live_player_states(self) -> Dict[str, Dict]:
+        """Get all live player states."""
+        return self.db.get_all_live_player_states()
+
+    def get_live_positions(self) -> List[Dict]:
+        """Get all open live positions across all players."""
+        return self.db.get_live_positions()
+
+    def store_live_trade(self, player_id: str, trade: Dict) -> str:
+        """Store a live trade for a player."""
+        trade["player_id"] = player_id
+        return self.db.store_live_trade(trade)
+
+    def get_live_trades(
+        self,
+        player_id: str = None,
+        start_date: str = None,
+        limit: int = 100,
+    ) -> List[Dict]:
+        """Get live trades, optionally filtered by player and date."""
+        return self.db.get_live_trades(player_id, start_date, limit)
+
+    def get_player_equity_history(
+        self, player_id: str, limit: int = 60
+    ) -> List[Dict]:
+        """Get equity history for a player."""
+        return self.db.get_player_equity_history(player_id, limit)
+
+    def store_live_session(self, session: Dict) -> int:
+        """Store a live trading session record."""
+        return self.db.store_live_session(session)
+
+    def get_live_sessions(self, limit: int = 30) -> List[Dict]:
+        """Get recent live trading sessions."""
+        return self.db.get_live_sessions(limit)
 
     # ─────────────────────────────────────────────────────────────────
     # HELPERS

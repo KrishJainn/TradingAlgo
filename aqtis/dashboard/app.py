@@ -29,6 +29,11 @@ except ImportError as e:
 
 from aqtis.config.settings import load_config
 from aqtis.memory.memory_layer import MemoryLayer
+from aqtis.dashboard.pages.backtest_visualizer import render_backtest_dashboard
+from aqtis.dashboard.pages.live_backtest import render_live_backtest
+from aqtis.dashboard.pages.live_paper_trading import render_live_paper_trading
+from aqtis.dashboard.pages.backtest_analysis import render_backtest_analysis
+from aqtis.dashboard.pages.continuous_backtest import render_continuous_backtest
 
 
 @st.cache_resource
@@ -57,6 +62,11 @@ def main():
         "Navigation",
         [
             "Overview",
+            "Live Paper Trading",
+            "Run Backtest",
+            "Continuous Backtest",
+            "5-Player Backtest Analysis",
+            "Backtest Visualizer",
             "Strategy Performance",
             "Prediction Analysis",
             "Risk Monitor",
@@ -67,6 +77,16 @@ def main():
 
     if page == "Overview":
         render_overview(memory)
+    elif page == "Live Paper Trading":
+        render_live_paper_trading(memory)
+    elif page == "Run Backtest":
+        render_live_backtest(memory)
+    elif page == "Continuous Backtest":
+        render_continuous_backtest(memory)
+    elif page == "5-Player Backtest Analysis":
+        render_backtest_analysis(memory)
+    elif page == "Backtest Visualizer":
+        render_backtest_dashboard(memory)
     elif page == "Strategy Performance":
         render_strategies(memory)
     elif page == "Prediction Analysis":

@@ -160,8 +160,26 @@ class StrategyGeneratorAgent(BaseAgent):
             ]
             indicator_info = "\n".join(ind_parts)
 
-        prompt = f"""You are a quantitative strategy analyst. Analyze this trading signal and decide whether to trade.
+        # Determine if this is a bootstrap scenario (no historical data)
+        is_bootstrap = (
+            not similar_summary
+            and not memory_context
+            and not knowledge_snippets
+            and not indicator_info
+        )
 
+        bootstrap_note = ""
+        if is_bootstrap:
+            bootstrap_note = """
+IMPORTANT: This is an EARLY BOOTSTRAP run with no historical data yet.
+You should APPROVE trades that have reasonable signal scores (>0.15) to
+build up the historical trade database. Be moderately permissive — the
+system needs trade data to start learning. Default to should_trade=true
+unless the signal is clearly weak or contradictory.
+"""
+
+        prompt = f"""You are a quantitative strategy analyst. Analyze this trading signal and decide whether to trade.
+{bootstrap_note}
 CURRENT SIGNAL:
 {json.dumps(signal, indent=2, default=str)}
 
@@ -173,16 +191,16 @@ Sharpe: {strategy.get('sharpe_ratio')}
 MARKET REGIME: {regime}
 
 BEST INDICATORS FOR THIS REGIME:
-{indicator_info or "No indicator-regime data available"}
+{indicator_info or "No indicator-regime data available yet (bootstrap)"}
 
 MEMORY CONTEXT (from historical runs):
-{memory_context or "No historical context"}
+{memory_context or "No historical context yet (bootstrap run)"}
 
 SIMILAR HISTORICAL TRADES:
-{json.dumps(similar_summary, indent=2, default=str)}
+{json.dumps(similar_summary, indent=2, default=str) if similar_summary else "No similar trades yet (bootstrap run)"}
 
 KNOWLEDGE BASE:
-{json.dumps(knowledge_snippets, indent=2) if knowledge_snippets else "No relevant knowledge"}
+{json.dumps(knowledge_snippets, indent=2) if knowledge_snippets else "No relevant knowledge yet"}
 
 Respond in JSON format:
 {{

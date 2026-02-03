@@ -46,6 +46,11 @@ class PredictionTrackingAgent(BaseAgent):
             return self.get_calibration_report()
         elif action == "detect_degradation":
             return {"degradation_alerts": self.detect_model_degradation()}
+        elif action == "llm_calibration_analysis":
+            return self.llm_calibration_analysis(
+                context.get("metrics", {}),
+                context.get("regime_breakdown", {}),
+            )
         else:
             return self.get_calibration_report()
 
@@ -219,6 +224,91 @@ class PredictionTrackingAgent(BaseAgent):
             return {m: 1.0 / len(accuracies) for m in accuracies}
 
         return {model: acc / total for model, acc in accuracies.items()}
+
+    # ─────────────────────────────────────────────────────────────────
+    # DEGRADATION DETECTION
+    # ─────────────────────────────────────────────────────────────────
+
+    # ─────────────────────────────────────────────────────────────────
+    # LLM-POWERED CALIBRATION ANALYSIS
+    # ─────────────────────────────────────────────────────────────────
+
+    def llm_calibration_analysis(
+        self,
+        metrics: Dict,
+        regime_breakdown: Dict,
+    ) -> Dict:
+        """
+        Use Gemini to analyze prediction calibration and recommend adjustments.
+
+        Examines calibration bins, regime-specific accuracy, and model
+        degradation to produce confidence scaling recommendations.
+
+        Returns:
+            Dict with confidence_adjustments, regime_overrides, and reasoning.
+        """
+        if not self.llm:
+            return {"error": "No LLM available", "confidence_adjustments": {}}
+
+        # Build calibration snapshot
+        cal_report = self.get_calibration_report()
+        bins_summary = []
+        for key, data in cal_report.get("bins", {}).items():
+            n = data.get("predictions", 0)
+            if n > 0:
+                bins_summary.append(
+                    f"{key}: {n} preds, actual WR={data.get('actual_win_rate', 0):.0%}"
+                )
+
+        # Degradation alerts
+        degradation = self.detect_model_degradation()
+        deg_str = "; ".join(
+            f"{a['model']}: {a['recent_accuracy']:.0%} vs {a['historical_accuracy']:.0%}"
+            for a in degradation
+        ) if degradation else "None"
+
+        # Regime performance
+        regime_str = ", ".join(
+            f"{r}: {s.get('trades', 0)}t/{s.get('wins', 0)}w"
+            for r, s in regime_breakdown.items()
+        ) if regime_breakdown else "N/A"
+
+        overall_acc = cal_report.get("overall_accuracy", 0)
+        total_preds = cal_report.get("total_predictions", 0)
+
+        prompt = f"""You are AQTIS prediction calibration analyst. Analyze prediction accuracy and recommend confidence adjustments.
+
+CALIBRATION BINS:
+{chr(10).join(bins_summary) if bins_summary else "No calibration data yet"}
+
+OVERALL: {total_preds} predictions, accuracy={overall_acc:.0%}
+DEGRADATION ALERTS: {deg_str}
+REGIME BREAKDOWN: {regime_str}
+
+PERFORMANCE: WR={metrics.get('win_rate', 0):.0%}, Sharpe={metrics.get('sharpe_ratio', 0):.2f}
+
+Respond in JSON:
+{{
+  "confidence_scaling": float (0.5-1.5, multiply raw confidence by this),
+  "regime_overrides": {{"regime_name": scaling_float}},
+  "min_confidence_threshold": float (0.3-0.8),
+  "reasoning": "2-3 sentences on calibration state"
+}}
+
+If predictions are well-calibrated, confidence_scaling should be 1.0."""
+
+        try:
+            result = self.llm.generate_json(prompt)
+            if not isinstance(result, dict):
+                return {"confidence_scaling": 1.0, "reasoning": "LLM returned non-dict"}
+
+            self.logger.info(
+                f"LLM calibration analysis: {result.get('reasoning', '')[:100]}"
+            )
+            return result
+        except Exception as e:
+            self.logger.warning(f"LLM calibration analysis failed: {e}")
+            return {"confidence_scaling": 1.0, "error": str(e)}
 
     # ─────────────────────────────────────────────────────────────────
     # DEGRADATION DETECTION

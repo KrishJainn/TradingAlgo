@@ -25,12 +25,40 @@ class MarketDataProvider:
     Market data provider wrapping trading_evolution's DataFetcher.
 
     Provides historical and quote data with caching.
+    Supports a fast local cache mode via data_cache.CacheManager for
+    backtesting without network calls.
     """
 
-    def __init__(self, cache_dir: str = "data_cache", data_years: int = 3):
+    def __init__(
+        self,
+        cache_dir: str = "data_cache",
+        data_years: int = 3,
+        use_local_cache: bool = False,
+    ):
         self.cache_dir = Path(cache_dir)
         self.data_years = data_years
         self._fetcher = None
+
+        # Fast local cache for backtesting
+        self._use_local_cache = use_local_cache
+        self._local_provider = None
+        if use_local_cache:
+            self._init_local_cache()
+
+    def _init_local_cache(self):
+        """Set up the local BacktestDataProvider from data_cache module."""
+        try:
+            from data_cache.cache_manager import CacheManager
+            from data_cache.backtest_data_provider import BacktestDataProvider
+
+            cm = CacheManager(str(self.cache_dir))
+            self._local_provider = BacktestDataProvider(
+                cm, fallback_to_yfinance=True
+            )
+            logger.info("MarketDataProvider: local cache enabled")
+        except Exception as e:
+            logger.warning(f"Local cache init failed, falling back to network: {e}")
+            self._use_local_cache = False
 
     @property
     def fetcher(self):
@@ -67,6 +95,14 @@ class MarketDataProvider:
         Returns:
             DataFrame with columns: open, high, low, close, volume.
         """
+        if self._use_local_cache and self._local_provider:
+            df = self._local_provider.fetch(
+                symbol, start_date=start_date, end_date=end_date,
+                years=years or self.data_years,
+            )
+            if df is not None:
+                return df
+
         return self.fetcher.fetch(
             symbol,
             start_date=start_date,
@@ -87,6 +123,14 @@ class MarketDataProvider:
         Returns:
             Dictionary mapping symbol to DataFrame.
         """
+        if self._use_local_cache and self._local_provider:
+            result = self._local_provider.fetch_multiple(
+                symbols, start_date=start_date, end_date=end_date,
+                years=years or self.data_years,
+            )
+            if result:
+                return result
+
         return self.fetcher.fetch_multiple(
             symbols,
             start_date=start_date,

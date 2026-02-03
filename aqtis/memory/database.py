@@ -290,6 +290,70 @@ class StructuredDB:
                 CREATE INDEX IF NOT EXISTS idx_ind_regime ON indicator_regime_stats(indicator, regime);
                 CREATE INDEX IF NOT EXISTS idx_sim_runs ON sim_runs(run_number);
                 CREATE INDEX IF NOT EXISTS idx_ind_scores_trade ON indicator_scores(trade_id);
+
+                -- Live Paper Trading (5-Player Coach)
+                CREATE TABLE IF NOT EXISTS live_player_states (
+                    player_id TEXT PRIMARY KEY,
+                    label TEXT,
+                    weights_json TEXT,
+                    entry_threshold REAL,
+                    exit_threshold REAL,
+                    min_hold_bars INTEGER DEFAULT 4,
+                    equity REAL DEFAULT 100000.0,
+                    day_pnl REAL DEFAULT 0.0,
+                    strategy_version TEXT DEFAULT 'v1.0',
+                    positions_json TEXT,
+                    bars_held_json TEXT,
+                    prev_si_json TEXT,
+                    updated_at TEXT DEFAULT (datetime('now'))
+                );
+
+                CREATE TABLE IF NOT EXISTS live_trades (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    trade_id TEXT NOT NULL,
+                    player_id TEXT NOT NULL,
+                    symbol TEXT NOT NULL,
+                    direction TEXT NOT NULL,
+                    entry_price REAL,
+                    exit_price REAL,
+                    quantity INTEGER,
+                    pnl REAL,
+                    si_value REAL,
+                    exit_si REAL,
+                    exit_reason TEXT,
+                    entry_time TEXT,
+                    exit_time TEXT,
+                    atr REAL,
+                    created_at TEXT DEFAULT (datetime('now'))
+                );
+
+                CREATE TABLE IF NOT EXISTS live_equity_history (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    player_id TEXT NOT NULL,
+                    date TEXT NOT NULL,
+                    equity REAL NOT NULL,
+                    day_pnl REAL,
+                    trades INTEGER,
+                    version TEXT,
+                    created_at TEXT DEFAULT (datetime('now'))
+                );
+
+                CREATE TABLE IF NOT EXISTS live_sessions (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    started_at TEXT,
+                    ended_at TEXT,
+                    initial_equity REAL,
+                    final_equity REAL,
+                    total_trades INTEGER,
+                    market_regime TEXT,
+                    notes TEXT,
+                    created_at TEXT DEFAULT (datetime('now'))
+                );
+
+                CREATE INDEX IF NOT EXISTS idx_live_trades_player ON live_trades(player_id);
+                CREATE INDEX IF NOT EXISTS idx_live_trades_time ON live_trades(entry_time);
+                CREATE INDEX IF NOT EXISTS idx_live_equity_player ON live_equity_history(player_id);
+                CREATE INDEX IF NOT EXISTS idx_live_equity_date ON live_equity_history(date);
             """)
 
     # ─────────────────────────────────────────────────────────────────
@@ -1138,5 +1202,183 @@ class StructuredDB:
                    GROUP BY asset
                    ORDER BY total_pnl DESC""",
                 (strategy_id,),
+            ).fetchall()
+            return [dict(r) for r in rows]
+
+    # ─────────────────────────────────────────────────────────────────
+    # LIVE PAPER TRADING (5-Player Coach)
+    # ─────────────────────────────────────────────────────────────────
+
+    def store_live_player_state(self, player_id: str, state: Dict) -> str:
+        """Store or update live player state."""
+        with self.get_connection() as conn:
+            conn.execute("""
+                INSERT OR REPLACE INTO live_player_states (
+                    player_id, label, weights_json, entry_threshold, exit_threshold,
+                    min_hold_bars, equity, day_pnl, strategy_version,
+                    positions_json, bars_held_json, prev_si_json, updated_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
+            """, (
+                player_id,
+                state.get("label", ""),
+                json.dumps(state.get("weights", {})),
+                state.get("entry_threshold", 0.30),
+                state.get("exit_threshold", -0.10),
+                state.get("min_hold_bars", 4),
+                state.get("equity", 100000.0),
+                state.get("day_pnl", 0.0),
+                state.get("strategy_version", "v1.0"),
+                json.dumps(state.get("positions", {})),
+                json.dumps(state.get("bars_held", {})),
+                json.dumps(state.get("prev_si", {})),
+            ))
+        return player_id
+
+    def get_live_player_state(self, player_id: str) -> Optional[Dict]:
+        """Get live player state."""
+        with self.get_connection() as conn:
+            row = conn.execute(
+                "SELECT * FROM live_player_states WHERE player_id = ?",
+                (player_id,),
+            ).fetchone()
+            if not row:
+                return None
+            result = dict(row)
+            for field in ("weights_json", "positions_json", "bars_held_json", "prev_si_json"):
+                if result.get(field):
+                    result[field.replace("_json", "")] = json.loads(result[field])
+            return result
+
+    def get_all_live_player_states(self) -> Dict[str, Dict]:
+        """Get all live player states."""
+        with self.get_connection() as conn:
+            rows = conn.execute("SELECT * FROM live_player_states").fetchall()
+            result = {}
+            for row in rows:
+                data = dict(row)
+                for field in ("weights_json", "positions_json", "bars_held_json", "prev_si_json"):
+                    if data.get(field):
+                        data[field.replace("_json", "")] = json.loads(data[field])
+                result[data["player_id"]] = data
+            return result
+
+    def get_live_positions(self) -> List[Dict]:
+        """Get all open positions from all players."""
+        all_states = self.get_all_live_player_states()
+        positions = []
+        for player_id, state in all_states.items():
+            for pos in state.get("positions", {}).values():
+                pos["player_id"] = player_id
+                positions.append(pos)
+        return positions
+
+    def store_live_trade(self, trade: Dict) -> str:
+        """Store a live trade."""
+        trade_id = trade.get("trade_id", str(uuid.uuid4()))
+        with self.get_connection() as conn:
+            conn.execute("""
+                INSERT INTO live_trades (
+                    trade_id, player_id, symbol, direction,
+                    entry_price, exit_price, quantity, pnl,
+                    si_value, exit_si, exit_reason,
+                    entry_time, exit_time, atr
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (
+                trade_id,
+                trade.get("player_id", ""),
+                trade.get("symbol", ""),
+                trade.get("direction", trade.get("side", "")),
+                trade.get("entry_price"),
+                trade.get("exit_price"),
+                trade.get("quantity"),
+                trade.get("pnl"),
+                trade.get("si_value"),
+                trade.get("exit_si"),
+                trade.get("exit_reason"),
+                trade.get("entry_time", trade.get("timestamp")),
+                trade.get("exit_time"),
+                trade.get("atr"),
+            ))
+        return trade_id
+
+    def get_live_trades(
+        self,
+        player_id: str = None,
+        start_date: str = None,
+        limit: int = 100,
+    ) -> List[Dict]:
+        """Get live trades with optional filters."""
+        query = "SELECT * FROM live_trades WHERE 1=1"
+        params = []
+
+        if player_id:
+            query += " AND player_id = ?"
+            params.append(player_id)
+
+        if start_date:
+            query += " AND entry_time >= ?"
+            params.append(start_date)
+
+        query += " ORDER BY created_at DESC LIMIT ?"
+        params.append(limit)
+
+        with self.get_connection() as conn:
+            rows = conn.execute(query, params).fetchall()
+            return [dict(r) for r in rows]
+
+    def get_player_equity_history(self, player_id: str, limit: int = 60) -> List[Dict]:
+        """Get equity history for a player."""
+        with self.get_connection() as conn:
+            rows = conn.execute(
+                """SELECT * FROM live_equity_history
+                   WHERE player_id = ?
+                   ORDER BY date DESC
+                   LIMIT ?""",
+                (player_id, limit),
+            ).fetchall()
+            return [dict(r) for r in reversed(rows)]
+
+    def store_player_equity_snapshot(self, player_id: str, snapshot: Dict) -> int:
+        """Store daily equity snapshot for a player."""
+        with self.get_connection() as conn:
+            cursor = conn.execute("""
+                INSERT INTO live_equity_history (
+                    player_id, date, equity, day_pnl, trades, version
+                ) VALUES (?, ?, ?, ?, ?, ?)
+            """, (
+                player_id,
+                snapshot.get("date"),
+                snapshot.get("equity"),
+                snapshot.get("day_pnl"),
+                snapshot.get("trades"),
+                snapshot.get("version"),
+            ))
+            return cursor.lastrowid
+
+    def store_live_session(self, session: Dict) -> int:
+        """Store a live trading session."""
+        with self.get_connection() as conn:
+            cursor = conn.execute("""
+                INSERT INTO live_sessions (
+                    started_at, ended_at, initial_equity, final_equity,
+                    total_trades, market_regime, notes
+                ) VALUES (?, ?, ?, ?, ?, ?, ?)
+            """, (
+                session.get("started_at"),
+                session.get("ended_at"),
+                session.get("initial_equity"),
+                session.get("final_equity"),
+                session.get("total_trades"),
+                session.get("market_regime"),
+                session.get("notes"),
+            ))
+            return cursor.lastrowid
+
+    def get_live_sessions(self, limit: int = 30) -> List[Dict]:
+        """Get recent live trading sessions."""
+        with self.get_connection() as conn:
+            rows = conn.execute(
+                "SELECT * FROM live_sessions ORDER BY created_at DESC LIMIT ?",
+                (limit,),
             ).fetchall()
             return [dict(r) for r in rows]

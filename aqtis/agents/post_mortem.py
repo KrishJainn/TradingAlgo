@@ -404,25 +404,29 @@ Respond in JSON:
         if insights and isinstance(insights, dict):
             lessons = ". ".join(insights.get("lessons_learned", []))
 
+        pnl_pct = trade.get('pnl_percent') or 0
         description = (
             f"Post-mortem: {trade.get('action', '')} {trade.get('asset', '')} "
             f"using {trade.get('strategy_id', '')}. "
             f"Outcome: {analysis.get('outcome', 'unknown')}. "
-            f"P&L: {trade.get('pnl_percent', 0):.2%}. "
+            f"P&L: {pnl_pct:.2%}. "
             f"Regime: {trade.get('market_regime', 'unknown')}. "
             f"Lessons: {lessons}"
         )
 
-        self.memory.vectors.add_trade_pattern({
-            "trade_id": f"analysis_{trade_id}",
-            "text": description,
-            "metadata": {
-                "type": "post_mortem",
-                "trade_id": trade_id,
-                "outcome": analysis.get("outcome", "unknown"),
-                "strategy_id": trade.get("strategy_id", ""),
-            },
-        })
+        try:
+            self.memory.vectors.add_trade_pattern({
+                "trade_id": f"analysis_{trade_id}",
+                "text": description,
+                "metadata": {
+                    "type": "post_mortem",
+                    "trade_id": trade_id,
+                    "outcome": analysis.get("outcome", "unknown"),
+                    "strategy_id": trade.get("strategy_id", ""),
+                },
+            })
+        except Exception:
+            pass  # Vector store is optional
 
     # ─────────────────────────────────────────────────────────────────
     # WEEKLY REVIEW

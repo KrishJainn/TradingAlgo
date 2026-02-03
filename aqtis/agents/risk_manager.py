@@ -84,6 +84,13 @@ class RiskManagementAgent(BaseAgent):
                 context.get("position", {}),
                 context.get("current_indicators", {}),
             )
+        elif action == "llm_risk_assessment":
+            return self.llm_risk_assessment(
+                context.get("positions", []),
+                context.get("portfolio_value", 100000),
+                context.get("metrics", {}),
+                context.get("current_regime", "unknown"),
+            )
         else:
             return self.get_status()
 
@@ -287,6 +294,104 @@ class RiskManagementAgent(BaseAgent):
             "circuit_breaker_active": self.circuit_breaker_active,
             "alerts": alerts,
         }
+
+    # ─────────────────────────────────────────────────────────────────
+    # LLM-POWERED RISK ASSESSMENT
+    # ─────────────────────────────────────────────────────────────────
+
+    def llm_risk_assessment(
+        self,
+        positions: List[Dict],
+        portfolio_value: float,
+        metrics: Dict,
+        current_regime: str = "unknown",
+    ) -> Dict:
+        """
+        Use Gemini to evaluate overall portfolio risk and recommend adjustments.
+
+        Analyzes position concentration, regime exposure, drawdown trajectory,
+        and win rate to produce risk limit recommendations.
+
+        Returns:
+            Dict with risk_adjustments, positions_to_reduce, and reasoning.
+        """
+        if not self.llm:
+            return {"error": "No LLM available", "risk_adjustments": {}}
+
+        # Summarize positions
+        pos_summary = []
+        total_exposure = 0
+        for p in positions[:10]:  # Cap at 10 for prompt size
+            val = p.get("entry_price", 0) * p.get("shares", p.get("position_size", 0))
+            total_exposure += val
+            pnl = p.get("unrealized_pnl", 0)
+            pos_summary.append(
+                f"{p.get('symbol', '?')}: {p.get('action', '?')} "
+                f"${val:,.0f} (P&L ${pnl:+,.0f}, regime={p.get('regime', '?')})"
+            )
+
+        leverage = total_exposure / portfolio_value if portfolio_value > 0 else 0
+
+        # Recent trade stats
+        win_rate = metrics.get("win_rate", 0)
+        sharpe = metrics.get("sharpe_ratio", 0)
+        max_dd = metrics.get("max_drawdown", 0)
+        profit_factor = metrics.get("profit_factor", 0)
+
+        prompt = f"""You are AQTIS risk manager. Evaluate portfolio risk and recommend adjustments.
+
+PORTFOLIO STATE:
+- Value: ${portfolio_value:,.0f}, Exposure: ${total_exposure:,.0f}, Leverage: {leverage:.2f}x
+- Current regime: {current_regime}
+- Circuit breaker: {"ACTIVE" if self.circuit_breaker_active else "off"}
+
+POSITIONS ({len(positions)}):
+{chr(10).join(pos_summary) if pos_summary else "No open positions"}
+
+PERFORMANCE METRICS:
+- Win Rate: {win_rate:.0%}, Sharpe: {sharpe:.2f}
+- Max Drawdown: {max_dd:.2%}, Profit Factor: {profit_factor:.2f}
+
+CURRENT LIMITS:
+- Max position size: {self.limits['max_position_size']:.0%}
+- Max leverage: {self.limits['max_portfolio_leverage']:.1f}x
+- Max daily loss: {self.limits['max_daily_loss']:.0%}
+
+Respond in JSON:
+{{
+  "risk_adjustments": {{
+    "max_position_size": float (0.02-0.15),
+    "max_daily_loss": float (-0.02 to -0.10)
+  }},
+  "positions_to_reduce": ["SYMBOL1"],
+  "activate_circuit_breaker": false,
+  "reasoning": "2-3 sentences"
+}}"""
+
+        try:
+            result = self.llm.generate_json(prompt)
+            if not isinstance(result, dict):
+                return {"risk_adjustments": {}, "reasoning": "LLM returned non-dict"}
+
+            # Apply risk adjustments if provided
+            adj = result.get("risk_adjustments", {})
+            if adj:
+                for key, val in adj.items():
+                    if key in self.limits and isinstance(val, (int, float)):
+                        self.limits[key] = val
+
+            if result.get("activate_circuit_breaker"):
+                self.activate_circuit_breaker(
+                    f"LLM recommended: {result.get('reasoning', 'risk assessment')[:80]}"
+                )
+
+            self.logger.info(
+                f"LLM risk assessment: {result.get('reasoning', '')[:100]}"
+            )
+            return result
+        except Exception as e:
+            self.logger.warning(f"LLM risk assessment failed: {e}")
+            return {"risk_adjustments": {}, "error": str(e)}
 
     # ─────────────────────────────────────────────────────────────────
     # ADAPTIVE EXIT LOGIC
