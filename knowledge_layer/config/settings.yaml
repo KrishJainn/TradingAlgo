@@ -1,0 +1,51 @@
+embedding:
+  model: "all-MiniLM-L6-v2"  # Local sentence-transformers model
+  dimension: 384
+
+chunking:
+  chunk_size: 500  # tokens (approximate)
+  chunk_overlap: 50
+  respect_boundaries: true  # Try to chunk at paragraph/section breaks
+
+retrieval:
+  default_top_k: 5
+  use_mmr: true  # Maximum Marginal Relevance for diverse results
+  mmr_diversity: 0.3  # 0 = pure relevance, 1 = pure diversity
+
+# All valid categories for document classification
+categories:
+  - trading_books
+  - notes
+  - strategies
+  - risk_management
+  - technical_analysis
+  - market_psychology
+  - fundamental_analysis
+
+chroma:
+  persist_directory: "./knowledge_layer/embeddings/chroma_db"
+  collection_name: "trading_knowledge"
+
+# Player category mappings - which knowledge categories each player specializes in
+player_categories:
+  aggressive:
+    - technical_analysis
+    - strategies
+    - notes
+  conservative:
+    - risk_management
+    - fundamental_analysis
+    - notes
+  balanced:
+    - technical_analysis
+    - risk_management
+    - market_psychology
+    - notes
+  volbreakout:
+    - technical_analysis
+    - strategies
+    - notes
+  momentum:
+    - technical_analysis
+    - strategies
+    - notes

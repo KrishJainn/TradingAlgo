@@ -1,6 +1,6 @@
 # 5-Player Trading System with AI Coach
 
-A Gemini-powered trading system where 5 independent players trade with different strategies, and an AI coach continuously optimizes each player based on their performance.
+A Gemini-powered trading system where 5 independent players trade with different strategies, and an AI coach continuously optimizes each player based on their performance. Now enhanced with a RAG Knowledge Layer for smarter decisions!
 
 ## System Overview
 
@@ -20,7 +20,7 @@ A Gemini-powered trading system where 5 independent players trade with different
 │  Indicators are NOT hardcoded - they evolve with each backtest!              │
 │                                                                              │
 ├──────────────────────────────────────────────────────────────────────────────┤
-│                           AI COACH (Gemini)                                  │
+│                     AI COACH (Gemini + Knowledge Layer)                      │
 │                                                                              │
 │  After every N trading days, Gemini analyzes each player and decides:        │
 │                                                                              │
@@ -30,7 +30,18 @@ A Gemini-powered trading system where 5 independent players trade with different
 │  ✓ Entry/exit thresholds                                                     │
 │  ✓ Minimum hold period                                                       │
 │                                                                              │
-│  The coach LEARNS from trade history and improves over time!                 │
+│  The coach LEARNS from trade history AND uses RAG knowledge for wisdom!      │
+│                                                                              │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                        RAG KNOWLEDGE LAYER (NEW!)                            │
+│                                                                              │
+│  ChromaDB-powered vector store with trading wisdom:                          │
+│  📚 Trading books (PDF, EPUB)                                                │
+│  📝 Personal notes and strategies                                            │
+│  📊 Technical analysis guides                                                │
+│  ⚠️  Risk management rules                                                   │
+│                                                                              │
+│  The coach retrieves relevant knowledge for each optimization decision!      │
 └──────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -66,31 +77,50 @@ The AI Coach can choose from any of these indicators for each player:
    streamlit run coach_system/dashboard/app.py
    ```
 
+4. **(Optional) Add trading knowledge:**
+   ```bash
+   # Add your trading PDFs, notes, etc. to knowledge_layer/sources/
+   # Then ingest them via the Knowledge Base page in the dashboard
+   ```
+
 ## Project Structure
 
 ```
 .
 ├── coach_system/              # Main trading system
 │   ├── coaches/
-│   │   └── ai_coach.py        # Gemini-powered AI coach
+│   │   └── ai_coach.py        # Gemini-powered AI coach (with RAG!)
 │   ├── llm/
 │   │   ├── base.py            # LLM provider abstraction
 │   │   └── gemini_provider.py # Gemini implementation
 │   └── dashboard/
 │       ├── app.py             # Streamlit dashboard
 │       └── pages/
-│           └── continuous_backtest.py  # 5-player backtest UI
+│           ├── continuous_backtest.py  # 5-player backtest UI
+│           └── knowledge_base.py       # Knowledge management UI
+│
+├── knowledge_layer/           # RAG Knowledge System (NEW!)
+│   ├── config/
+│   │   └── settings.yaml      # Embedding & retrieval config
+│   ├── sources/               # Add your documents here!
+│   │   ├── books/             # Trading books (PDF, EPUB)
+│   │   ├── notes/             # Personal notes (MD, TXT)
+│   │   ├── strategies/        # Strategy documents
+│   │   ├── risk_management/   # Risk rules
+│   │   └── technical_analysis/# TA guides
+│   ├── embeddings/            # ChromaDB vector store
+│   ├── scripts/
+│   │   ├── ingest.py          # Document ingestion
+│   │   ├── query.py           # RAG query interface
+│   │   └── update.py          # Incremental updates
+│   └── context_layer.py       # Coach/Player knowledge interface
 │
 ├── trading_evolution/         # Core trading framework
 │   ├── indicators/            # 80+ technical indicators
 │   ├── backtest/              # Backtesting engine
 │   └── player/                # Trade execution
 │
-├── aqtis/
-│   └── knowledge/             # Knowledge base ingestion
-│
 ├── data/                      # Market data utilities
-├── knowledge_base/            # Trading knowledge docs
 └── evolved_player_configs.json # Learned player configs (DYNAMIC!)
 ```
 
@@ -107,20 +137,63 @@ Each player starts with a unique strategy profile but **evolves independently**:
 | VolBreakout | Catches breakouts | Volatility indicators | Any indicator |
 | Momentum | Rides trends | Momentum indicators | Any indicator |
 
-### 2. AI Coach Optimization
+### 2. AI Coach Optimization (with RAG!)
 Every N trading days (configurable), Gemini:
+- **Retrieves relevant knowledge** from your trading documents
 - Analyzes each player's recent trades (wins, losses, P&L)
 - Reviews which indicators contributed to wins vs losses
 - **Decides which indicators to add** from the 80+ available
 - **Removes underperforming indicators**
-- Adjusts weights based on performance
+- Adjusts weights based on performance AND knowledge
 - Tunes entry/exit thresholds
 
-### 3. Continuous Learning
-- Configs persist in `evolved_player_configs.json`
-- Each backtest run continues from where it left off
-- Players can have anywhere from 5 to 20+ indicators
+### 3. RAG Knowledge Layer
+The coach uses a ChromaDB-powered knowledge base to inform decisions:
+
+```python
+from knowledge_layer import KnowledgeContext
+
+knowledge = KnowledgeContext()
+
+# Get player-specific context
+context = knowledge.get_context_for_player(
+    player_name="aggressive",
+    market_context={"volatility": "high"},
+    query="Should I reduce position size?"
+)
+# Returns relevant trading wisdom for the situation
+```
+
+Add your own trading books, notes, and strategies to make the coach smarter!
+
+### 4. Persistent Learning
+- Each player's **personal best config** is saved independently
+- A player's config only updates when they beat their own P&L record
 - The system gets smarter over time!
+
+## Knowledge Base Setup
+
+1. **Add documents to source folders:**
+   ```
+   knowledge_layer/sources/
+   ├── books/           # Add: Trading PDFs, EPUBs
+   ├── notes/           # Add: Your trading notes (MD, TXT)
+   ├── strategies/      # Add: Strategy descriptions
+   ├── risk_management/ # Add: Risk rules
+   └── technical_analysis/ # Add: TA guides
+   ```
+
+2. **Ingest via Dashboard:**
+   - Go to "Knowledge Base" in the sidebar
+   - Click "Ingest" tab
+   - Select your documents and category
+   - Click "Ingest"
+
+3. **Or use CLI:**
+   ```bash
+   python -m knowledge_layer.scripts.ingest path/to/file.pdf -c trading_books
+   python -m knowledge_layer.scripts.update  # Scan for changes
+   ```
 
 ## Example: How a Player Evolves
 
@@ -135,6 +208,7 @@ Win Rate: 42%, P&L: -$2,340
 PLAYER_1 (Aggressive): RSI_7, STOCH_5_3, TSI_13_25, CMO_14, WILLR_14,
                        NATR_14, OBV, MFI_14, ADX_14, DEMA_20 (10 indicators)
 Win Rate: 58%, P&L: +$4,120
+[Coach used knowledge: "Reduce position size in volatile markets"]
 ```
 
 **Run 10 (Further Evolution):**
@@ -156,8 +230,7 @@ Player configs are stored in `evolved_player_configs.json` and update automatica
     "weights": {
       "RSI_7": 1.0,
       "TSI_13_25": 0.95,
-      "NATR_14": 0.88,
-      // ... more indicators added by coach
+      "NATR_14": 0.88
     },
     "entry_threshold": 0.31,
     "exit_threshold": -0.18,

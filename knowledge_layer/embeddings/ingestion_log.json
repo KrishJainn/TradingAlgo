@@ -1,0 +1,26 @@
+{
+  "documents": {
+    "/Users/krishjain/Desktop/New Project/knowledge_layer/sources/notes/trading_principles.md": {
+      "hash": "37a12f820e18925b7c35aee01a3c12e8",
+      "category": "notes",
+      "chunks": 2,
+      "ingested_at": "2026-02-03T19:54:41.192117",
+      "metadata": null
+    },
+    "/Users/krishjain/Desktop/New Project/knowledge_layer/sources/risk_management/risk_rules.md": {
+      "hash": "04a0b2675e32d8923fd8ed2f03570ae2",
+      "category": "risk_management",
+      "chunks": 2,
+      "ingested_at": "2026-02-03T19:54:41.419715",
+      "metadata": null
+    },
+    "/Users/krishjain/Desktop/New Project/knowledge_layer/sources/technical_analysis/indicators_guide.md": {
+      "hash": "40df0c053287d6b8abe77722447551f3",
+      "category": "technical_analysis",
+      "chunks": 2,
+      "ingested_at": "2026-02-03T19:54:41.591663",
+      "metadata": null
+    }
+  },
+  "last_updated": "2026-02-03T19:54:41.591685"
+}

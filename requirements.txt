@@ -22,10 +22,9 @@ google-genai>=1.0.0
 schedule>=1.2.0
 requests>=2.31.0
 
-# Knowledge Base Dependencies
+# Knowledge Base / RAG Layer Dependencies
 chromadb>=0.4.0
 sentence-transformers>=2.2.0
-sec-edgar-downloader>=5.0.0
-PyMuPDF>=1.23.0
+pypdf>=3.0.0
+ebooklib>=0.18
 beautifulsoup4>=4.12.0
-wikipedia-api>=0.6.0

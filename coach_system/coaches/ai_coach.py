@@ -8,6 +8,8 @@ GEMINI IS THE BRAIN - It makes ALL optimization decisions:
 4. Learning from trade history to become a better trader
 
 Each player gets INDEPENDENT optimization based on their style and performance.
+
+Now enhanced with RAG Knowledge Layer for better decision-making.
 """
 
 import json
@@ -21,6 +23,14 @@ from datetime import datetime
 import numpy as np
 
 logger = logging.getLogger(__name__)
+
+# Try to import Knowledge Layer
+try:
+    from knowledge_layer import KnowledgeContext
+    KNOWLEDGE_AVAILABLE = True
+except ImportError:
+    KNOWLEDGE_AVAILABLE = False
+    logger.info("Knowledge layer not available - coach will run without RAG")
 
 # Dynamically load indicators from the actual IndicatorUniverse
 def _load_available_indicators():
@@ -136,15 +146,29 @@ class AICoach:
     - Decides which indicators to use and their weights
     - Sets entry/exit thresholds
     - Learns and improves over time
+
+    Now enhanced with RAG Knowledge Layer for contextual trading wisdom.
     """
 
     def __init__(
         self,
         use_llm: bool = True,
         llm_provider=None,
+        use_knowledge: bool = True,
     ):
         self.use_llm = use_llm
         self.llm = llm_provider
+        self.use_knowledge = use_knowledge and KNOWLEDGE_AVAILABLE
+
+        # Initialize knowledge context if available
+        self.knowledge: Optional[KnowledgeContext] = None
+        if self.use_knowledge:
+            try:
+                self.knowledge = KnowledgeContext()
+                logger.info("Knowledge layer initialized for AI Coach")
+            except Exception as e:
+                logger.warning(f"Failed to initialize knowledge layer: {e}")
+                self.use_knowledge = False
 
         # Track learning history across sessions
         self.learning_history: Dict[str, List[Dict]] = {}
@@ -199,7 +223,11 @@ class AICoach:
 
         # If no LLM or not enough trades, use fallback
         if not self.use_llm or not self.llm or len(trades) < 3:
+            reason = "LLM disabled" if not self.use_llm else "No LLM provider" if not self.llm else f"Only {len(trades)} trades (need 3+)"
+            print(f"[Coach] {player_id}: Using fallback - {reason}")
             return self._fallback_analysis(analysis, current_weights, current_config)
+
+        print(f"[Coach] {player_id}: Calling Gemini for optimization...")
 
         # === GEMINI MAKES THE DECISIONS ===
         try:
@@ -243,6 +271,62 @@ class AICoach:
 
         return analysis
 
+    def _get_knowledge_context(
+        self,
+        player_label: str,
+        market_regime: str,
+        win_rate: float,
+        pnl: float,
+    ) -> str:
+        """
+        Get relevant knowledge from the RAG layer for coaching decisions.
+
+        Args:
+            player_label: Player style (Aggressive, Conservative, etc.)
+            market_regime: Current market conditions
+            win_rate: Player's current win rate
+            pnl: Player's P&L
+
+        Returns:
+            Formatted knowledge context string for prompt injection
+        """
+        if not self.use_knowledge or not self.knowledge:
+            return ""
+
+        try:
+            # Build context query based on player situation
+            performance_desc = "underperforming" if win_rate < 0.45 else "performing well" if win_rate > 0.55 else "moderate"
+
+            query = f"{player_label} trading strategy optimization {market_regime} market {performance_desc}"
+
+            # Get player-specific context
+            market_context = {
+                "regime": market_regime,
+                "volatility": "high" if "volatile" in market_regime.lower() else "normal",
+            }
+
+            context = self.knowledge.get_context_for_player(
+                player_name=player_label.lower(),
+                market_context=market_context,
+                query=query,
+                max_tokens=800  # Keep it concise for the prompt
+            )
+
+            # Also get risk management context if losing
+            if pnl < 0:
+                risk_context = self.knowledge.get_risk_management_context({
+                    "losing": True,
+                    "regime": market_regime,
+                })
+                if risk_context:
+                    context += f"\n\nRISK MANAGEMENT CONTEXT:\n{risk_context[:500]}"
+
+            return context
+
+        except Exception as e:
+            logger.warning(f"Failed to get knowledge context: {e}")
+            return ""
+
     def _get_gemini_decision(
         self,
         analysis: PlayerAnalysis,
@@ -265,6 +349,14 @@ class AICoach:
                 "exit_reason": t.get("exit_reason", "?"),
                 "bars_held": t.get("bars_held", 0),
             })
+
+        # Get knowledge context from RAG layer
+        knowledge_context = self._get_knowledge_context(
+            player_label=analysis.player_label,
+            market_regime=market_regime,
+            win_rate=analysis.win_rate,
+            pnl=analysis.total_pnl,
+        )
 
         # Get learning history for this player
         history = self.learning_history.get(analysis.player_id, [])
@@ -303,13 +395,17 @@ class AICoach:
 
         valid_inds_str = ", ".join(valid_inds_for_prompt[:20])  # Limit to 20 for prompt size
 
+        # Build knowledge section if available
+        knowledge_section = ""
+        if knowledge_context:
+            knowledge_section = f"\n\nTRADING KNOWLEDGE (use this wisdom to inform your decisions):\n{knowledge_context}\n"
+
         prompt = f"""Optimize {analysis.player_label} trader. Stats: {analysis.total_trades} trades, {analysis.win_rate:.0%} WR, ${analysis.total_pnl:+.0f}. Regime: {market_regime}. Current entry={current_config.get('entry_threshold')}.
 
 Trades: {json.dumps(trade_details[:5])}
 
 Current indicators: {', '.join(current_inds[:8])}
-{history_summary}
-
+{history_summary}{knowledge_section}
 Return complete JSON object with ALL these fields:
 - weights: object with 8-10 indicator names as keys, float values 0.1-1.0
 - entry_threshold: float between 0.15-0.40

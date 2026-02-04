@@ -18,7 +18,7 @@ class GeminiProvider(LLMProvider):
 
     def __init__(
         self,
-        model: str = "gemini-2.5-flash",
+        model: str = "gemini-3-flash-preview",
         temperature: float = 0.3,
         max_tokens: int = 8000,
         timeout_seconds: int = 30,
@@ -50,6 +50,7 @@ class GeminiProvider(LLMProvider):
 
     def _call(self, prompt: str, temperature: float = None, max_tokens: int = None, json_mode: bool = False) -> str:
         """Make a Gemini API call."""
+        print(f"[Gemini API] Making call to {self.model}...")
         client = self._get_client()
 
         from google.genai import types
@@ -60,15 +61,21 @@ class GeminiProvider(LLMProvider):
             response_mime_type='application/json' if json_mode else None,
         )
 
-        response = client.models.generate_content(
-            model=self.model,
-            contents=prompt,
-            config=config,
-        )
+        try:
+            response = client.models.generate_content(
+                model=self.model,
+                contents=prompt,
+                config=config,
+            )
 
-        if response and response.text:
-            return response.text
-        return ""
+            if response and response.text:
+                print(f"[Gemini API] Got response: {len(response.text)} chars")
+                return response.text
+            print("[Gemini API] Empty response from API")
+            return ""
+        except Exception as e:
+            print(f"[Gemini API] ERROR: {e}")
+            raise
 
     def is_available(self) -> bool:
         """Check if Gemini is configured."""

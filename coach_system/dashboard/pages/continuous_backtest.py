@@ -1,12 +1,17 @@
 """
 Continuous 5-Player Backtest Runner with AI Coach.
 
+FIXED SETTINGS (No Configuration):
+  - 50 trading days
+  - Coach every 3 days
+  - Nifty 30 stocks
+  - 100,000 capital per player
+
 Features:
   1. Runs the full 5-player trading system (Aggressive, Conservative, Balanced, VolBreakout, Momentum)
   2. Each player has independent strategy and gets personalized coaching
   3. AI Coach optimizes each player based on their individual performance
   4. Tracks performance across multiple runs
-  5. Auto-run capability for continuous testing
 """
 
 import json
@@ -35,18 +40,21 @@ except ImportError:
 
 from coach_system.dashboard.theme import COACH_COLORS as AQTIS_COLORS
 
-try:
-    from data.symbols import NIFTY_50_SYMBOLS
-except ImportError:
-    try:
-        from data_cache.symbols import NIFTY_50_SYMBOLS
-    except ImportError:
-        NIFTY_50_SYMBOLS = [
-            "RELIANCE.NS", "TCS.NS", "HDFCBANK.NS", "INFY.NS", "ICICIBANK.NS",
-            "HINDUNILVR.NS", "SBIN.NS", "BHARTIARTL.NS", "KOTAKBANK.NS", "ITC.NS",
-            "LT.NS", "AXISBANK.NS", "MARUTI.NS", "SUNPHARMA.NS", "TITAN.NS",
-        ]
-
+# ============================================================================
+# FIXED SETTINGS - DO NOT CHANGE
+# ============================================================================
+FIXED_DAYS = 50
+FIXED_COACH_INTERVAL = 3
+FIXED_CAPITAL = 100000
+FIXED_SYMBOLS = [
+    # Nifty 30 stocks
+    "RELIANCE.NS", "TCS.NS", "HDFCBANK.NS", "INFY.NS", "ICICIBANK.NS",
+    "HINDUNILVR.NS", "SBIN.NS", "BHARTIARTL.NS", "KOTAKBANK.NS", "ITC.NS",
+    "LT.NS", "AXISBANK.NS", "MARUTI.NS", "SUNPHARMA.NS", "TITAN.NS",
+    "BAJFINANCE.NS", "ASIANPAINT.NS", "WIPRO.NS", "HCLTECH.NS", "ULTRACEMCO.NS",
+    "POWERGRID.NS", "NTPC.NS", "NESTLEIND.NS", "TATAMOTORS.NS", "M&M.NS",
+    "ONGC.NS", "JSWSTEEL.NS", "TATASTEEL.NS", "ADANIPORTS.NS", "TECHM.NS",
+]
 
 # Player colors for charts
 PLAYER_COLORS = {
@@ -65,7 +73,7 @@ PLAYER_LABELS = {
     "PLAYER_5": "Momentum",
 }
 
-# Default 5-player configurations (using available indicators)
+# Default 5-player configurations
 PLAYERS_CONFIG = {
     "PLAYER_1": {
         "label": "Aggressive",
@@ -146,28 +154,20 @@ class PlayerState:
 
 
 EVOLVED_CONFIGS_PATH = Path(__file__).parent.parent.parent.parent / "evolved_player_configs.json"
-PERFORMANCE_HISTORY_PATH = Path(__file__).parent.parent.parent.parent / "performance_history.json"
 
 
 def save_evolved_configs(configs: Dict, performance: Dict = None):
-    """
-    Save evolved configs - each player's BEST config is saved independently.
-    If a player beats their personal best P&L, their config is updated.
-    Other players keep their existing best configs.
-    """
+    """Save evolved configs - each player's BEST config is saved independently."""
     try:
-        # Load existing data
         existing_data = {}
         if EVOLVED_CONFIGS_PATH.exists():
             with open(EVOLVED_CONFIGS_PATH, "r") as f:
                 existing_data = json.load(f)
 
-        # Get existing configs and best P&Ls per player
         existing_configs = existing_data.get("configs", {})
         player_best_pnl = existing_data.get("player_best_pnl", {})
         total_runs = existing_data.get("total_runs", 0) + 1
 
-        # Check each player individually
         updates = []
         if performance and performance.get("players"):
             for pid, pdata in performance["players"].items():
@@ -175,24 +175,19 @@ def save_evolved_configs(configs: Dict, performance: Dict = None):
                 existing_best = player_best_pnl.get(pid, float("-inf"))
 
                 if current_pnl > existing_best:
-                    # This player beat their personal best!
                     existing_configs[pid] = configs[pid]
                     player_best_pnl[pid] = current_pnl
                     updates.append(f"{PLAYER_LABELS.get(pid, pid)}: ₹{current_pnl:+,.0f}")
-                    print(f"[Config] 🏆 {pid} NEW BEST! P&L: ₹{current_pnl:+,.0f} (was ₹{existing_best:+,.0f})")
                 else:
-                    # Keep existing best config for this player
                     if pid not in existing_configs:
                         existing_configs[pid] = configs[pid]
                         player_best_pnl[pid] = current_pnl
 
-        # For any missing players, add from current configs
         for pid in configs:
             if pid not in existing_configs:
                 existing_configs[pid] = configs[pid]
                 player_best_pnl[pid] = 0
 
-        # Save updated data
         save_data = {
             "saved_at": datetime.now().isoformat(),
             "configs": existing_configs,
@@ -204,52 +199,8 @@ def save_evolved_configs(configs: Dict, performance: Dict = None):
         with open(EVOLVED_CONFIGS_PATH, "w") as f:
             json.dump(save_data, f, indent=2)
 
-        if updates:
-            print(f"[Config] Updated {len(updates)} players: {', '.join(updates)}")
-        else:
-            print(f"[Config] No new personal bests this run (Run #{total_runs})")
-
-        # Save performance history
-        save_performance_history(configs, performance)
-
     except Exception as e:
-        print(f"[Config] Failed to save configs: {e}")
-        import traceback
-        traceback.print_exc()
-
-
-def save_performance_history(configs: Dict, performance: Dict):
-    """Save performance history for tracking improvement over time."""
-    try:
-        history = []
-        if PERFORMANCE_HISTORY_PATH.exists():
-            with open(PERFORMANCE_HISTORY_PATH, "r") as f:
-                history = json.load(f)
-
-        # Add this run
-        history.append({
-            "timestamp": datetime.now().isoformat(),
-            "team_pnl": performance.get("team_total_pnl", 0) if performance else 0,
-            "team_trades": performance.get("team_total_trades", 0) if performance else 0,
-            "players": {
-                pid: {
-                    "pnl": pdata.get("pnl", 0),
-                    "win_rate": pdata.get("win_rate", 0),
-                    "trades": pdata.get("trades", 0),
-                    "num_indicators": len(configs.get(pid, {}).get("weights", {})),
-                }
-                for pid, pdata in (performance.get("players", {}) if performance else {}).items()
-            }
-        })
-
-        # Keep last 100 runs
-        history = history[-100:]
-
-        with open(PERFORMANCE_HISTORY_PATH, "w") as f:
-            json.dump(history, f, indent=2)
-
-    except Exception as e:
-        print(f"[Config] Failed to save history: {e}")
+        print(f"[Config] Failed to save: {e}")
 
 
 def load_evolved_configs() -> Optional[Dict]:
@@ -258,19 +209,9 @@ def load_evolved_configs() -> Optional[Dict]:
         if EVOLVED_CONFIGS_PATH.exists():
             with open(EVOLVED_CONFIGS_PATH, "r") as f:
                 data = json.load(f)
-
-            total_runs = data.get("total_runs", 0)
-            player_best_pnl = data.get("player_best_pnl", {})
-
-            # Print each player's best
-            print(f"[Config] Loaded BEST configs from {total_runs} total runs:")
-            for pid, best_pnl in player_best_pnl.items():
-                label = PLAYER_LABELS.get(pid, pid)
-                print(f"  - {label}: Best P&L ₹{best_pnl:+,.0f}")
-
             return data.get("configs")
-    except Exception as e:
-        print(f"[Config] Failed to load configs: {e}")
+    except Exception:
+        pass
     return None
 
 
@@ -286,17 +227,6 @@ def get_player_best_pnls() -> Dict[str, float]:
     return {}
 
 
-def get_performance_history() -> List[Dict]:
-    """Load performance history for display."""
-    try:
-        if PERFORMANCE_HISTORY_PATH.exists():
-            with open(PERFORMANCE_HISTORY_PATH, "r") as f:
-                return json.load(f)
-    except Exception:
-        pass
-    return []
-
-
 def init_session_state():
     """Initialize session state variables."""
     if "continuous_running" not in st.session_state:
@@ -307,10 +237,7 @@ def init_session_state():
         st.session_state.run_count = 0
     if "last_run_time" not in st.session_state:
         st.session_state.last_run_time = None
-    if "auto_refresh" not in st.session_state:
-        st.session_state.auto_refresh = False
     if "player_configs" not in st.session_state:
-        # Try to load evolved configs from file, otherwise use defaults
         loaded = load_evolved_configs()
         if loaded:
             st.session_state.player_configs = loaded
@@ -320,6 +247,21 @@ def init_session_state():
             st.session_state.configs_evolved = False
     if "configs_evolved" not in st.session_state:
         st.session_state.configs_evolved = False
+
+
+# Cache data fetching for speed
+@st.cache_data(ttl=3600, show_spinner=False)
+def _fetch_all_data(symbols_tuple, interval: str, days: int) -> Dict:
+    """Fetch and cache OHLCV data for all symbols."""
+    symbols = list(symbols_tuple)
+    data = {}
+
+    for sym in symbols:
+        df = _fetch_symbol_data(sym, interval, days)
+        if df is not None and not df.empty:
+            data[sym] = df
+
+    return data
 
 
 def _fetch_symbol_data(symbol: str, interval: str = "5m", days: int = 60) -> Optional[pd.DataFrame]:
@@ -348,7 +290,6 @@ def _fetch_symbol_data(symbol: str, interval: str = "5m", days: int = 60) -> Opt
             pass
 
     if df is not None and not df.empty:
-        # Normalize column names to lowercase
         col_map = {}
         for c in df.columns:
             cl = c.lower()
@@ -375,26 +316,18 @@ def raw_weighted_average(normalized_df: pd.DataFrame, weights: Dict[str, float])
     return (weighted_sum / total_weight).clip(-1.0, 1.0)
 
 
-def run_5player_backtest(
-    symbols: List[str],
-    days: int,
-    coach_interval: int,
-    initial_capital: float,
-    player_configs: Dict,
-    use_ai_coach: bool = True,
-) -> Dict:
+def run_5player_backtest(player_configs: Dict) -> Dict:
     """
     Run a full 5-player backtest with AI coach optimization.
-
-    Each player trades independently with their own strategy.
-    Coach analyzes each player individually and provides personalized recommendations.
+    Uses FIXED settings: 50 days, coach every 3 days, Nifty 30 stocks.
     """
-    # Load data
-    data = {}
-    for sym in symbols:
-        df = _fetch_symbol_data(sym, interval="5m", days=days + 20)
-        if df is not None and not df.empty:
-            data[sym] = df
+    symbols = FIXED_SYMBOLS
+    days = FIXED_DAYS
+    coach_interval = FIXED_COACH_INTERVAL
+    initial_capital = FIXED_CAPITAL
+
+    # Load data (cached)
+    data = _fetch_all_data(tuple(symbols), "5m", days + 20)
 
     if not data:
         return {"error": "No data fetched"}
@@ -483,17 +416,10 @@ def run_5player_backtest(
         except Exception:
             return "unknown"
 
-    # Debug info
-    _debug = False  # Set to True for verbose output
-    _trades_entered = 0
-
     # Day simulation loop
     for day in range(total_days):
         start_bar = day * bars_per_day
         end_bar = start_bar + bars_per_day
-
-        if _debug and day < 3:
-            print(f"Day {day}: bars {start_bar}-{end_bar}")
 
         # Each player trades independently
         for pid, state in players.items():
@@ -521,7 +447,6 @@ def run_5player_backtest(
                 if day_df.empty or day_raw.empty:
                     continue
 
-                # Get active indicators for this player
                 active = [i for i in weights.keys() if i in day_raw.columns]
                 if not active:
                     continue
@@ -549,24 +474,18 @@ def run_5player_backtest(
 
                         if pos["direction"] == "LONG":
                             if last_price <= pos["stop_loss"]:
-                                exit_signal = True
-                                exit_reason = "stop_loss"
+                                exit_signal, exit_reason = True, "stop_loss"
                             elif last_price >= pos["take_profit"]:
-                                exit_signal = True
-                                exit_reason = "take_profit"
+                                exit_signal, exit_reason = True, "take_profit"
                             elif last_si < exit_thresh and state.bars_held[sym] >= min_hold:
-                                exit_signal = True
-                                exit_reason = "signal_exit"
+                                exit_signal, exit_reason = True, "signal_exit"
                         else:
                             if last_price >= pos["stop_loss"]:
-                                exit_signal = True
-                                exit_reason = "stop_loss"
+                                exit_signal, exit_reason = True, "stop_loss"
                             elif last_price <= pos["take_profit"]:
-                                exit_signal = True
-                                exit_reason = "take_profit"
+                                exit_signal, exit_reason = True, "take_profit"
                             elif last_si > -exit_thresh and state.bars_held[sym] >= min_hold:
-                                exit_signal = True
-                                exit_reason = "signal_exit"
+                                exit_signal, exit_reason = True, "signal_exit"
 
                         if exit_signal:
                             entry_price = pos["entry_price"]
@@ -603,16 +522,10 @@ def run_5player_backtest(
                             direction = None
 
                         if direction:
-                            # Position sizing: max 20% of equity per position
                             max_position_value = state.equity * 0.20
                             qty = max(1, int(max_position_value / last_price))
                             cost = qty * last_price
-
-                            # Calculate stop based on ATR
                             stop_dist = atr * 2 if atr > 0 else last_price * 0.02
-
-                            if _debug and day < 3:
-                                print(f"  {pid} {sym}: {direction} signal SI={last_si:.3f}, qty={qty}, cost={cost:.0f}")
 
                             if cost <= state.equity * 0.25:
                                 if direction == "LONG":
@@ -630,117 +543,81 @@ def run_5player_backtest(
                                     "take_profit": tp,
                                 }
                                 state.bars_held[sym] = 0
-                                _trades_entered += 1
-
-                                if _debug:
-                                    print(f"    -> ENTERED {direction} {qty} shares @ {last_price:.2f}")
 
                     state.prev_si[sym] = last_si
 
-                except Exception as e:
-                    # Log errors for debugging
-                    import traceback
-                    print(f"Error in {pid} {sym}: {e}")
-                    traceback.print_exc()
+                except Exception:
                     continue
 
             state.daily_pnl.append(day_pnl)
             state.equity_curve.append(state.equity)
 
-        # Coach optimization - each player analyzed INDEPENDENTLY
+        # Coach optimization - every 3 days
         if (day + 1) % coach_interval == 0 and day < total_days - 1:
             regime = detect_regime(day)
 
-            if use_ai_coach:
+            try:
+                from coach_system.coaches.ai_coach import AICoach
+                from coach_system.llm.gemini_provider import GeminiProvider
+                import dotenv
+
+                env_path = Path(__file__).parent.parent.parent.parent / ".env"
+                dotenv.load_dotenv(env_path)
+
+                llm = None
                 try:
-                    from coach_system.coaches.ai_coach import AICoach
-                    from coach_system.llm.gemini_provider import GeminiProvider
-                    import dotenv
-
-                    # Load env from project root (New Project/.env)
-                    env_path = Path(__file__).parent.parent.parent.parent / ".env"
-                    dotenv.load_dotenv(env_path)
-
-                    # Initialize Gemini LLM
-                    llm = None
-                    try:
-                        llm = GeminiProvider()
-                        if llm.is_available():
-                            print(f"[Coach Day {day+1}] Using Gemini LLM: {llm.model}")
-                        else:
-                            llm = None
-                    except Exception as e:
-                        print(f"[Coach] LLM error: {e}")
+                    llm = GeminiProvider()
+                    if not llm.is_available():
+                        print("[Coach] Gemini API key not found - using fallback")
                         llm = None
+                    else:
+                        print(f"[Coach] Gemini provider ready with model: {llm.model}")
+                except Exception as e:
+                    print(f"[Coach] Failed to initialize Gemini: {e}")
+                    llm = None
 
-                    coach = AICoach(use_llm=(llm is not None), llm_provider=llm)
+                coach = AICoach(use_llm=(llm is not None), llm_provider=llm)
 
-                    session = {"day": day + 1, "regime": regime, "updates": {}, "llm_used": llm is not None}
+                session = {"day": day + 1, "regime": regime, "updates": {}, "llm_used": llm is not None}
 
-                    for pid, state in players.items():
-                        recent_trades = state.trades[-50:] if len(state.trades) > 50 else state.trades
+                for pid, state in players.items():
+                    recent_trades = state.trades[-50:] if len(state.trades) > 50 else state.trades
 
-                        if not recent_trades:
-                            continue
+                    if not recent_trades:
+                        continue
 
-                        analysis = coach.analyze_player(
-                            player_id=pid,
-                            player_label=state.config.get("label", "Balanced"),
-                            trades=recent_trades,
-                            current_weights=state.config.get("weights", {}),
-                            current_config=state.config,
-                            market_regime=regime,
-                        )
+                    analysis = coach.analyze_player(
+                        player_id=pid,
+                        player_label=state.config.get("label", "Balanced"),
+                        trades=recent_trades,
+                        current_weights=state.config.get("weights", {}),
+                        current_config=state.config,
+                        market_regime=regime,
+                    )
 
-                        new_config = coach.apply_recommendations(state.config, analysis)
-                        state.config = new_config
+                    new_config = coach.apply_recommendations(state.config, analysis)
+                    state.config = new_config
 
-                        state.coach_history.append({
-                            "day": day + 1,
-                            "win_rate": analysis.win_rate,
-                            "pnl": analysis.total_pnl,
-                            "profit_factor": analysis.profit_factor,
-                            "weights_changed": len(analysis.weight_changes),
-                            "indicators_added": list(analysis.indicators_to_add.keys()),
-                            "indicators_removed": analysis.indicators_to_remove,
-                            "best_indicators": analysis.best_indicators,
-                            "worst_indicators": analysis.worst_indicators,
-                            "new_threshold": new_config.get("entry_threshold", 0.30),
-                            "num_indicators": len(new_config.get("weights", {})),
-                        })
+                    state.coach_history.append({
+                        "day": day + 1,
+                        "win_rate": analysis.win_rate,
+                        "pnl": analysis.total_pnl,
+                        "num_indicators": len(new_config.get("weights", {})),
+                    })
 
-                        session["updates"][pid] = {
-                            "label": state.config.get("label"),
-                            "win_rate": analysis.win_rate,
-                            "pnl": analysis.total_pnl,
-                            "weights_changed": len(analysis.weight_changes),
-                            "indicators_added": list(analysis.indicators_to_add.keys()),
-                            "indicators_removed": analysis.indicators_to_remove,
-                            "best_indicators": analysis.best_indicators,
-                            "worst_indicators": analysis.worst_indicators,
-                            "llm_recommendations": analysis.llm_recommendations,
-                            "llm_analysis": analysis.llm_analysis[:500] if analysis.llm_analysis else "",
-                        }
+                    session["updates"][pid] = {
+                        "label": state.config.get("label"),
+                        "win_rate": analysis.win_rate,
+                        "pnl": analysis.total_pnl,
+                        "indicators_added": list(analysis.indicators_to_add.keys()),
+                        "indicators_removed": analysis.indicators_to_remove,
+                    }
 
-                        # Print coach summary
-                        summary = coach.get_coach_summary(analysis)
-                        print(f"  [Coach] {pid} ({state.config.get('label')}): {summary}")
+                coach_sessions.append(session)
 
-                    coach_sessions.append(session)
+            except ImportError:
+                pass
 
-                except ImportError:
-                    # Fallback: basic threshold adjustment
-                    for pid, state in players.items():
-                        trades = state.trades[-30:]
-                        if trades:
-                            wins = sum(1 for t in trades if t["pnl"] > 0)
-                            wr = wins / len(trades)
-                            if wr < 0.40:
-                                state.config["entry_threshold"] = min(0.45, state.config["entry_threshold"] + 0.02)
-                            elif wr > 0.55:
-                                state.config["entry_threshold"] = max(0.20, state.config["entry_threshold"] - 0.02)
-
-    # Check if LLM was used in any session
     llm_was_used = any(s.get("llm_used", False) for s in coach_sessions) if coach_sessions else False
 
     # Compile results
@@ -750,7 +627,6 @@ def run_5player_backtest(
         "symbols": len(data),
         "coach_interval": coach_interval,
         "coach_sessions": len(coach_sessions),
-        "coach_sessions_detail": coach_sessions,  # Full details for display
         "llm_used": llm_was_used,
         "market_regime": detect_regime(total_days - 1),
         "players": {},
@@ -776,7 +652,6 @@ def run_5player_backtest(
         else:
             sharpe = 0
 
-        # Max drawdown
         eq_curve = state.equity_curve
         if len(eq_curve) > 1:
             peak = pd.Series(eq_curve).expanding().max()
@@ -798,14 +673,12 @@ def run_5player_backtest(
             "final_equity": state.equity,
             "final_threshold": state.config.get("entry_threshold", 0.30),
             "num_indicators": len(state.config.get("weights", {})),
-            "coach_sessions": len(state.coach_history),
-            "equity_curve": state.equity_curve[-10:],  # Last 10 points for charts
         }
 
         results["team_total_pnl"] += pnl
         results["team_total_trades"] += trades
 
-    # Update stored configs for next run (learning persists)
+    # Update stored configs
     updated_configs = {}
     for pid, state in players.items():
         updated_configs[pid] = state.config
@@ -817,144 +690,12 @@ def render_continuous_backtest(memory=None):
     """Render the Continuous 5-Player Backtest page."""
     init_session_state()
 
-    st.header("Continuous 5-Player Backtest with AI Coach")
-    st.markdown(
-        "Run the **full 5-player trading system** with independent AI coaching for each player. "
-        "Strategies evolve across runs as the coach learns from each player's performance."
-    )
+    st.header("5-Player Backtest with AI Coach")
 
-    # Sidebar Configuration
-    st.sidebar.subheader("Backtest Settings")
+    # Fixed settings info
+    st.info(f"**Fixed Settings:** {FIXED_DAYS} days | Coach every {FIXED_COACH_INTERVAL} days | {len(FIXED_SYMBOLS)} Nifty stocks | ₹{FIXED_CAPITAL:,} per player")
 
-    # Symbol Selection
-    symbol_mode = st.sidebar.radio("Symbols", ["NIFTY 50 Top 15", "Custom"], index=0)
-    if symbol_mode == "NIFTY 50 Top 15":
-        symbols = NIFTY_50_SYMBOLS[:15]
-    else:
-        custom = st.sidebar.text_area("Enter symbols (one per line)", "RELIANCE.NS\nTCS.NS\nINFY.NS\nHDFCBANK.NS\nICICIBANK.NS")
-        symbols = [s.strip() for s in custom.strip().split("\n") if s.strip()]
-
-    st.sidebar.markdown("**Parameters**")
-    days = st.sidebar.slider("Trading Days per Run", 10, 60, 30, 5)
-    coach_interval = st.sidebar.slider("Coach Interval (days)", 1, 10, 3, 1)
-    capital = st.sidebar.number_input("Capital per Player", 50000, 500000, 100000, 10000)
-
-    use_ai_coach = st.sidebar.checkbox("Use AI Coach", value=True, help="Enable per-player AI optimization")
-    persist_learning = st.sidebar.checkbox("Persist Learning", value=True, help="Keep learned configs across runs")
-
-    # Auto-run settings
-    st.sidebar.markdown("**Auto-Run**")
-    auto_interval = st.sidebar.slider("Run interval (seconds)", 30, 300, 120, 30)
-    max_runs = st.sidebar.number_input("Max runs (0=unlimited)", 0, 50, 5, 1)
-
-    # Reset configs button
-    if st.sidebar.button("Reset All Player Configs"):
-        st.session_state.player_configs = deepcopy(PLAYERS_CONFIG)
-        st.session_state.configs_evolved = False
-        # Delete saved file
-        if EVOLVED_CONFIGS_PATH.exists():
-            EVOLVED_CONFIGS_PATH.unlink()
-        st.success("Player configs reset to defaults")
-
-    # Control buttons
-    col1, col2, col3, col4 = st.columns(4)
-
-    with col1:
-        if st.button("Run Single Backtest", type="primary"):
-            with st.spinner("Running 5-player backtest with AI coach..."):
-                result, new_configs = run_5player_backtest(
-                    symbols=symbols,
-                    days=days,
-                    coach_interval=coach_interval,
-                    initial_capital=capital,
-                    player_configs=st.session_state.player_configs,
-                    use_ai_coach=use_ai_coach,
-                )
-
-                if "error" not in result:
-                    result["run_number"] = st.session_state.run_count + 1
-                    # Store evolved configs in result for tracking
-                    result["evolved_configs"] = new_configs
-                    st.session_state.run_count += 1
-                    st.session_state.continuous_results.append(result)
-                    st.session_state.last_run_time = datetime.now()
-
-                    if persist_learning:
-                        # Save configs - each player's best is saved individually
-                        save_evolved_configs(new_configs, result)
-                        # Reload the best configs from file (mix of best from all runs)
-                        best_configs = load_evolved_configs()
-                        if best_configs:
-                            st.session_state.player_configs = best_configs
-                        st.session_state.configs_evolved = True
-
-                    st.success(f"Run #{result['run_number']} complete! Team P&L: ₹{result['team_total_pnl']:+,.0f}")
-                else:
-                    st.error(result["error"])
-
-    with col2:
-        auto_run = st.checkbox("Auto-Run", value=st.session_state.auto_refresh)
-        st.session_state.auto_refresh = auto_run
-
-    with col3:
-        if st.button("Clear Results"):
-            st.session_state.continuous_results = []
-            st.session_state.run_count = 0
-            st.session_state.player_configs = deepcopy(PLAYERS_CONFIG)
-            st.rerun()
-
-    with col4:
-        st.metric("Total Runs", st.session_state.run_count)
-
-    # Auto-run logic
-    if st.session_state.auto_refresh:
-        should_run = False
-        if st.session_state.last_run_time is None:
-            should_run = True
-        else:
-            elapsed = (datetime.now() - st.session_state.last_run_time).total_seconds()
-            if elapsed >= auto_interval:
-                should_run = True
-
-        if max_runs > 0 and st.session_state.run_count >= max_runs:
-            st.session_state.auto_refresh = False
-            st.info(f"Reached max runs ({max_runs}). Auto-run stopped.")
-        elif should_run:
-            with st.spinner(f"Auto-running backtest #{st.session_state.run_count + 1}..."):
-                result, new_configs = run_5player_backtest(
-                    symbols=symbols,
-                    days=days,
-                    coach_interval=coach_interval,
-                    initial_capital=capital,
-                    player_configs=st.session_state.player_configs,
-                    use_ai_coach=use_ai_coach,
-                )
-
-                if "error" not in result:
-                    result["run_number"] = st.session_state.run_count + 1
-                    result["evolved_configs"] = new_configs
-                    st.session_state.run_count += 1
-                    st.session_state.continuous_results.append(result)
-                    st.session_state.last_run_time = datetime.now()
-
-                    if persist_learning:
-                        # Save configs - each player's best is saved individually
-                        save_evolved_configs(new_configs, result)
-                        # Reload the best configs from file
-                        best_configs = load_evolved_configs()
-                        if best_configs:
-                            st.session_state.player_configs = best_configs
-                        st.session_state.configs_evolved = True
-
-        time.sleep(1)
-        st.rerun()
-
-    # Display Results
-    st.divider()
-
-    results = st.session_state.continuous_results
-
-    # Show each player's best P&L from file
+    # Show each player's best P&L
     try:
         if EVOLVED_CONFIGS_PATH.exists():
             with open(EVOLVED_CONFIGS_PATH, "r") as f:
@@ -962,17 +703,10 @@ def render_continuous_backtest(memory=None):
 
             player_best_pnl = saved_data.get("player_best_pnl", {})
             total_runs = saved_data.get("total_runs", 0)
-            last_update = saved_data.get("last_update", "N/A")
-            if last_update != "N/A":
-                last_update = last_update[:19].replace("T", " ")
-
-            # Calculate team best (sum of individual bests)
             team_best = sum(player_best_pnl.values())
 
-            st.markdown("### 🏆 Personal Best Performance (Per Player)")
-            st.caption(f"Each player's config is saved when they beat their personal best P&L. Total runs: {total_runs}")
+            st.markdown("### Personal Best (Per Player)")
 
-            # Show each player's best
             pcols = st.columns(5)
             for i, pid in enumerate(["PLAYER_1", "PLAYER_2", "PLAYER_3", "PLAYER_4", "PLAYER_5"]):
                 best = player_best_pnl.get(pid, 0)
@@ -980,322 +714,163 @@ def render_continuous_backtest(memory=None):
                 color = "normal" if best >= 0 else "inverse"
                 pcols[i].metric(label, f"₹{best:+,.0f}", delta_color=color)
 
-            st.markdown(f"**Combined Best P&L: ₹{team_best:+,.0f}** | Last updated: {last_update}")
-            st.markdown("---")
+            st.caption(f"Combined Best: ₹{team_best:+,.0f} | Total Runs: {total_runs}")
+            st.divider()
     except Exception:
         pass
 
+    # Control buttons
+    col1, col2, col3 = st.columns([2, 1, 1])
+
+    with col1:
+        if st.button("Run Backtest", type="primary", use_container_width=True):
+            progress = st.progress(0, text="Fetching data...")
+
+            try:
+                progress.progress(10, text="Fetching market data...")
+
+                result, new_configs = run_5player_backtest(
+                    player_configs=st.session_state.player_configs,
+                )
+
+                progress.progress(90, text="Saving results...")
+
+                if "error" not in result:
+                    result["run_number"] = st.session_state.run_count + 1
+                    st.session_state.run_count += 1
+                    st.session_state.continuous_results.append(result)
+                    st.session_state.last_run_time = datetime.now()
+
+                    # Save configs
+                    save_evolved_configs(new_configs, result)
+                    best_configs = load_evolved_configs()
+                    if best_configs:
+                        st.session_state.player_configs = best_configs
+                    st.session_state.configs_evolved = True
+
+                    progress.progress(100, text="Complete!")
+                    time.sleep(0.5)
+                    progress.empty()
+
+                    st.success(f"Run #{result['run_number']} complete! Team P&L: ₹{result['team_total_pnl']:+,.0f}")
+                else:
+                    progress.empty()
+                    st.error(result["error"])
+
+            except Exception as e:
+                progress.empty()
+                st.error(f"Error: {e}")
+
+    with col2:
+        if st.button("Clear Results", use_container_width=True):
+            st.session_state.continuous_results = []
+            st.session_state.run_count = 0
+            st.rerun()
+
+    with col3:
+        if st.button("Reset Configs", use_container_width=True):
+            st.session_state.player_configs = deepcopy(PLAYERS_CONFIG)
+            st.session_state.configs_evolved = False
+            if EVOLVED_CONFIGS_PATH.exists():
+                EVOLVED_CONFIGS_PATH.unlink()
+            st.success("Reset to defaults")
+            st.rerun()
+
+    # Display Results
+    st.divider()
+
+    results = st.session_state.continuous_results
+
     if not results:
-        st.info("No backtest results yet. Click 'Run Single Backtest' or enable 'Auto-Run' to start.")
-
-        # Show current player configs with evolution status
-        evolved = st.session_state.get("configs_evolved", False)
-        st.subheader(f"Current Player Configurations {'🧬 (Best Evolved)' if evolved else '📋 (Default)'}")
-
-        if evolved:
-            st.success("✅ Using BEST evolved configurations from previous runs. New runs will only update configs if they beat this performance!")
-
-        for pid, config in st.session_state.player_configs.items():
-            original = PLAYERS_CONFIG.get(pid, {})
-            orig_inds = len(original.get("weights", {}))
-            curr_inds = len(config.get("weights", {}))
-            orig_thresh = original.get("entry_threshold", 0.30)
-            curr_thresh = config.get("entry_threshold", 0.30)
-
-            # Show evolution delta
-            ind_delta = curr_inds - orig_inds
-            thresh_delta = curr_thresh - orig_thresh
-
-            label = PLAYER_LABELS.get(pid, pid)
-            delta_str = ""
-            if evolved and (ind_delta != 0 or abs(thresh_delta) > 0.001):
-                delta_str = f" | Δ: {ind_delta:+d} inds, {thresh_delta:+.2f} thresh"
-
-            with st.expander(f"{label}: Entry {curr_thresh:.2f}, {curr_inds} indicators{delta_str}"):
-                col1, col2 = st.columns(2)
-                with col1:
-                    st.markdown("**Current Config:**")
-                    st.json({
-                        "entry_threshold": config.get("entry_threshold"),
-                        "exit_threshold": config.get("exit_threshold"),
-                        "min_hold_bars": config.get("min_hold_bars"),
-                        "num_indicators": curr_inds,
-                        "indicators": list(config.get("weights", {}).keys()),
-                    })
-                with col2:
-                    if evolved:
-                        st.markdown("**Original (Default):**")
-                        st.json({
-                            "entry_threshold": original.get("entry_threshold"),
-                            "exit_threshold": original.get("exit_threshold"),
-                            "min_hold_bars": original.get("min_hold_bars"),
-                            "num_indicators": orig_inds,
-                            "indicators": list(original.get("weights", {}).keys()),
-                        })
+        st.info("Click 'Run Backtest' to start.")
         return
 
-    # Team summary
-    st.subheader(f"Team Results Summary ({len(results)} runs)")
+    # Latest run
+    latest = results[-1]
 
-    team_pnls = [r["team_total_pnl"] for r in results]
-    team_trades = [r["team_total_trades"] for r in results]
+    st.subheader(f"Run #{latest.get('run_number', '?')} Results")
+    st.caption(f"Regime: {latest.get('market_regime', 'unknown')} | LLM: {'Active' if latest.get('llm_used') else 'Off'}")
 
-    c1, c2, c3, c4, c5 = st.columns(5)
-    c1.metric("Avg Team P&L", f"₹{np.mean(team_pnls):+,.0f}")
-    c2.metric("Total Team P&L", f"₹{sum(team_pnls):+,.0f}")
-    c3.metric("Total Trades", sum(team_trades))
-    c4.metric("Best Run", f"₹{max(team_pnls):+,.0f}")
-    c5.metric("Worst Run", f"₹{min(team_pnls):+,.0f}")
-
-    # Per-player performance across runs
-    st.subheader("Player Performance Across Runs")
-
-    # Build player data
-    player_data = {pid: {"pnls": [], "win_rates": [], "trades": []} for pid in PLAYER_LABELS.keys()}
-
-    for r in results:
-        for pid, pdata in r.get("players", {}).items():
-            if pid in player_data:
-                player_data[pid]["pnls"].append(pdata.get("pnl", 0))
-                player_data[pid]["win_rates"].append(pdata.get("win_rate", 0))
-                player_data[pid]["trades"].append(pdata.get("trades", 0))
-
-    # Player summary table
-    player_summary = []
-    for pid, data in player_data.items():
-        if data["pnls"]:
-            player_summary.append({
-                "Player": PLAYER_LABELS.get(pid, pid),
-                "Avg P&L": f"₹{np.mean(data['pnls']):+,.0f}",
-                "Total P&L": f"₹{sum(data['pnls']):+,.0f}",
-                "Avg WR": f"{np.mean(data['win_rates']):.1%}",
-                "Total Trades": sum(data["trades"]),
-            })
-
-    if player_summary:
-        st.dataframe(pd.DataFrame(player_summary), use_container_width=True)
-
-    # P&L chart by player
-    st.subheader("P&L by Player Across Runs")
-
-    fig = go.Figure()
-    run_numbers = list(range(1, len(results) + 1))
-
-    for pid, data in player_data.items():
-        if data["pnls"]:
-            fig.add_trace(go.Scatter(
-                x=run_numbers,
-                y=np.cumsum(data["pnls"]),
-                mode="lines+markers",
-                name=PLAYER_LABELS.get(pid, pid),
-                line=dict(color=PLAYER_COLORS.get(pid, "#888")),
-            ))
-
-    fig.update_layout(
-        title="Cumulative P&L by Player",
-        xaxis_title="Run #",
-        yaxis_title="Cumulative P&L (₹)",
-        height=400,
-        template="plotly_dark",
-        paper_bgcolor=AQTIS_COLORS["background"],
-        plot_bgcolor=AQTIS_COLORS["card_bg"],
-        font=dict(color=AQTIS_COLORS["text"]),
-    )
-    st.plotly_chart(fig, use_container_width=True)
-
-    # Team P&L chart
-    st.subheader("Team P&L Across Runs")
-
-    fig2 = make_subplots(rows=2, cols=1, shared_xaxes=True,
-                         subplot_titles=("P&L per Run", "Cumulative P&L"),
-                         vertical_spacing=0.1)
-
-    colors = [AQTIS_COLORS["green"] if p >= 0 else AQTIS_COLORS["red"] for p in team_pnls]
-    fig2.add_trace(go.Bar(x=run_numbers, y=team_pnls, marker_color=colors, name="P&L"), row=1, col=1)
-    fig2.add_trace(go.Scatter(x=run_numbers, y=np.cumsum(team_pnls), mode="lines+markers",
-                              line=dict(color=AQTIS_COLORS["blue"]), name="Cumulative"), row=2, col=1)
-
-    fig2.update_layout(
-        height=400,
-        showlegend=False,
-        template="plotly_dark",
-        paper_bgcolor=AQTIS_COLORS["background"],
-        plot_bgcolor=AQTIS_COLORS["card_bg"],
-        font=dict(color=AQTIS_COLORS["text"]),
-    )
-    st.plotly_chart(fig2, use_container_width=True)
-
-    # Latest run details
-    if results:
-        latest = results[-1]
-        st.subheader(f"Latest Run Details (Run #{latest.get('run_number', '?')})")
-
-        llm_used = latest.get("llm_used", False)
-        st.markdown(f"**Market Regime:** {latest.get('market_regime', 'unknown')} | "
-                    f"**Days:** {latest.get('total_days', 0)} | "
-                    f"**Coach Sessions:** {latest.get('coach_sessions', 0)} | "
-                    f"**LLM Coach:** {'✅ Active' if llm_used else '❌ Disabled'}")
-
-        # Per-player details
-        cols = st.columns(5)
-        for i, (pid, pdata) in enumerate(latest.get("players", {}).items()):
-            with cols[i % 5]:
-                color = "normal" if pdata.get("pnl", 0) >= 0 else "inverse"
-                st.metric(
-                    pdata.get("label", pid),
-                    f"₹{pdata.get('pnl', 0):+,.0f}",
-                    f"WR: {pdata.get('win_rate', 0):.0%}",
-                    delta_color=color
-                )
-                st.caption(f"Trades: {pdata.get('trades', 0)} | Sharpe: {pdata.get('sharpe', 0):.2f}")
-                st.caption(f"Indicators: {pdata.get('num_indicators', 0)} | Entry: {pdata.get('final_threshold', 0.30):.2f}")
-
-        # Coach Optimization Details
-        st.subheader("🧠 AI Coach Optimization Details")
-
-        coach_sessions_data = latest.get("coach_sessions_detail", [])
-        if coach_sessions_data:
-            for session in coach_sessions_data[-3:]:  # Last 3 sessions
-                st.markdown(f"**Day {session.get('day', '?')} | Regime: {session.get('regime', 'unknown')} | LLM: {'✅' if session.get('llm_used') else '❌'}**")
-                updates = session.get("updates", {})
-
-                if updates:
-                    coach_cols = st.columns(len(updates))
-                    for idx, (pid, update) in enumerate(updates.items()):
-                        with coach_cols[idx]:
-                            label = update.get("label", pid)
-                            st.markdown(f"**{label}**")
-
-                            # Performance
-                            wr = update.get("win_rate", 0)
-                            pnl = update.get("pnl", 0)
-                            st.caption(f"WR: {wr:.1%} | P&L: ₹{pnl:+,.0f}")
-
-                            # Changes made
-                            weights_changed = update.get("weights_changed", 0)
-                            added = update.get("indicators_added", [])
-                            removed = update.get("indicators_removed", [])
-
-                            if weights_changed > 0:
-                                st.caption(f"⚖️ {weights_changed} weights adjusted")
-                            if added:
-                                st.caption(f"➕ Added: {', '.join(added[:3])}")
-                            if removed:
-                                st.caption(f"➖ Removed: {', '.join(removed[:3])}")
-
-                            # LLM recommendations
-                            llm_recs = update.get("llm_recommendations", [])
-                            if llm_recs:
-                                with st.expander("LLM Insights"):
-                                    for rec in llm_recs[:3]:
-                                        st.markdown(f"• {rec}")
-                st.divider()
-        else:
-            st.info("No coach optimization sessions recorded yet. Run more days or decrease coach interval.")
-
-    # Strategy Evolution Tracker
-    st.subheader("🧬 Strategy Evolution Tracker")
-
-    # Show how each player's config has evolved from original
-    evolved = st.session_state.get("configs_evolved", False)
-    if evolved:
-        evolution_data = []
-        for pid in ["PLAYER_1", "PLAYER_2", "PLAYER_3", "PLAYER_4", "PLAYER_5"]:
-            original = PLAYERS_CONFIG.get(pid, {})
-            current = st.session_state.player_configs.get(pid, {})
-
-            orig_inds = set(original.get("weights", {}).keys())
-            curr_inds = set(current.get("weights", {}).keys())
-
-            added = curr_inds - orig_inds
-            removed = orig_inds - curr_inds
-            kept = orig_inds & curr_inds
-
-            # Calculate weight changes for kept indicators
-            weight_changes = 0
-            for ind in kept:
-                orig_w = original.get("weights", {}).get(ind, 0)
-                curr_w = current.get("weights", {}).get(ind, 0)
-                if abs(curr_w - orig_w) > 0.01:
-                    weight_changes += 1
-
-            evolution_data.append({
-                "Player": PLAYER_LABELS.get(pid, pid),
-                "Original Inds": len(orig_inds),
-                "Current Inds": len(curr_inds),
-                "Added": len(added),
-                "Removed": len(removed),
-                "Weights Changed": weight_changes,
-                "Entry Δ": f"{current.get('entry_threshold', 0.30) - original.get('entry_threshold', 0.30):+.2f}",
-                "Current Entry": f"{current.get('entry_threshold', 0.30):.2f}",
-            })
-
-        st.dataframe(pd.DataFrame(evolution_data), use_container_width=True)
-
-        # Detailed view per player
-        with st.expander("View Detailed Evolution (Indicators Added/Removed)"):
-            for pid in ["PLAYER_1", "PLAYER_2", "PLAYER_3", "PLAYER_4", "PLAYER_5"]:
-                original = PLAYERS_CONFIG.get(pid, {})
-                current = st.session_state.player_configs.get(pid, {})
-
-                orig_inds = set(original.get("weights", {}).keys())
-                curr_inds = set(current.get("weights", {}).keys())
-
-                added = curr_inds - orig_inds
-                removed = orig_inds - curr_inds
-
-                st.markdown(f"**{PLAYER_LABELS.get(pid, pid)}:**")
-                if added:
-                    st.markdown(f"  ➕ Added: {', '.join(sorted(added))}")
-                if removed:
-                    st.markdown(f"  ➖ Removed: {', '.join(sorted(removed))}")
-                if not added and not removed:
-                    st.markdown(f"  ∅ No indicator changes (only weight adjustments)")
-    else:
-        st.info("Configs haven't evolved yet. Run backtests to see how the AI coach optimizes each player's strategy.")
-
-    # Run history table
-    st.subheader("Run History")
-    history_data = []
-    for r in results:
-        row = {
-            "Run": r.get("run_number", "?"),
-            "Time": r.get("run_time", "")[:19],
-            "Team P&L": f"₹{r.get('team_total_pnl', 0):+,.0f}",
-            "Trades": r.get("team_total_trades", 0),
-            "Regime": r.get("market_regime", "?"),
-        }
-        for pid in ["PLAYER_1", "PLAYER_2", "PLAYER_3", "PLAYER_4", "PLAYER_5"]:
-            pdata = r.get("players", {}).get(pid, {})
-            row[PLAYER_LABELS.get(pid, pid)[:3]] = f"₹{pdata.get('pnl', 0):+,.0f}"
-        history_data.append(row)
-
-    st.dataframe(pd.DataFrame(history_data), use_container_width=True, height=250)
-
-    # Export
-    st.subheader("Export")
-    col_dl1, col_dl2 = st.columns(2)
-    with col_dl1:
-        st.download_button(
-            "Download All Results (JSON)",
-            data=json.dumps(results, indent=2, default=str),
-            file_name=f"5player_backtest_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
-            mime="application/json",
-        )
-    with col_dl2:
-        if history_data:
-            st.download_button(
-                "Download Summary (CSV)",
-                data=pd.DataFrame(history_data).to_csv(index=False),
-                file_name=f"5player_summary_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
-                mime="text/csv",
+    # Per-player results
+    cols = st.columns(5)
+    for i, (pid, pdata) in enumerate(latest.get("players", {}).items()):
+        with cols[i]:
+            pnl = pdata.get("pnl", 0)
+            color = "normal" if pnl >= 0 else "inverse"
+            st.metric(
+                pdata.get("label", pid),
+                f"₹{pnl:+,.0f}",
+                f"WR: {pdata.get('win_rate', 0):.0%}",
+                delta_color=color
             )
+            st.caption(f"{pdata.get('trades', 0)} trades | {pdata.get('num_indicators', 0)} inds")
+
+    # Team total
+    st.metric("Team Total P&L", f"₹{latest['team_total_pnl']:+,.0f}")
+
+    # Charts if multiple runs
+    if len(results) > 1:
+        st.subheader("Performance Across Runs")
+
+        player_data = {pid: [] for pid in PLAYER_LABELS.keys()}
+        team_pnls = []
+
+        for r in results:
+            team_pnls.append(r["team_total_pnl"])
+            for pid, pdata in r.get("players", {}).items():
+                if pid in player_data:
+                    player_data[pid].append(pdata.get("pnl", 0))
+
+        # Cumulative P&L chart
+        fig = go.Figure()
+        run_numbers = list(range(1, len(results) + 1))
+
+        for pid, pnls in player_data.items():
+            if pnls:
+                fig.add_trace(go.Scatter(
+                    x=run_numbers,
+                    y=np.cumsum(pnls),
+                    mode="lines+markers",
+                    name=PLAYER_LABELS.get(pid, pid),
+                    line=dict(color=PLAYER_COLORS.get(pid, "#888")),
+                ))
+
+        fig.update_layout(
+            title="Cumulative P&L by Player",
+            xaxis_title="Run #",
+            yaxis_title="Cumulative P&L (₹)",
+            height=350,
+            template="plotly_white",
+        )
+        st.plotly_chart(fig, use_container_width=True)
+
+        # Team P&L bar chart
+        colors = [AQTIS_COLORS["green"] if p >= 0 else AQTIS_COLORS["red"] for p in team_pnls]
+        fig2 = go.Figure()
+        fig2.add_trace(go.Bar(x=run_numbers, y=team_pnls, marker_color=colors))
+        fig2.update_layout(
+            title="Team P&L per Run",
+            xaxis_title="Run #",
+            yaxis_title="P&L (₹)",
+            height=250,
+            template="plotly_white",
+        )
+        st.plotly_chart(fig2, use_container_width=True)
+
+    # Summary stats
+    if len(results) > 1:
+        st.subheader("Summary")
+        team_pnls = [r["team_total_pnl"] for r in results]
+        c1, c2, c3, c4 = st.columns(4)
+        c1.metric("Avg P&L", f"₹{np.mean(team_pnls):+,.0f}")
+        c2.metric("Total P&L", f"₹{sum(team_pnls):+,.0f}")
+        c3.metric("Best Run", f"₹{max(team_pnls):+,.0f}")
+        c4.metric("Worst Run", f"₹{min(team_pnls):+,.0f}")
 
 
-# Auto-run when Streamlit discovers this as a page
 def _auto_run():
     try:
-        st.set_page_config(page_title="Continuous 5-Player Backtest", page_icon="🔄", layout="wide")
+        st.set_page_config(page_title="5-Player Backtest", page_icon="📈", layout="wide")
     except Exception:
         pass
     render_continuous_backtest(None)

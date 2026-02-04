@@ -118,11 +118,5 @@ elif page == "Paper Trading":
     st.info("Paper trading simulation coming soon. Use the Continuous Backtest for now.")
 
 elif page == "Knowledge Base":
-    st.header("📚 Knowledge Base")
-    try:
-        from aqtis.knowledge.knowledge_manager import KnowledgeManager
-        km = KnowledgeManager()
-        stats = km.get_stats()
-        st.json(stats)
-    except ImportError:
-        st.warning("Knowledge base module not available.")
+    from coach_system.dashboard.pages.knowledge_base import render_knowledge_base
+    render_knowledge_base()
