@@ -1,9 +1,7 @@
 """
-AQTIS - Adaptive Quantitative Trading Intelligence System
+AQTIS - Knowledge base and legacy components.
 
-AI-powered quantitative trading system that continuously learns from every trade,
-adapts to market regimes in real-time, and compounds trading knowledge through
-a persistent memory layer.
+Main trading system is now in coach_system/
 """
 
-__version__ = "0.1.0"
+__version__ = "1.0.0"

@@ -44,25 +44,19 @@ env/
 .DS_Store
 Thumbs.db
 
-# Trading data
-paper_trades/
+# Data caches (regenerated)
 data_cache/
-*.csv
-*.json
-!package.json
-*.parquet
+backtest_data/
+aqtis_data/
+aqtis_vectors/
 
-# Database
+# Database files
 *.db
 *.db-shm
 *.db-wal
 
-# Reports
-reports/
-
 # Logs
 *.log
 
-# Stderr logs
-sim_stderr*.log
-smoke_test_stderr.log
+# Keep evolved configs
+!evolved_player_configs.json
