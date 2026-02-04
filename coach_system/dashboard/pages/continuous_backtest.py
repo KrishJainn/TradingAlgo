@@ -151,41 +151,65 @@ PERFORMANCE_HISTORY_PATH = Path(__file__).parent.parent.parent.parent / "perform
 
 def save_evolved_configs(configs: Dict, performance: Dict = None):
     """
-    Save evolved configs to file for persistence across sessions.
-    Also tracks performance history to always keep the best configs.
+    Save evolved configs - each player's BEST config is saved independently.
+    If a player beats their personal best P&L, their config is updated.
+    Other players keep their existing best configs.
     """
     try:
-        # Load existing data to compare
-        existing_data = None
+        # Load existing data
+        existing_data = {}
         if EVOLVED_CONFIGS_PATH.exists():
             with open(EVOLVED_CONFIGS_PATH, "r") as f:
                 existing_data = json.load(f)
 
-        # Calculate total P&L for this config
-        current_pnl = performance.get("team_total_pnl", 0) if performance else 0
+        # Get existing configs and best P&Ls per player
+        existing_configs = existing_data.get("configs", {})
+        player_best_pnl = existing_data.get("player_best_pnl", {})
+        total_runs = existing_data.get("total_runs", 0) + 1
 
-        # Check if this is better than existing
-        should_save = True
-        if existing_data and existing_data.get("best_pnl"):
-            existing_pnl = existing_data.get("best_pnl", float("-inf"))
-            if current_pnl <= existing_pnl:
-                # Only save if this run is better
-                should_save = False
-                print(f"[Config] Current P&L ({current_pnl:+,.0f}) not better than best ({existing_pnl:+,.0f}), keeping existing configs")
+        # Check each player individually
+        updates = []
+        if performance and performance.get("players"):
+            for pid, pdata in performance["players"].items():
+                current_pnl = pdata.get("pnl", 0)
+                existing_best = player_best_pnl.get(pid, float("-inf"))
 
-        if should_save or not existing_data:
-            save_data = {
-                "saved_at": datetime.now().isoformat(),
-                "configs": configs,
-                "best_pnl": current_pnl,
-                "total_runs": (existing_data.get("total_runs", 0) if existing_data else 0) + 1,
-                "best_run_at": datetime.now().isoformat(),
-            }
-            with open(EVOLVED_CONFIGS_PATH, "w") as f:
-                json.dump(save_data, f, indent=2)
-            print(f"[Config] NEW BEST! Saved evolved configs with P&L: {current_pnl:+,.0f}")
+                if current_pnl > existing_best:
+                    # This player beat their personal best!
+                    existing_configs[pid] = configs[pid]
+                    player_best_pnl[pid] = current_pnl
+                    updates.append(f"{PLAYER_LABELS.get(pid, pid)}: ₹{current_pnl:+,.0f}")
+                    print(f"[Config] 🏆 {pid} NEW BEST! P&L: ₹{current_pnl:+,.0f} (was ₹{existing_best:+,.0f})")
+                else:
+                    # Keep existing best config for this player
+                    if pid not in existing_configs:
+                        existing_configs[pid] = configs[pid]
+                        player_best_pnl[pid] = current_pnl
 
-        # Always update performance history
+        # For any missing players, add from current configs
+        for pid in configs:
+            if pid not in existing_configs:
+                existing_configs[pid] = configs[pid]
+                player_best_pnl[pid] = 0
+
+        # Save updated data
+        save_data = {
+            "saved_at": datetime.now().isoformat(),
+            "configs": existing_configs,
+            "player_best_pnl": player_best_pnl,
+            "total_runs": total_runs,
+            "last_update": datetime.now().isoformat(),
+        }
+
+        with open(EVOLVED_CONFIGS_PATH, "w") as f:
+            json.dump(save_data, f, indent=2)
+
+        if updates:
+            print(f"[Config] Updated {len(updates)} players: {', '.join(updates)}")
+        else:
+            print(f"[Config] No new personal bests this run (Run #{total_runs})")
+
+        # Save performance history
         save_performance_history(configs, performance)
 
     except Exception as e:
@@ -229,18 +253,37 @@ def save_performance_history(configs: Dict, performance: Dict):
 
 
 def load_evolved_configs() -> Optional[Dict]:
-    """Load the BEST evolved configs from file."""
+    """Load the BEST evolved configs for each player."""
     try:
         if EVOLVED_CONFIGS_PATH.exists():
             with open(EVOLVED_CONFIGS_PATH, "r") as f:
                 data = json.load(f)
-            best_pnl = data.get("best_pnl", "N/A")
+
             total_runs = data.get("total_runs", 0)
-            print(f"[Config] Loaded BEST configs (P&L: {best_pnl}, from {total_runs} total runs)")
+            player_best_pnl = data.get("player_best_pnl", {})
+
+            # Print each player's best
+            print(f"[Config] Loaded BEST configs from {total_runs} total runs:")
+            for pid, best_pnl in player_best_pnl.items():
+                label = PLAYER_LABELS.get(pid, pid)
+                print(f"  - {label}: Best P&L ₹{best_pnl:+,.0f}")
+
             return data.get("configs")
     except Exception as e:
         print(f"[Config] Failed to load configs: {e}")
     return None
+
+
+def get_player_best_pnls() -> Dict[str, float]:
+    """Get each player's best P&L for display."""
+    try:
+        if EVOLVED_CONFIGS_PATH.exists():
+            with open(EVOLVED_CONFIGS_PATH, "r") as f:
+                data = json.load(f)
+            return data.get("player_best_pnl", {})
+    except Exception:
+        pass
+    return {}
 
 
 def get_performance_history() -> List[Dict]:
@@ -837,10 +880,13 @@ def render_continuous_backtest(memory=None):
                     st.session_state.last_run_time = datetime.now()
 
                     if persist_learning:
-                        st.session_state.player_configs = new_configs
-                        st.session_state.configs_evolved = True
-                        # Save to file - only saves if this is the BEST run so far
+                        # Save configs - each player's best is saved individually
                         save_evolved_configs(new_configs, result)
+                        # Reload the best configs from file (mix of best from all runs)
+                        best_configs = load_evolved_configs()
+                        if best_configs:
+                            st.session_state.player_configs = best_configs
+                        st.session_state.configs_evolved = True
 
                     st.success(f"Run #{result['run_number']} complete! Team P&L: ₹{result['team_total_pnl']:+,.0f}")
                 else:
@@ -892,9 +938,13 @@ def render_continuous_backtest(memory=None):
                     st.session_state.last_run_time = datetime.now()
 
                     if persist_learning:
-                        st.session_state.player_configs = new_configs
-                        st.session_state.configs_evolved = True
+                        # Save configs - each player's best is saved individually
                         save_evolved_configs(new_configs, result)
+                        # Reload the best configs from file
+                        best_configs = load_evolved_configs()
+                        if best_configs:
+                            st.session_state.player_configs = best_configs
+                        st.session_state.configs_evolved = True
 
         time.sleep(1)
         st.rerun()
@@ -904,22 +954,33 @@ def render_continuous_backtest(memory=None):
 
     results = st.session_state.continuous_results
 
-    # Show best run stats from file
+    # Show each player's best P&L from file
     try:
         if EVOLVED_CONFIGS_PATH.exists():
             with open(EVOLVED_CONFIGS_PATH, "r") as f:
                 saved_data = json.load(f)
-            best_pnl = saved_data.get("best_pnl", 0)
-            total_runs = saved_data.get("total_runs", 0)
-            best_run_at = saved_data.get("best_run_at", "N/A")
-            if best_run_at != "N/A":
-                best_run_at = best_run_at[:19].replace("T", " ")
 
-            st.markdown("### 🏆 Best Performance (Persisted)")
-            bcol1, bcol2, bcol3 = st.columns(3)
-            bcol1.metric("Best Team P&L", f"₹{best_pnl:+,.0f}")
-            bcol2.metric("Total Historical Runs", total_runs)
-            bcol3.metric("Best Run At", best_run_at)
+            player_best_pnl = saved_data.get("player_best_pnl", {})
+            total_runs = saved_data.get("total_runs", 0)
+            last_update = saved_data.get("last_update", "N/A")
+            if last_update != "N/A":
+                last_update = last_update[:19].replace("T", " ")
+
+            # Calculate team best (sum of individual bests)
+            team_best = sum(player_best_pnl.values())
+
+            st.markdown("### 🏆 Personal Best Performance (Per Player)")
+            st.caption(f"Each player's config is saved when they beat their personal best P&L. Total runs: {total_runs}")
+
+            # Show each player's best
+            pcols = st.columns(5)
+            for i, pid in enumerate(["PLAYER_1", "PLAYER_2", "PLAYER_3", "PLAYER_4", "PLAYER_5"]):
+                best = player_best_pnl.get(pid, 0)
+                label = PLAYER_LABELS.get(pid, pid)
+                color = "normal" if best >= 0 else "inverse"
+                pcols[i].metric(label, f"₹{best:+,.0f}", delta_color=color)
+
+            st.markdown(f"**Combined Best P&L: ₹{team_best:+,.0f}** | Last updated: {last_update}")
             st.markdown("---")
     except Exception:
         pass
