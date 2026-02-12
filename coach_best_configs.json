@@ -1,0 +1,120 @@
+{
+  "PLAYER_1": {
+    "config": {
+      "label": "Aggressive",
+      "weights": {
+        "CCI_14": 0.37,
+        "RSI_7": 0.29,
+        "STOCH_5_3": 0.43,
+        "TSI_13_25": 0.61,
+        "BBANDS_20_2": 0.46,
+        "KC_20_2": 0.35,
+        "RSI_14": 0.26,
+        "UO_7_14_28": 0.42,
+        "WILLR_14": 0.44,
+        "CMO_14": 0.35
+      },
+      "entry_threshold": 0.38,
+      "exit_threshold": -0.12,
+      "min_hold_bars": 4
+    },
+    "pnl": 2393.3934478759766,
+    "win_rate": 0.45098039215686275,
+    "updated_at": "2026-02-06T15:31:25.544459"
+  },
+  "PLAYER_2": {
+    "config": {
+      "label": "Conservative",
+      "weights": {
+        "RSI_14": 0.25,
+        "BBANDS_20_2": 0.075,
+        "STOCH_14_3": 0.27,
+        "CCI_14": 0.075,
+        "WILLR_14": 0.125,
+        "KC_20_2": 0.09,
+        "CMO_14": 0.055,
+        "UO_7_14_28": 0.23,
+        "BBANDS_10_1.5": 0.44,
+        "CMF_21": 0.41,
+        "PSAR": 0.25,
+        "DONCHIAN_20": 0.5380510343601768
+      },
+      "entry_threshold": 0.39,
+      "exit_threshold": -0.12,
+      "min_hold_bars": 2
+    },
+    "pnl": 1694.1429443359375,
+    "win_rate": 0.4270833333333333,
+    "updated_at": "2026-02-06T14:26:12.342688"
+  },
+  "PLAYER_3": {
+    "config": {
+      "label": "Balanced",
+      "weights": {
+        "RSI_14": 0.07,
+        "STOCH_14_3": 0.06,
+        "WILLR_14": 0.03,
+        "CCI_14": 0.03,
+        "BBANDS_20_2": 0.025,
+        "BBANDS_10_1.5": 0.175,
+        "STOCH_5_3": 0.05,
+        "KC_20_2": 0.045,
+        "RSI_7": 0.1,
+        "CMO_14": 0.03,
+        "KAMA_20": 0.7331210041301726,
+        "SUPERTREND_10_2": 0.6978715566865952
+      },
+      "entry_threshold": 0.4,
+      "exit_threshold": -0.12,
+      "min_hold_bars": 2
+    },
+    "pnl": 1185.3628692626953,
+    "win_rate": 0.48514851485148514,
+    "updated_at": "2026-02-06T14:28:04.337169"
+  },
+  "PLAYER_4": {
+    "config": {
+      "label": "VolBreakout",
+      "weights": {
+        "CCI_14": 0.67,
+        "RSI_7": 0.8,
+        "STOCH_5_3": 0.55,
+        "STOCH_14_3": 0.78,
+        "NATR_14": 0.68,
+        "MACD_8_17_9": 0.1,
+        "BBANDS_20_2": 0.72,
+        "ATR_14": 0.67,
+        "KC_20_2": 0.68,
+        "CMO_14": 0.55
+      },
+      "entry_threshold": 0.4,
+      "exit_threshold": -0.12,
+      "min_hold_bars": 4
+    },
+    "pnl": 2755.467300415039,
+    "win_rate": 0.5092592592592593,
+    "updated_at": "2026-02-06T15:36:19.430857"
+  },
+  "PLAYER_5": {
+    "config": {
+      "label": "Momentum",
+      "weights": {
+        "RSI_7": 0.7,
+        "CMO_14": 0.75,
+        "STOCH_5_3": 0.7,
+        "BBANDS_20_2": 0.9,
+        "KC_20_2": 0.85,
+        "CCI_14": 0.75,
+        "WILLR_14": 0.75,
+        "UO_7_14_28": 0.8,
+        "PSAR": 0.7
+      },
+      "entry_threshold": 0.38,
+      "exit_threshold": -0.12,
+      "min_hold_bars": 4
+    },
+    "pnl": 2149.417694091797,
+    "win_rate": 0.4842105263157895,
+    "updated_at": "2026-02-06T11:53:13.102188"
+  }
+}

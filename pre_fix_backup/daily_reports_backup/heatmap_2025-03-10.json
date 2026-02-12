@@ -1,0 +1,77 @@
+{
+  "RELIANCE": {
+    "price": 2500,
+    "sentiment": 0.0,
+    "zone": "neutral"
+  },
+  "HDFCBANK": {
+    "price": 1700,
+    "sentiment": 0.0,
+    "zone": "neutral"
+  },
+  "INFY": {
+    "price": 1600,
+    "sentiment": 0.75,
+    "zone": "strong_bullish"
+  },
+  "TCS": {
+    "price": 3500,
+    "sentiment": 0.0,
+    "zone": "neutral"
+  },
+  "ICICIBANK": {
+    "price": 1200,
+    "sentiment": 0.0,
+    "zone": "neutral"
+  },
+  "SBIN": {
+    "price": 750,
+    "sentiment": 0.975,
+    "zone": "strong_bullish"
+  },
+  "BHARTIARTL": {
+    "price": 1400,
+    "sentiment": 0.0,
+    "zone": "neutral"
+  },
+  "ITC": {
+    "price": 440,
+    "sentiment": 0.0,
+    "zone": "neutral"
+  },
+  "TATASTEEL": {
+    "price": 140,
+    "sentiment": 0.975,
+    "zone": "strong_bullish"
+  },
+  "MARUTI": {
+    "price": 11000,
+    "sentiment": 0.0,
+    "zone": "neutral"
+  },
+  "AXISBANK": {
+    "price": 1100,
+    "sentiment": 0.0,
+    "zone": "neutral"
+  },
+  "BAJFINANCE": {
+    "price": 6800,
+    "sentiment": 0.0,
+    "zone": "neutral"
+  },
+  "SUNPHARMA": {
+    "price": 1700,
+    "sentiment": 0.0,
+    "zone": "neutral"
+  },
+  "LT": {
+    "price": 3400,
+    "sentiment": 0.0,
+    "zone": "neutral"
+  },
+  "WIPRO": {
+    "price": 540,
+    "sentiment": 0.0,
+    "zone": "neutral"
+  }
+}

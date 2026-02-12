@@ -1,0 +1,54 @@
+{
+  "date": "2026-02-08",
+  "mode": "full",
+  "pipeline_start": "2026-02-08T22:35:24.635751",
+  "steps_completed": [
+    "1_data_pull",
+    "2_regime",
+    "3_sentiment",
+    "4_signals (EVOLVED+ENSEMBLE)",
+    "5_debate (no API key)",
+    "6_combine (EVOLVED+ENSEMBLE)",
+    "7_risk",
+    "8_execute",
+    "9_metrics",
+    "10_reflection (not triggered)",
+    "11_coaching (not enough trades)",
+    "12_evolution (need 12 more days of data)"
+  ],
+  "errors": [],
+  "warnings": [],
+  "regime": {
+    "current": "Sideways",
+    "probabilities": {
+      "Bull": 0.33,
+      "Bear": 0.33,
+      "Sideways": 0.34
+    },
+    "duration_days": 1
+  },
+  "sentiment_signals": {
+    "TATAMOTORS": -0.975,
+    "ADANIENT": 0.975,
+    "INDUSINDBK": -0.975
+  },
+  "signal_count": 75,
+  "real_signal_count": 75,
+  "fallback_signal_count": 0,
+  "approved_signals": 7,
+  "rejected_signals": 8,
+  "trades_today": 0,
+  "stops_hit": 0,
+  "open_positions": 7,
+  "portfolio_equity": 1020134.2,
+  "summary": {
+    "equity": 1020134.2,
+    "cash": 776763.24,
+    "unrealised_pnl": 22288.0,
+    "daily_return": 0.0,
+    "open_positions": 7,
+    "total_trades": 1,
+    "total_pnl": -2153.8,
+    "win_rate": 0.0
+  }
+}

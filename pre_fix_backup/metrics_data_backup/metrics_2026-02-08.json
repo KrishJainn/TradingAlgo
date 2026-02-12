@@ -1,0 +1,152 @@
+[
+  {
+    "date": "2026-02-08",
+    "portfolio": {
+      "equity_curve_value": 1020134.2,
+      "daily_return": 0.0,
+      "gross_pnl": 22288.0,
+      "net_pnl": 21842.239999999998,
+      "gross_exposure": 0.3135,
+      "net_exposure": 0.2386,
+      "largest_concentration": 0.0,
+      "sharpe": 0.0
+    },
+    "positions": [
+      {
+        "symbol": "SBIN.NS",
+        "player_id": "PLAYER_2",
+        "direction": "LONG",
+        "quantity": 70,
+        "entry_price": 748,
+        "current_price": 1066.4000244140625,
+        "unrealised_pnl": 22288.001708984375,
+        "bars_held": 2
+      },
+      {
+        "symbol": "TCS.NS",
+        "player_id": "PLAYER_3",
+        "direction": "SHORT",
+        "quantity": 13,
+        "entry_price": 2941.60009765625,
+        "current_price": 2941.60009765625,
+        "unrealised_pnl": 0.0,
+        "bars_held": 1
+      },
+      {
+        "symbol": "ICICIBANK.NS",
+        "player_id": "PLAYER_5",
+        "direction": "LONG",
+        "quantity": 22,
+        "entry_price": 1406.0999755859375,
+        "current_price": 1406.0999755859375,
+        "unrealised_pnl": 0.0,
+        "bars_held": 1
+      },
+      {
+        "symbol": "TATASTEEL.NS",
+        "player_id": "PLAYER_1",
+        "direction": "LONG",
+        "quantity": 371,
+        "entry_price": 197.05999755859375,
+        "current_price": 197.05999755859375,
+        "unrealised_pnl": 0.0,
+        "bars_held": 1
+      },
+      {
+        "symbol": "AXISBANK.NS",
+        "player_id": "PLAYER_3",
+        "direction": "LONG",
+        "quantity": 35,
+        "entry_price": 1341.5999755859375,
+        "current_price": 1341.5999755859375,
+        "unrealised_pnl": 0.0,
+        "bars_held": 1
+      },
+      {
+        "symbol": "BAJFINANCE.NS",
+        "player_id": "PLAYER_5",
+        "direction": "LONG",
+        "quantity": 28,
+        "entry_price": 981.7000122070312,
+        "current_price": 981.7000122070312,
+        "unrealised_pnl": 0.0,
+        "bars_held": 1
+      },
+      {
+        "symbol": "LT.NS",
+        "player_id": "PLAYER_3",
+        "direction": "LONG",
+        "quantity": 7,
+        "entry_price": 4068.10009765625,
+        "current_price": 4068.10009765625,
+        "unrealised_pnl": 0.0,
+        "bars_held": 1
+      }
+    ],
+    "trades_today": [],
+    "regime": {
+      "current": "Sideways",
+      "probabilities": {
+        "Bull": 0.33,
+        "Bear": 0.33,
+        "Sideways": 0.34
+      },
+      "duration_days": 1
+    },
+    "players": {
+      "PLAYER_1": {
+        "sharpe": 0.0,
+        "sortino": 0.0,
+        "win_rate": 0.0,
+        "num_trades": 1,
+        "pnl": -2153.8,
+        "bayesian_weight": 0.2
+      },
+      "PLAYER_2": {
+        "sharpe": 0.0,
+        "sortino": 0.0,
+        "win_rate": 0.0,
+        "num_trades": 0,
+        "pnl": 0.0,
+        "bayesian_weight": 0.2
+      },
+      "PLAYER_3": {
+        "sharpe": 0.0,
+        "sortino": 0.0,
+        "win_rate": 0.0,
+        "num_trades": 0,
+        "pnl": 0.0,
+        "bayesian_weight": 0.2
+      },
+      "PLAYER_4": {
+        "sharpe": 0.0,
+        "sortino": 0.0,
+        "win_rate": 0.0,
+        "num_trades": 0,
+        "pnl": 0.0,
+        "bayesian_weight": 0.2
+      },
+      "PLAYER_5": {
+        "sharpe": 0.0,
+        "sortino": 0.0,
+        "win_rate": 0.0,
+        "num_trades": 0,
+        "pnl": 0.0,
+        "bayesian_weight": 0.2
+      }
+    },
+    "signals": {
+      "total_generated": 75,
+      "approved": 7,
+      "rejected": 8
+    },
+    "risk": {
+      "current_drawdown": 0,
+      "open_positions": 7,
+      "max_concentration": 0.0
+    },
+    "coaching": {},
+    "evolution": {},
+    "recorded_at": "2026-02-08T22:35:31.946221"
+  }
+]

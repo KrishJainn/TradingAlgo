@@ -1,0 +1,102 @@
+[
+  {
+    "date": "2025-03-10",
+    "portfolio": {
+      "equity_curve_value": 1000000.0,
+      "daily_return": 0.0,
+      "gross_pnl": 0.0,
+      "net_pnl": 0.0,
+      "gross_exposure": 0.0877,
+      "net_exposure": 0.0877,
+      "largest_concentration": 0.0,
+      "sharpe": 0.0
+    },
+    "positions": [
+      {
+        "symbol": "INFY.NS",
+        "player_id": "PLAYER_1",
+        "direction": "LONG",
+        "quantity": 22,
+        "entry_price": 1605,
+        "current_price": 1605,
+        "unrealised_pnl": 0.0,
+        "bars_held": 0
+      },
+      {
+        "symbol": "SBIN.NS",
+        "player_id": "PLAYER_2",
+        "direction": "LONG",
+        "quantity": 70,
+        "entry_price": 748,
+        "current_price": 748,
+        "unrealised_pnl": 0.0,
+        "bars_held": 0
+      }
+    ],
+    "trades_today": [],
+    "regime": {
+      "current": "Sideways",
+      "probabilities": {
+        "Bull": 0.33,
+        "Bear": 0.33,
+        "Sideways": 0.34
+      },
+      "duration_days": 1
+    },
+    "players": {
+      "PLAYER_1": {
+        "sharpe": 0.0,
+        "sortino": 0.0,
+        "win_rate": 0.0,
+        "num_trades": 0,
+        "pnl": 0.0,
+        "bayesian_weight": 0.2
+      },
+      "PLAYER_2": {
+        "sharpe": 0.0,
+        "sortino": 0.0,
+        "win_rate": 0.0,
+        "num_trades": 0,
+        "pnl": 0.0,
+        "bayesian_weight": 0.2
+      },
+      "PLAYER_3": {
+        "sharpe": 0.0,
+        "sortino": 0.0,
+        "win_rate": 0.0,
+        "num_trades": 0,
+        "pnl": 0.0,
+        "bayesian_weight": 0.2
+      },
+      "PLAYER_4": {
+        "sharpe": 0.0,
+        "sortino": 0.0,
+        "win_rate": 0.0,
+        "num_trades": 0,
+        "pnl": 0.0,
+        "bayesian_weight": 0.2
+      },
+      "PLAYER_5": {
+        "sharpe": 0.0,
+        "sortino": 0.0,
+        "win_rate": 0.0,
+        "num_trades": 0,
+        "pnl": 0.0,
+        "bayesian_weight": 0.2
+      }
+    },
+    "signals": {
+      "total_generated": 75,
+      "approved": 2,
+      "rejected": 13
+    },
+    "risk": {
+      "current_drawdown": 0,
+      "open_positions": 2,
+      "max_concentration": 0.0
+    },
+    "coaching": {},
+    "evolution": {},
+    "recorded_at": "2026-02-07T19:15:53.693082"
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "date": "2025-03-10",
+  "regime": "Sideways",
+  "regime_confidence": 0.34,
+  "regime_duration_days": 1,
+  "portfolio_equity": 1000000,
+  "open_positions": 0,
+  "unrealised_pnl": 0,
+  "top_bullish": [
+    {
+      "symbol": "SBIN",
+      "sentiment": 0.975
+    },
+    {
+      "symbol": "TATASTEEL",
+      "sentiment": 0.975
+    },
+    {
+      "symbol": "INFY",
+      "sentiment": 0.75
+    }
+  ],
+  "top_bearish": [
+    {
+      "symbol": "SUNPHARMA",
+      "sentiment": 0.0
+    },
+    {
+      "symbol": "LT",
+      "sentiment": 0.0
+    },
+    {
+      "symbol": "WIPRO",
+      "sentiment": 0.0
+    }
+  ],
+  "stocks_covered": 15,
+  "sentiment_available": 4
+}

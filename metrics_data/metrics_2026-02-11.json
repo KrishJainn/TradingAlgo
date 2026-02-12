@@ -1,0 +1,232 @@
+[
+  {
+    "date": "2026-02-11",
+    "portfolio": {
+      "equity_curve_value": 504464.79,
+      "daily_return": 0.005353,
+      "gross_pnl": 4464.79,
+      "net_pnl": 4375.4942,
+      "gross_exposure": 1.1351,
+      "net_exposure": 0.5201,
+      "largest_concentration": 0.0,
+      "sharpe": 0.0
+    },
+    "positions": [
+      {
+        "symbol": "TCS.NS",
+        "player_id": "PLAYER_1",
+        "direction": "SHORT",
+        "quantity": 17,
+        "entry_price": 2989.10009765625,
+        "current_price": 2926.60009765625,
+        "unrealised_pnl": 1062.5,
+        "bars_held": 4
+      },
+      {
+        "symbol": "INFY.NS",
+        "player_id": "PLAYER_1",
+        "direction": "SHORT",
+        "quantity": 31,
+        "entry_price": 1508.699951171875,
+        "current_price": 1480.0,
+        "unrealised_pnl": 889.698486328125,
+        "bars_held": 4
+      },
+      {
+        "symbol": "ICICIBANK.NS",
+        "player_id": "PLAYER_3",
+        "direction": "LONG",
+        "quantity": 21,
+        "entry_price": 1400.0,
+        "current_price": 1404.9000244140625,
+        "unrealised_pnl": 102.9005126953125,
+        "bars_held": 4
+      },
+      {
+        "symbol": "HINDUNILVR.NS",
+        "player_id": "PLAYER_5",
+        "direction": "LONG",
+        "quantity": 16,
+        "entry_price": 2437.0,
+        "current_price": 2463.89990234375,
+        "unrealised_pnl": 430.3984375,
+        "bars_held": 4
+      },
+      {
+        "symbol": "SBIN.NS",
+        "player_id": "PLAYER_3",
+        "direction": "LONG",
+        "quantity": 50,
+        "entry_price": 1141.9000244140625,
+        "current_price": 1175.9000244140625,
+        "unrealised_pnl": 1700.0,
+        "bars_held": 4
+      },
+      {
+        "symbol": "KOTAKBANK.NS",
+        "player_id": "PLAYER_5",
+        "direction": "LONG",
+        "quantity": 51,
+        "entry_price": 432.8999938964844,
+        "current_price": 428.95001220703125,
+        "unrealised_pnl": -201.44906616210938,
+        "bars_held": 4
+      },
+      {
+        "symbol": "LT.NS",
+        "player_id": "PLAYER_1",
+        "direction": "LONG",
+        "quantity": 23,
+        "entry_price": 4139.89990234375,
+        "current_price": 4168.2998046875,
+        "unrealised_pnl": 653.19775390625,
+        "bars_held": 4
+      },
+      {
+        "symbol": "AXISBANK.NS",
+        "player_id": "PLAYER_3",
+        "direction": "LONG",
+        "quantity": 5,
+        "entry_price": 1355.5,
+        "current_price": 1349.699951171875,
+        "unrealised_pnl": -29.000244140625,
+        "bars_held": 4
+      },
+      {
+        "symbol": "ASIANPAINT.NS",
+        "player_id": "PLAYER_1",
+        "direction": "SHORT",
+        "quantity": 25,
+        "entry_price": 2397.800048828125,
+        "current_price": 2379.89990234375,
+        "unrealised_pnl": 447.503662109375,
+        "bars_held": 4
+      },
+      {
+        "symbol": "TITAN.NS",
+        "player_id": "PLAYER_3",
+        "direction": "LONG",
+        "quantity": 1,
+        "entry_price": 4258.0,
+        "current_price": 4216.5,
+        "unrealised_pnl": -41.5,
+        "bars_held": 4
+      },
+      {
+        "symbol": "SUNPHARMA.NS",
+        "player_id": "PLAYER_3",
+        "direction": "LONG",
+        "quantity": 1,
+        "entry_price": 1713.4000244140625,
+        "current_price": 1711.4000244140625,
+        "unrealised_pnl": -2.0,
+        "bars_held": 4
+      },
+      {
+        "symbol": "ULTRACEMCO.NS",
+        "player_id": "PLAYER_1",
+        "direction": "LONG",
+        "quantity": 7,
+        "entry_price": 12990.0,
+        "current_price": 12910.0,
+        "unrealised_pnl": -560.0,
+        "bars_held": 4
+      },
+      {
+        "symbol": "NTPC.NS",
+        "player_id": "PLAYER_1",
+        "direction": "LONG",
+        "quantity": 135,
+        "entry_price": 366.75,
+        "current_price": 366.8500061035156,
+        "unrealised_pnl": 13.500823974609375,
+        "bars_held": 4
+      },
+      {
+        "symbol": "TATASTEEL.NS",
+        "player_id": "PLAYER_3",
+        "direction": "LONG",
+        "quantity": 2,
+        "entry_price": 208.47999572753906,
+        "current_price": 208.0,
+        "unrealised_pnl": -0.959991455078125,
+        "bars_held": 4
+      },
+      {
+        "symbol": "RELIANCE.NS",
+        "player_id": "PLAYER_5",
+        "direction": "LONG",
+        "quantity": 13,
+        "entry_price": 1463.9000244140625,
+        "current_price": 1463.9000244140625,
+        "unrealised_pnl": 0.0,
+        "bars_held": 0
+      }
+    ],
+    "trades_today": [],
+    "regime": {
+      "current": "Bull",
+      "probabilities": {
+        "Bear": 0.0005,
+        "Bull": 0.9995,
+        "Sideways": 0.0
+      },
+      "duration_days": 6
+    },
+    "players": {
+      "PLAYER_1": {
+        "sharpe": 0.0,
+        "sortino": 0.0,
+        "win_rate": 0.0,
+        "num_trades": 0,
+        "pnl": 0.0,
+        "bayesian_weight": 0.2
+      },
+      "PLAYER_2": {
+        "sharpe": 0.0,
+        "sortino": 0.0,
+        "win_rate": 0.0,
+        "num_trades": 0,
+        "pnl": 0.0,
+        "bayesian_weight": 0.2
+      },
+      "PLAYER_3": {
+        "sharpe": 0.0,
+        "sortino": 0.0,
+        "win_rate": 0.0,
+        "num_trades": 0,
+        "pnl": 0.0,
+        "bayesian_weight": 0.2
+      },
+      "PLAYER_4": {
+        "sharpe": 0.0,
+        "sortino": 0.0,
+        "win_rate": 0.0,
+        "num_trades": 0,
+        "pnl": 0.0,
+        "bayesian_weight": 0.2
+      },
+      "PLAYER_5": {
+        "sharpe": 0.0,
+        "sortino": 0.0,
+        "win_rate": 0.0,
+        "num_trades": 0,
+        "pnl": 0.0,
+        "bayesian_weight": 0.2
+      }
+    },
+    "signals": {
+      "total_generated": 245,
+      "approved": 14,
+      "rejected": 35
+    },
+    "risk": {
+      "current_drawdown": 0,
+      "open_positions": 15,
+      "max_concentration": 0.0
+    },
+    "coaching": {},
+    "evolution": {},
+    "recorded_at": "2026-02-11T03:13:29.871260"
+  }
+]

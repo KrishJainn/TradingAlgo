@@ -1,0 +1,98 @@
+{
+  "PLAYER_1": {
+    "Bull": {
+      "pnl_history": [
+        1187.5,
+        1187.5,
+        1200,
+        1200
+      ],
+      "sharpe_history": [
+        1.7625,
+        1.7625,
+        1.8,
+        1.8
+      ],
+      "win_rate_history": [
+        0.5025,
+        0.5025,
+        0.5,
+        0.5
+      ]
+    },
+    "Bear": {
+      "pnl_history": [
+        -300.0
+      ],
+      "sharpe_history": [
+        -0.5
+      ],
+      "win_rate_history": [
+        0.35
+      ]
+    }
+  },
+  "PLAYER_2": {
+    "Bull": {
+      "pnl_history": [
+        650.0
+      ],
+      "sharpe_history": [
+        1.0
+      ],
+      "win_rate_history": [
+        0.465
+      ]
+    },
+    "Bear": {
+      "pnl_history": [
+        200.0
+      ],
+      "sharpe_history": [
+        0.3
+      ],
+      "win_rate_history": [
+        0.42
+      ]
+    }
+  },
+  "PLAYER_3": {
+    "Bull": {
+      "pnl_history": [
+        600.0
+      ],
+      "sharpe_history": [
+        0.9
+      ],
+      "win_rate_history": [
+        0.45
+      ]
+    }
+  },
+  "PLAYER_4": {
+    "Bull": {
+      "pnl_history": [
+        200.0
+      ],
+      "sharpe_history": [
+        0.3
+      ],
+      "win_rate_history": [
+        0.4
+      ]
+    }
+  },
+  "PLAYER_5": {
+    "Bull": {
+      "pnl_history": [
+        1800.0
+      ],
+      "sharpe_history": [
+        2.5
+      ],
+      "win_rate_history": [
+        0.55
+      ]
+    }
+  }
+}

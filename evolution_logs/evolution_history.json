@@ -1,0 +1,715 @@
+[
+  {
+    "generation": 1,
+    "timestamp": "2026-02-07T19:55:27.301007",
+    "pre_evolution_sharpe": {
+      "PLAYER_1": 3.114647633623506,
+      "PLAYER_2": 5.992900796288037,
+      "PLAYER_3": 4.322202257932163,
+      "PLAYER_4": 2.9367337220373706,
+      "PLAYER_5": 4.61879347811839
+    },
+    "pre_evolution_pnl": {
+      "PLAYER_1": 4159.270492553711,
+      "PLAYER_2": 10973.680168151855,
+      "PLAYER_3": 12591.068908691406,
+      "PLAYER_4": 7993.613105773926,
+      "PLAYER_5": 14734.902061462402
+    },
+    "ranking": [
+      "PLAYER_2",
+      "PLAYER_5",
+      "PLAYER_3",
+      "PLAYER_1",
+      "PLAYER_4"
+    ],
+    "actions": {
+      "PLAYER_1": "protect (Sharpe 3.11 > 0.5, nudge \u00b10.02)",
+      "PLAYER_2": "protect (Sharpe 5.99 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_3": "protect (Sharpe 4.32 > 0.5, nudge \u00b10.02)",
+      "PLAYER_4": "protect (Sharpe 2.94 > 0.5, nudge \u00b10.02)",
+      "PLAYER_5": "protect (Sharpe 4.62 > 0.5, nudge \u00b10.02)"
+    },
+    "do_no_harm_reverts": [
+      "PLAYER_2: REVERTED (Sharpe would drop 5.99\u21925.67, \u0394=0.32 > 0.3)"
+    ],
+    "diversity_fixes": [
+      "PLAYER_2: added HA_trend from trend (category diversity)"
+    ],
+    "diversity_score": {
+      "avg_jaccard": 0.18,
+      "max_jaccard": 0.429,
+      "worst_pair": [
+        "PLAYER_1",
+        "PLAYER_5"
+      ],
+      "categories_per_player": {
+        "PLAYER_1": 2,
+        "PLAYER_2": 2,
+        "PLAYER_3": 3,
+        "PLAYER_4": 2,
+        "PLAYER_5": 2
+      },
+      "unique_indicators": 15
+    },
+    "indicator_survival": {
+      "PSAR_signal": 2,
+      "ICHIMOKU_signal": 1,
+      "DONCHIAN_breakout": 1,
+      "HA_trend": 3,
+      "RSI_14": 1,
+      "STOCH_divergence": 2,
+      "VWAP_dev_raw": 3,
+      "BB_squeeze_signal": 1,
+      "MFI_14": 2,
+      "ELDER_force": 1,
+      "OBV_slope": 1,
+      "ATR_ratio": 1,
+      "ROC_20": 3,
+      "MACD_hist_slope": 1,
+      "HIGH_52W_prox": 3,
+      "NATR": 0,
+      "KC_breakout": 0
+    }
+  },
+  {
+    "generation": 2,
+    "timestamp": "2026-02-07T19:55:50.428047",
+    "pre_evolution_sharpe": {
+      "PLAYER_1": 1.470684717623784,
+      "PLAYER_2": -1.133352641757973,
+      "PLAYER_3": 2.8660450874780694,
+      "PLAYER_4": 1.289740036186935,
+      "PLAYER_5": 4.69050277077215
+    },
+    "pre_evolution_pnl": {
+      "PLAYER_1": 4792.391883850098,
+      "PLAYER_2": 3135.913131713867,
+      "PLAYER_3": 8092.704391479492,
+      "PLAYER_4": 7865.734878540039,
+      "PLAYER_5": 18358.466857910156
+    },
+    "ranking": [
+      "PLAYER_5",
+      "PLAYER_3",
+      "PLAYER_1",
+      "PLAYER_4",
+      "PLAYER_2"
+    ],
+    "actions": {
+      "PLAYER_1": "protect (Sharpe 1.47 > 0.5, nudge \u00b10.02)",
+      "PLAYER_2": "crossover(PLAYER_5\u2192PLAYER_2) + mutate [Sharpe -1.13 < -0.5]",
+      "PLAYER_3": "protect (Sharpe 2.87 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_4": "protect (Sharpe 1.29 > 0.5, nudge \u00b10.02)",
+      "PLAYER_5": "protect (Sharpe 4.69 > 0.5, nudge \u00b10.02)"
+    },
+    "do_no_harm_reverts": [
+      "PLAYER_3: REVERTED (Sharpe would drop 2.87\u21921.55, \u0394=1.31 > 0.3)"
+    ],
+    "diversity_score": {
+      "avg_jaccard": 0.208,
+      "max_jaccard": 0.429,
+      "worst_pair": [
+        "PLAYER_1",
+        "PLAYER_5"
+      ],
+      "categories_per_player": {
+        "PLAYER_1": 2,
+        "PLAYER_2": 3,
+        "PLAYER_3": 3,
+        "PLAYER_4": 2,
+        "PLAYER_5": 2
+      },
+      "unique_indicators": 15
+    },
+    "indicator_survival": {
+      "PSAR_signal": 4,
+      "ICHIMOKU_signal": 2,
+      "DONCHIAN_breakout": 2,
+      "HA_trend": 6,
+      "RSI_14": 2,
+      "STOCH_divergence": 4,
+      "VWAP_dev_raw": 6,
+      "BB_squeeze_signal": 2,
+      "MFI_14": 4,
+      "ELDER_force": 2,
+      "OBV_slope": 2,
+      "ATR_ratio": 2,
+      "ROC_20": 7,
+      "MACD_hist_slope": 2,
+      "HIGH_52W_prox": 6,
+      "NATR": 0,
+      "KC_breakout": 0
+    }
+  },
+  {
+    "generation": 3,
+    "timestamp": "2026-02-07T19:56:10.309710",
+    "pre_evolution_sharpe": {
+      "PLAYER_1": 1.5169799517117688,
+      "PLAYER_2": 2.1697755307552504,
+      "PLAYER_3": 3.622215504429255,
+      "PLAYER_4": 2.9840432453348003,
+      "PLAYER_5": 2.4344166995221843
+    },
+    "pre_evolution_pnl": {
+      "PLAYER_1": 3217.8495712280273,
+      "PLAYER_2": 9627.153205871582,
+      "PLAYER_3": 13410.198188781738,
+      "PLAYER_4": 12028.033424377441,
+      "PLAYER_5": 12255.05670928955
+    },
+    "ranking": [
+      "PLAYER_3",
+      "PLAYER_4",
+      "PLAYER_5",
+      "PLAYER_2",
+      "PLAYER_1"
+    ],
+    "actions": {
+      "PLAYER_1": "protect (Sharpe 1.52 > 0.5, nudge \u00b10.02)",
+      "PLAYER_2": "protect (Sharpe 2.17 > 0.5, nudge \u00b10.02)",
+      "PLAYER_3": "elite_protect (nudge \u00b10.01)",
+      "PLAYER_4": "protect (Sharpe 2.98 > 0.5, nudge \u00b10.02)",
+      "PLAYER_5": "elite_protect (nudge \u00b10.01)"
+    },
+    "diversity_score": {
+      "avg_jaccard": 0.208,
+      "max_jaccard": 0.429,
+      "worst_pair": [
+        "PLAYER_1",
+        "PLAYER_5"
+      ],
+      "categories_per_player": {
+        "PLAYER_1": 2,
+        "PLAYER_2": 3,
+        "PLAYER_3": 3,
+        "PLAYER_4": 2,
+        "PLAYER_5": 2
+      },
+      "unique_indicators": 15
+    },
+    "indicator_survival": {
+      "PSAR_signal": 6,
+      "ICHIMOKU_signal": 3,
+      "DONCHIAN_breakout": 3,
+      "HA_trend": 9,
+      "RSI_14": 3,
+      "STOCH_divergence": 6,
+      "VWAP_dev_raw": 9,
+      "BB_squeeze_signal": 3,
+      "MFI_14": 6,
+      "ELDER_force": 3,
+      "OBV_slope": 3,
+      "ATR_ratio": 3,
+      "ROC_20": 11,
+      "MACD_hist_slope": 3,
+      "HIGH_52W_prox": 9,
+      "NATR": 0,
+      "KC_breakout": 0
+    }
+  },
+  {
+    "generation": 4,
+    "timestamp": "2026-02-07T19:56:33.651647",
+    "pre_evolution_sharpe": {
+      "PLAYER_1": 3.401832864329228,
+      "PLAYER_2": 0.9596108169484016,
+      "PLAYER_3": 1.3662638524390718,
+      "PLAYER_4": 3.264408155749298,
+      "PLAYER_5": 4.430206126713542
+    },
+    "pre_evolution_pnl": {
+      "PLAYER_1": 1883.4324340820312,
+      "PLAYER_2": -1310.2350463867188,
+      "PLAYER_3": 501.1004180908203,
+      "PLAYER_4": 3399.9558715820312,
+      "PLAYER_5": 8159.003265380859
+    },
+    "ranking": [
+      "PLAYER_5",
+      "PLAYER_1",
+      "PLAYER_4",
+      "PLAYER_3",
+      "PLAYER_2"
+    ],
+    "actions": {
+      "PLAYER_1": "protect (Sharpe 3.40 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_2": "protect (Sharpe 0.96 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_3": "protect (Sharpe 1.37 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_4": "protect (Sharpe 3.26 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_5": "elite_protect (nudge \u00b10.01) \u2192 REVERTED (do-no-harm)"
+    },
+    "do_no_harm_reverts": [
+      "PLAYER_1: REVERTED (Sharpe would drop 3.40\u21921.74, \u0394=1.66 > 0.3)",
+      "PLAYER_2: REVERTED (Sharpe would drop 0.96\u2192-2.06, \u0394=3.02 > 0.3)",
+      "PLAYER_3: REVERTED (Sharpe would drop 1.37\u2192-1.00, \u0394=2.37 > 0.3)",
+      "PLAYER_4: REVERTED (Sharpe would drop 3.26\u21920.28, \u0394=2.98 > 0.3)",
+      "PLAYER_5: REVERTED (Sharpe would drop 4.43\u21921.75, \u0394=2.68 > 0.3)"
+    ],
+    "diversity_score": {
+      "avg_jaccard": 0.208,
+      "max_jaccard": 0.429,
+      "worst_pair": [
+        "PLAYER_1",
+        "PLAYER_5"
+      ],
+      "categories_per_player": {
+        "PLAYER_1": 2,
+        "PLAYER_2": 3,
+        "PLAYER_3": 3,
+        "PLAYER_4": 2,
+        "PLAYER_5": 2
+      },
+      "unique_indicators": 15
+    },
+    "indicator_survival": {
+      "PSAR_signal": 8,
+      "ICHIMOKU_signal": 4,
+      "DONCHIAN_breakout": 4,
+      "HA_trend": 12,
+      "RSI_14": 4,
+      "STOCH_divergence": 8,
+      "VWAP_dev_raw": 12,
+      "BB_squeeze_signal": 4,
+      "MFI_14": 8,
+      "ELDER_force": 4,
+      "OBV_slope": 4,
+      "ATR_ratio": 4,
+      "ROC_20": 15,
+      "MACD_hist_slope": 4,
+      "HIGH_52W_prox": 12,
+      "NATR": 0,
+      "KC_breakout": 0
+    }
+  },
+  {
+    "generation": 5,
+    "timestamp": "2026-02-07T19:56:57.051937",
+    "pre_evolution_sharpe": {
+      "PLAYER_1": 0.436268198595416,
+      "PLAYER_2": 1.4282495856404844,
+      "PLAYER_3": 3.5168127770969506,
+      "PLAYER_4": 2.8979647560768447,
+      "PLAYER_5": 1.8866953251165093
+    },
+    "pre_evolution_pnl": {
+      "PLAYER_1": 4979.823547363281,
+      "PLAYER_2": 8774.535873413086,
+      "PLAYER_3": 15950.001174926758,
+      "PLAYER_4": 16420.414016723633,
+      "PLAYER_5": 17616.102737426758
+    },
+    "ranking": [
+      "PLAYER_3",
+      "PLAYER_4",
+      "PLAYER_5",
+      "PLAYER_2",
+      "PLAYER_1"
+    ],
+    "actions": {
+      "PLAYER_1": "mutate(intensity=0.03, Sharpe=0.44)",
+      "PLAYER_2": "protect (Sharpe 1.43 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_3": "protect (Sharpe 3.52 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_4": "elite_protect (nudge \u00b10.01) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_5": "elite_protect (nudge \u00b10.01)"
+    },
+    "do_no_harm_reverts": [
+      "PLAYER_2: REVERTED (Sharpe would drop 1.43\u2192-1.34, \u0394=2.77 > 0.3)",
+      "PLAYER_3: REVERTED (Sharpe would drop 3.52\u21921.48, \u0394=2.04 > 0.3)",
+      "PLAYER_4: REVERTED (Sharpe would drop 2.90\u21922.34, \u0394=0.56 > 0.3)"
+    ],
+    "diversity_score": {
+      "avg_jaccard": 0.208,
+      "max_jaccard": 0.429,
+      "worst_pair": [
+        "PLAYER_1",
+        "PLAYER_5"
+      ],
+      "categories_per_player": {
+        "PLAYER_1": 2,
+        "PLAYER_2": 3,
+        "PLAYER_3": 3,
+        "PLAYER_4": 2,
+        "PLAYER_5": 2
+      },
+      "unique_indicators": 15
+    },
+    "indicator_survival": {
+      "PSAR_signal": 10,
+      "ICHIMOKU_signal": 5,
+      "DONCHIAN_breakout": 5,
+      "HA_trend": 15,
+      "RSI_14": 5,
+      "STOCH_divergence": 10,
+      "VWAP_dev_raw": 15,
+      "BB_squeeze_signal": 5,
+      "MFI_14": 10,
+      "ELDER_force": 5,
+      "OBV_slope": 5,
+      "ATR_ratio": 5,
+      "ROC_20": 19,
+      "MACD_hist_slope": 5,
+      "HIGH_52W_prox": 15,
+      "NATR": 0,
+      "KC_breakout": 0
+    }
+  },
+  {
+    "generation": 6,
+    "timestamp": "2026-02-07T19:57:20.665794",
+    "pre_evolution_sharpe": {
+      "PLAYER_1": -0.8943258632469145,
+      "PLAYER_2": 0.20172993991004337,
+      "PLAYER_3": 0.3648656669599992,
+      "PLAYER_4": -0.22729965596141177,
+      "PLAYER_5": 0.798473492943301
+    },
+    "pre_evolution_pnl": {
+      "PLAYER_1": 946.4452972412109,
+      "PLAYER_2": -549.4806518554688,
+      "PLAYER_3": 2664.206802368164,
+      "PLAYER_4": -2565.8497314453125,
+      "PLAYER_5": 3636.064926147461
+    },
+    "ranking": [
+      "PLAYER_5",
+      "PLAYER_3",
+      "PLAYER_2",
+      "PLAYER_4",
+      "PLAYER_1"
+    ],
+    "actions": {
+      "PLAYER_1": "crossover(PLAYER_5\u2192PLAYER_1) + mutate [Sharpe -0.89 < -0.5]",
+      "PLAYER_2": "mutate(intensity=0.03, Sharpe=0.20)",
+      "PLAYER_3": "mutate(intensity=0.03, Sharpe=0.36)",
+      "PLAYER_4": "mutate(intensity=0.05, Sharpe=-0.23)",
+      "PLAYER_5": "protect (Sharpe 0.80 > 0.5, nudge \u00b10.02)"
+    },
+    "diversity_score": {
+      "avg_jaccard": 0.209,
+      "max_jaccard": 0.571,
+      "worst_pair": [
+        "PLAYER_1",
+        "PLAYER_5"
+      ],
+      "categories_per_player": {
+        "PLAYER_1": 2,
+        "PLAYER_2": 3,
+        "PLAYER_3": 3,
+        "PLAYER_4": 2,
+        "PLAYER_5": 2
+      },
+      "unique_indicators": 15
+    },
+    "indicator_survival": {
+      "PSAR_signal": 12,
+      "ICHIMOKU_signal": 7,
+      "DONCHIAN_breakout": 6,
+      "HA_trend": 17,
+      "RSI_14": 6,
+      "STOCH_divergence": 12,
+      "VWAP_dev_raw": 18,
+      "BB_squeeze_signal": 6,
+      "MFI_14": 12,
+      "ELDER_force": 6,
+      "OBV_slope": 6,
+      "ATR_ratio": 6,
+      "ROC_20": 23,
+      "MACD_hist_slope": 7,
+      "HIGH_52W_prox": 18,
+      "NATR": 0,
+      "KC_breakout": 0
+    }
+  },
+  {
+    "generation": 7,
+    "timestamp": "2026-02-07T19:57:32.664091",
+    "pre_evolution_sharpe": {
+      "PLAYER_1": 1.212028590137108,
+      "PLAYER_2": 1.8988345937766768,
+      "PLAYER_3": 1.563336905054061,
+      "PLAYER_4": 2.4627706866916435,
+      "PLAYER_5": -0.4581720889710751
+    },
+    "pre_evolution_pnl": {
+      "PLAYER_1": -890.5216217041016,
+      "PLAYER_2": 1877.7539291381836,
+      "PLAYER_3": -1761.3669357299805,
+      "PLAYER_4": 329.8625946044922,
+      "PLAYER_5": -3790.50936126709
+    },
+    "ranking": [
+      "PLAYER_4",
+      "PLAYER_2",
+      "PLAYER_3",
+      "PLAYER_1",
+      "PLAYER_5"
+    ],
+    "actions": {
+      "PLAYER_1": "protect (Sharpe 1.21 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_2": "protect (Sharpe 1.90 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_3": "protect (Sharpe 1.56 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_4": "protect (Sharpe 2.46 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_5": "mutate(intensity=0.05, Sharpe=-0.46)"
+    },
+    "do_no_harm_reverts": [
+      "PLAYER_1: REVERTED (Sharpe would drop 1.21\u2192-1.28, \u0394=2.49 > 0.3)",
+      "PLAYER_2: REVERTED (Sharpe would drop 1.90\u2192-0.45, \u0394=2.35 > 0.3)",
+      "PLAYER_3: REVERTED (Sharpe would drop 1.56\u2192-1.36, \u0394=2.92 > 0.3)",
+      "PLAYER_4: REVERTED (Sharpe would drop 2.46\u2192-2.70, \u0394=5.16 > 0.3)"
+    ],
+    "diversity_score": {
+      "avg_jaccard": 0.209,
+      "max_jaccard": 0.571,
+      "worst_pair": [
+        "PLAYER_1",
+        "PLAYER_5"
+      ],
+      "categories_per_player": {
+        "PLAYER_1": 2,
+        "PLAYER_2": 3,
+        "PLAYER_3": 3,
+        "PLAYER_4": 2,
+        "PLAYER_5": 2
+      },
+      "unique_indicators": 15
+    },
+    "indicator_survival": {
+      "PSAR_signal": 14,
+      "ICHIMOKU_signal": 9,
+      "DONCHIAN_breakout": 7,
+      "HA_trend": 19,
+      "RSI_14": 7,
+      "STOCH_divergence": 14,
+      "VWAP_dev_raw": 21,
+      "BB_squeeze_signal": 7,
+      "MFI_14": 14,
+      "ELDER_force": 7,
+      "OBV_slope": 7,
+      "ATR_ratio": 7,
+      "ROC_20": 27,
+      "MACD_hist_slope": 9,
+      "HIGH_52W_prox": 21,
+      "NATR": 0,
+      "KC_breakout": 0
+    }
+  },
+  {
+    "generation": 8,
+    "timestamp": "2026-02-07T19:57:52.362792",
+    "pre_evolution_sharpe": {
+      "PLAYER_1": 4.568082241248643,
+      "PLAYER_2": 2.8101202727636703,
+      "PLAYER_3": 3.096748509841225,
+      "PLAYER_4": 5.344730718305898,
+      "PLAYER_5": 5.126070371835221
+    },
+    "pre_evolution_pnl": {
+      "PLAYER_1": 7496.857131958008,
+      "PLAYER_2": 7503.722930908203,
+      "PLAYER_3": 7765.899963378906,
+      "PLAYER_4": 13960.100692749023,
+      "PLAYER_5": 19836.755142211914
+    },
+    "ranking": [
+      "PLAYER_4",
+      "PLAYER_5",
+      "PLAYER_1",
+      "PLAYER_3",
+      "PLAYER_2"
+    ],
+    "actions": {
+      "PLAYER_1": "protect (Sharpe 4.57 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_2": "protect (Sharpe 2.81 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_3": "protect (Sharpe 3.10 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_4": "protect (Sharpe 5.34 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_5": "protect (Sharpe 5.13 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)"
+    },
+    "do_no_harm_reverts": [
+      "PLAYER_1: REVERTED (Sharpe would drop 4.57\u21922.91, \u0394=1.66 > 0.3)",
+      "PLAYER_2: REVERTED (Sharpe would drop 2.81\u21922.17, \u0394=0.64 > 0.3)",
+      "PLAYER_3: REVERTED (Sharpe would drop 3.10\u21920.20, \u0394=2.90 > 0.3)",
+      "PLAYER_4: REVERTED (Sharpe would drop 5.34\u21922.59, \u0394=2.75 > 0.3)",
+      "PLAYER_5: REVERTED (Sharpe would drop 5.13\u21921.88, \u0394=3.24 > 0.3)"
+    ],
+    "diversity_score": {
+      "avg_jaccard": 0.209,
+      "max_jaccard": 0.571,
+      "worst_pair": [
+        "PLAYER_1",
+        "PLAYER_5"
+      ],
+      "categories_per_player": {
+        "PLAYER_1": 2,
+        "PLAYER_2": 3,
+        "PLAYER_3": 3,
+        "PLAYER_4": 2,
+        "PLAYER_5": 2
+      },
+      "unique_indicators": 15
+    },
+    "indicator_survival": {
+      "PSAR_signal": 16,
+      "ICHIMOKU_signal": 11,
+      "DONCHIAN_breakout": 8,
+      "HA_trend": 21,
+      "RSI_14": 8,
+      "STOCH_divergence": 16,
+      "VWAP_dev_raw": 24,
+      "BB_squeeze_signal": 8,
+      "MFI_14": 16,
+      "ELDER_force": 8,
+      "OBV_slope": 8,
+      "ATR_ratio": 8,
+      "ROC_20": 31,
+      "MACD_hist_slope": 11,
+      "HIGH_52W_prox": 24,
+      "NATR": 0,
+      "KC_breakout": 0
+    }
+  },
+  {
+    "generation": 9,
+    "timestamp": "2026-02-07T19:58:15.704025",
+    "pre_evolution_sharpe": {
+      "PLAYER_1": -0.8524244921216437,
+      "PLAYER_2": 0.8114691199324592,
+      "PLAYER_3": -0.13329012652575575,
+      "PLAYER_4": 1.4252636318162917,
+      "PLAYER_5": -0.054167307736142256
+    },
+    "pre_evolution_pnl": {
+      "PLAYER_1": -372.3249969482422,
+      "PLAYER_2": 1235.2236938476562,
+      "PLAYER_3": -377.1689758300781,
+      "PLAYER_4": 3380.768035888672,
+      "PLAYER_5": -1226.8113403320312
+    },
+    "ranking": [
+      "PLAYER_4",
+      "PLAYER_2",
+      "PLAYER_5",
+      "PLAYER_3",
+      "PLAYER_1"
+    ],
+    "actions": {
+      "PLAYER_1": "crossover(PLAYER_4\u2192PLAYER_1) + mutate [Sharpe -0.85 < -0.5]",
+      "PLAYER_2": "protect (Sharpe 0.81 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_3": "mutate(intensity=0.05, Sharpe=-0.13)",
+      "PLAYER_4": "protect (Sharpe 1.43 > 0.5, nudge \u00b10.02)",
+      "PLAYER_5": "mutate(intensity=0.05, Sharpe=-0.05)"
+    },
+    "do_no_harm_reverts": [
+      "PLAYER_2: REVERTED (Sharpe would drop 0.81\u21920.36, \u0394=0.45 > 0.3)"
+    ],
+    "diversity_score": {
+      "avg_jaccard": 0.21,
+      "max_jaccard": 0.5,
+      "worst_pair": [
+        "PLAYER_1",
+        "PLAYER_5"
+      ],
+      "categories_per_player": {
+        "PLAYER_1": 2,
+        "PLAYER_2": 3,
+        "PLAYER_3": 3,
+        "PLAYER_4": 2,
+        "PLAYER_5": 2
+      },
+      "unique_indicators": 15
+    },
+    "indicator_survival": {
+      "PSAR_signal": 18,
+      "ICHIMOKU_signal": 13,
+      "DONCHIAN_breakout": 9,
+      "HA_trend": 23,
+      "RSI_14": 9,
+      "STOCH_divergence": 18,
+      "VWAP_dev_raw": 27,
+      "BB_squeeze_signal": 9,
+      "MFI_14": 18,
+      "ELDER_force": 9,
+      "OBV_slope": 9,
+      "ATR_ratio": 10,
+      "ROC_20": 35,
+      "MACD_hist_slope": 13,
+      "HIGH_52W_prox": 27,
+      "NATR": 0,
+      "KC_breakout": 0
+    }
+  },
+  {
+    "generation": 10,
+    "timestamp": "2026-02-07T19:58:28.122496",
+    "pre_evolution_sharpe": {
+      "PLAYER_1": 2.666120359686961,
+      "PLAYER_2": 1.7040460040720538,
+      "PLAYER_3": -0.5863564350345035,
+      "PLAYER_4": 3.067559185712059,
+      "PLAYER_5": 6.64047695981451
+    },
+    "pre_evolution_pnl": {
+      "PLAYER_1": 3907.022201538086,
+      "PLAYER_2": 5669.7691650390625,
+      "PLAYER_3": 3378.160873413086,
+      "PLAYER_4": 9196.330047607422,
+      "PLAYER_5": 16457.48080444336
+    },
+    "ranking": [
+      "PLAYER_5",
+      "PLAYER_4",
+      "PLAYER_1",
+      "PLAYER_2",
+      "PLAYER_3"
+    ],
+    "actions": {
+      "PLAYER_1": "protect (Sharpe 2.67 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_2": "protect (Sharpe 1.70 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_3": "crossover(PLAYER_5\u2192PLAYER_3) + mutate [Sharpe -0.59 < -0.5]",
+      "PLAYER_4": "protect (Sharpe 3.07 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)",
+      "PLAYER_5": "protect (Sharpe 6.64 > 0.5, nudge \u00b10.02) \u2192 REVERTED (do-no-harm)"
+    },
+    "do_no_harm_reverts": [
+      "PLAYER_1: REVERTED (Sharpe would drop 2.67\u21921.32, \u0394=1.35 > 0.3)",
+      "PLAYER_2: REVERTED (Sharpe would drop 1.70\u21920.73, \u0394=0.98 > 0.3)",
+      "PLAYER_4: REVERTED (Sharpe would drop 3.07\u21922.37, \u0394=0.70 > 0.3)",
+      "PLAYER_5: REVERTED (Sharpe would drop 6.64\u21923.98, \u0394=2.66 > 0.3)"
+    ],
+    "diversity_score": {
+      "avg_jaccard": 0.252,
+      "max_jaccard": 0.5,
+      "worst_pair": [
+        "PLAYER_1",
+        "PLAYER_5"
+      ],
+      "categories_per_player": {
+        "PLAYER_1": 2,
+        "PLAYER_2": 3,
+        "PLAYER_3": 3,
+        "PLAYER_4": 2,
+        "PLAYER_5": 2
+      },
+      "unique_indicators": 15
+    },
+    "indicator_survival": {
+      "PSAR_signal": 20,
+      "ICHIMOKU_signal": 15,
+      "DONCHIAN_breakout": 10,
+      "HA_trend": 25,
+      "RSI_14": 10,
+      "STOCH_divergence": 20,
+      "VWAP_dev_raw": 30,
+      "BB_squeeze_signal": 10,
+      "MFI_14": 20,
+      "ELDER_force": 10,
+      "OBV_slope": 10,
+      "ATR_ratio": 12,
+      "ROC_20": 40,
+      "MACD_hist_slope": 15,
+      "HIGH_52W_prox": 30,
+      "NATR": 0,
+      "KC_breakout": 0
+    }
+  }
+]

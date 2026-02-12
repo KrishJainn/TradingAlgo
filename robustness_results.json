@@ -1,0 +1,208 @@
+{
+  "timestamp": "2026-02-07T00:31:39.045759",
+  "checks": {
+    "check_1_alt_universe": {
+      "label": "EVO+ENS (Alt 15)",
+      "total_pnl": 294462.13,
+      "sharpe": 2.967,
+      "max_drawdown_pct": -5.65,
+      "n_trades": 2901,
+      "win_rate": 0.513,
+      "per_player": {
+        "PLAYER_1": {
+          "label": "TrendFollower",
+          "pnl": 24968.52,
+          "trades": 624,
+          "win_rate": 0.506
+        },
+        "PLAYER_2": {
+          "label": "MeanReversion",
+          "pnl": 42327.47,
+          "trades": 576,
+          "win_rate": 0.493
+        },
+        "PLAYER_3": {
+          "label": "VolumeFlow",
+          "pnl": 63582.5,
+          "trades": 592,
+          "win_rate": 0.5
+        },
+        "PLAYER_4": {
+          "label": "VolBreakout",
+          "pnl": 70899.21,
+          "trades": 531,
+          "win_rate": 0.518
+        },
+        "PLAYER_5": {
+          "label": "MultiMomentum",
+          "pnl": 92684.43,
+          "trades": 578,
+          "win_rate": 0.547
+        }
+      },
+      "per_regime": {
+        "Normal": {
+          "pnl": 294462.13,
+          "trades": 2901
+        }
+      }
+    },
+    "check_2_window_90_30": {
+      "label": "EVO+ENS (90/30)",
+      "total_pnl": 245638.45,
+      "sharpe": 2.555,
+      "max_drawdown_pct": -3.38,
+      "n_trades": 2794,
+      "win_rate": 0.543,
+      "per_player": {
+        "PLAYER_1": {
+          "label": "TrendFollower",
+          "pnl": 24630.27,
+          "trades": 641,
+          "win_rate": 0.568
+        },
+        "PLAYER_2": {
+          "label": "MeanReversion",
+          "pnl": 23973.12,
+          "trades": 409,
+          "win_rate": 0.496
+        },
+        "PLAYER_3": {
+          "label": "VolumeFlow",
+          "pnl": 64432.36,
+          "trades": 654,
+          "win_rate": 0.532
+        },
+        "PLAYER_4": {
+          "label": "VolBreakout",
+          "pnl": 62217.42,
+          "trades": 511,
+          "win_rate": 0.54
+        },
+        "PLAYER_5": {
+          "label": "MultiMomentum",
+          "pnl": 70385.29,
+          "trades": 579,
+          "win_rate": 0.563
+        }
+      },
+      "per_regime": {
+        "Normal": {
+          "pnl": 245638.45,
+          "trades": 2794
+        }
+      }
+    },
+    "check_3_tx_cost_20bps": {
+      "label": "EVO+ENS (20 bps) (tx=20bps)",
+      "total_pnl": 174387.0,
+      "sharpe": 2.08,
+      "max_drawdown_pct": -3.37,
+      "n_trades": 2760,
+      "win_rate": 0.513,
+      "per_player": {
+        "PLAYER_1": {
+          "label": "TrendFollower",
+          "pnl": 6064.49,
+          "trades": 616,
+          "win_rate": 0.529,
+          "tx_cost": 12320.0
+        },
+        "PLAYER_2": {
+          "label": "MeanReversion",
+          "pnl": 21606.28,
+          "trades": 486,
+          "win_rate": 0.479,
+          "tx_cost": 9720.0
+        },
+        "PLAYER_3": {
+          "label": "VolumeFlow",
+          "pnl": 37188.59,
+          "trades": 610,
+          "win_rate": 0.479,
+          "tx_cost": 12200.0
+        },
+        "PLAYER_4": {
+          "label": "VolBreakout",
+          "pnl": 46931.79,
+          "trades": 509,
+          "win_rate": 0.525,
+          "tx_cost": 10180.0
+        },
+        "PLAYER_5": {
+          "label": "MultiMomentum",
+          "pnl": 62595.86,
+          "trades": 539,
+          "win_rate": 0.551,
+          "tx_cost": 10780.0
+        }
+      },
+      "per_regime": {
+        "Normal": {
+          "pnl": 229587.0,
+          "trades": 2760
+        }
+      },
+      "total_pnl_before_costs": 229587.0,
+      "tx_costs_total": 55200.0,
+      "sharpe_before_costs": 2.739
+    },
+    "check_4_dsr": {
+      "observed_sharpe": 2.739,
+      "expected_max_sharpe": 2.7655,
+      "deflated_sharpe_stat": -1.1627,
+      "p_value": 0.877532,
+      "is_significant_5pct": "False",
+      "is_significant_1pct": "False",
+      "se_sharpe": 0.0228,
+      "n_trials": 200,
+      "n_observations": 2760
+    }
+  },
+  "reference": {
+    "label": "EVO+ENS (0 bps)",
+    "total_pnl": 229587.0,
+    "sharpe": 2.739,
+    "max_drawdown_pct": -3.37,
+    "n_trades": 2760,
+    "win_rate": 0.513,
+    "per_player": {
+      "PLAYER_1": {
+        "label": "TrendFollower",
+        "pnl": 18384.49,
+        "trades": 616,
+        "win_rate": 0.529
+      },
+      "PLAYER_2": {
+        "label": "MeanReversion",
+        "pnl": 31326.28,
+        "trades": 486,
+        "win_rate": 0.479
+      },
+      "PLAYER_3": {
+        "label": "VolumeFlow",
+        "pnl": 49388.59,
+        "trades": 610,
+        "win_rate": 0.479
+      },
+      "PLAYER_4": {
+        "label": "VolBreakout",
+        "pnl": 57111.79,
+        "trades": 509,
+        "win_rate": 0.525
+      },
+      "PLAYER_5": {
+        "label": "MultiMomentum",
+        "pnl": 73375.86,
+        "trades": 539,
+        "win_rate": 0.551
+      }
+    },
+    "per_regime": {
+      "Normal": {
+        "pnl": 229587.0,
+        "trades": 2760
+      }
+    }
+  }
+}

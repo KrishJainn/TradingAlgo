@@ -1,0 +1,3272 @@
+[
+  {
+    "headline_id": "26dfbffcd92e",
+    "market_sentiment": 0.5,
+    "stocks": {
+      "HDFCBANK": 0.5
+    },
+    "confidence": 0.35,
+    "key_themes": [
+      "positive keywords"
+    ],
+    "affected_symbols": [
+      "HDFCBANK"
+    ],
+    "category": "earnings",
+    "reasoning": "Rule-based: 2 positive, 0 negative keywords"
+  },
+  {
+    "headline_id": "8b3f3693e87f",
+    "market_sentiment": 0.5,
+    "stocks": {
+      "HDFCBANK": 0.5
+    },
+    "confidence": 0.35,
+    "key_themes": [
+      "positive keywords"
+    ],
+    "affected_symbols": [
+      "HDFCBANK"
+    ],
+    "category": "earnings",
+    "reasoning": "Rule-based: 2 positive, 0 negative keywords"
+  },
+  {
+    "headline_id": "a18dc457eb23",
+    "market_sentiment": 0.5,
+    "stocks": {
+      "HDFCBANK": 0.5
+    },
+    "confidence": 0.35,
+    "key_themes": [
+      "positive keywords"
+    ],
+    "affected_symbols": [
+      "HDFCBANK"
+    ],
+    "category": "earnings",
+    "reasoning": "Rule-based: 2 positive, 0 negative keywords"
+  },
+  {
+    "headline_id": "72bcc2a5e3a2",
+    "market_sentiment": 0.5,
+    "stocks": {
+      "HDFCBANK": 0.5
+    },
+    "confidence": 0.35,
+    "key_themes": [
+      "positive keywords"
+    ],
+    "affected_symbols": [
+      "HDFCBANK"
+    ],
+    "category": "earnings",
+    "reasoning": "Rule-based: 2 positive, 0 negative keywords"
+  },
+  {
+    "headline_id": "3ea3b2b51a6f",
+    "market_sentiment": 0.5,
+    "stocks": {
+      "HDFCBANK": 0.5
+    },
+    "confidence": 0.35,
+    "key_themes": [
+      "positive keywords"
+    ],
+    "affected_symbols": [
+      "HDFCBANK"
+    ],
+    "category": "earnings",
+    "reasoning": "Rule-based: 2 positive, 0 negative keywords"
+  },
+  {
+    "headline_id": "0dfdeed39435",
+    "market_sentiment": -0.1,
+    "stocks": {
+      "DIVISLAB": -0.2
+    },
+    "confidence": 0.6,
+    "key_themes": [
+      "earnings report",
+      "mixed results"
+    ],
+    "affected_symbols": [
+      "DIVISLAB"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "d96f53b3e9f1",
+    "market_sentiment": 0.1,
+    "stocks": {
+      "HMAAGRO": 0.7
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "stock surge",
+      "small-cap performance"
+    ],
+    "affected_symbols": [
+      "HMAAGRO"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "9be9c59d4efa",
+    "market_sentiment": 0.2,
+    "stocks": {},
+    "confidence": 0.9,
+    "key_themes": [
+      "IPO listing",
+      "positive debut",
+      "SME market"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "4deac1fc0e06",
+    "market_sentiment": 0.3,
+    "stocks": {},
+    "confidence": 0.9,
+    "key_themes": [
+      "stock surge",
+      "auto ancillary",
+      "earnings beat"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "dfd010bc3034",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "BPCL": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "neutral update"
+    ],
+    "affected_symbols": [
+      "BPCL"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "cde082001b06",
+    "market_sentiment": -0.2,
+    "stocks": {
+      "HINDUNILVR": -0.4
+    },
+    "confidence": 0.6,
+    "key_themes": [
+      "earnings preview",
+      "GST impact",
+      "revenue concerns"
+    ],
+    "affected_symbols": [
+      "HINDUNILVR"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "64766ba244ff",
+    "market_sentiment": -0.2,
+    "stocks": {
+      "ITC": -0.3
+    },
+    "confidence": 0.6,
+    "key_themes": [
+      "excise duty",
+      "margin impact",
+      "illicit trade risks",
+      "sector specific"
+    ],
+    "affected_symbols": [
+      "ITC"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "aaca95cf050a",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "TATACONSUM": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "neutral update"
+    ],
+    "affected_symbols": [
+      "TATACONSUM"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "eb4a1046e3dd",
+    "market_sentiment": 0.4,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "trade deal",
+      "international relations",
+      "economic growth"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "0df217df546f",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "CIPLA": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "neutral update"
+    ],
+    "affected_symbols": [
+      "CIPLA"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "d1beec5abd9d",
+    "market_sentiment": 0.4,
+    "stocks": {
+      "M&M": 0.8
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "strong results",
+      "auto sector"
+    ],
+    "affected_symbols": [
+      "M&M"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "4481bfedc922",
+    "market_sentiment": 0.2,
+    "stocks": {
+      "EICHERMOT": 0.7
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "analyst upgrade",
+      "target price increase",
+      "brokerage view"
+    ],
+    "affected_symbols": [
+      "EICHERMOT"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "d03f96d777dc",
+    "market_sentiment": 0.2,
+    "stocks": {
+      "TITAN": 0.5
+    },
+    "confidence": 0.6,
+    "key_themes": [
+      "positive performance",
+      "trading update"
+    ],
+    "affected_symbols": [
+      "TITAN"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "d594cd0df473",
+    "market_sentiment": -0.7,
+    "stocks": {},
+    "confidence": 0.9,
+    "key_themes": [
+      "promoter selling",
+      "valuation concerns",
+      "ownership decline"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "4960bd34d2f2",
+    "market_sentiment": 0.4,
+    "stocks": {
+      "M&M": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "strong results",
+      "auto sector"
+    ],
+    "affected_symbols": [
+      "M&M"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "cb2281c1a25e",
+    "market_sentiment": 0.2,
+    "stocks": {
+      "APOLLOHOSP": 0.7
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "growth drivers",
+      "strategic expansion",
+      "healthcare sector"
+    ],
+    "affected_symbols": [
+      "APOLLOHOSP"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "970024dfe989",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.0,
+    "key_themes": [
+      "IPO update"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "d45113e340bd",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "AXISBANK": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "neutral update"
+    ],
+    "affected_symbols": [
+      "AXISBANK"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "6a8a2f7fc066",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "INDUSINDBK": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "neutral update"
+    ],
+    "affected_symbols": [
+      "INDUSINDBK"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "0d768964c5b3",
+    "market_sentiment": 0.2,
+    "stocks": {
+      "DRREDDY": 0.6
+    },
+    "confidence": 0.7,
+    "key_themes": [
+      "technical analysis",
+      "positive performance"
+    ],
+    "affected_symbols": [
+      "DRREDDY"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "1da8dcb3e8c8",
+    "market_sentiment": 0.3,
+    "stocks": {
+      "TATAMOTORS": 0.7
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "stock surge",
+      "positive trend",
+      "auto sector"
+    ],
+    "affected_symbols": [
+      "TATAMOTORS"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "aff96164547a",
+    "market_sentiment": 0.1,
+    "stocks": {
+      "JIOFIN": 0.3
+    },
+    "confidence": 0.6,
+    "key_themes": [
+      "price increase",
+      "financial services"
+    ],
+    "affected_symbols": [
+      "JIOFIN"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "3d4876d46a2b",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "ADANIPORTS": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "neutral update"
+    ],
+    "affected_symbols": [
+      "ADANIPORTS"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "5fbceabac0c1",
+    "market_sentiment": 0.2,
+    "stocks": {
+      "ICICIBANK": 0.5
+    },
+    "confidence": 0.8,
+    "key_themes": [
+      "price increase",
+      "banking sector"
+    ],
+    "affected_symbols": [
+      "ICICIBANK"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "58e2e9c0ff51",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "ASIANPAINT": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "neutral update"
+    ],
+    "affected_symbols": [
+      "ASIANPAINT"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "d329bf197cef",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "KOTAKBANK": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "neutral update"
+    ],
+    "affected_symbols": [
+      "KOTAKBANK"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "157ed82a9aa6",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "HEROMOTOCO": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "neutral update"
+    ],
+    "affected_symbols": [
+      "HEROMOTOCO"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "e2150c4e74a7",
+    "market_sentiment": 0.3,
+    "stocks": {
+      "EICHERMOT": 0.7
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "positive momentum",
+      "stock surge",
+      "auto sector"
+    ],
+    "affected_symbols": [
+      "EICHERMOT"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "1c06da5d5438",
+    "market_sentiment": -0.4,
+    "stocks": {
+      "TORNTPOWER": -0.8
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "stock plunge",
+      "earnings reaction",
+      "profit booking"
+    ],
+    "affected_symbols": [
+      "TORNTPOWER"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "0dd6e23c31aa",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "JSWSTEEL": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "neutral update"
+    ],
+    "affected_symbols": [
+      "JSWSTEEL"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "9c1dd7c03696",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "HDFCLIFE": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "informational"
+    ],
+    "affected_symbols": [
+      "HDFCLIFE"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "1942fa8dd9eb",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "ONGC": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "informational"
+    ],
+    "affected_symbols": [
+      "ONGC"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "a6cecc1cb4f1",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "HINDALCO": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "informational"
+    ],
+    "affected_symbols": [
+      "HINDALCO"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "9cd35562ca72",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "ADANIENT": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "informational"
+    ],
+    "affected_symbols": [
+      "ADANIENT"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "5273e01d5f4c",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "LT": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "informational"
+    ],
+    "affected_symbols": [
+      "LT"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "bd6ed32e66c4",
+    "market_sentiment": -0.1,
+    "stocks": {
+      "BRITANNIA": -0.3
+    },
+    "confidence": 0.6,
+    "key_themes": [
+      "stock performance",
+      "minor decrease"
+    ],
+    "affected_symbols": [
+      "BRITANNIA"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "bbfcf9b319d0",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "NESTLEIND": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "informational"
+    ],
+    "affected_symbols": [
+      "NESTLEIND"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "417b306250d4",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "GRASIM": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "informational"
+    ],
+    "affected_symbols": [
+      "GRASIM"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "a9dbb7de1c68",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "SUNPHARMA": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "informational"
+    ],
+    "affected_symbols": [
+      "SUNPHARMA"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "b0b95c547bef",
+    "market_sentiment": -0.2,
+    "stocks": {
+      "INFY": -0.6
+    },
+    "confidence": 0.8,
+    "key_themes": [
+      "stock performance",
+      "weekly loss"
+    ],
+    "affected_symbols": [
+      "INFY"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "a9b69440f750",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "BAJAJ-AUTO": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "informational"
+    ],
+    "affected_symbols": [
+      "BAJAJ-AUTO"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "310dffd47697",
+    "market_sentiment": 0.3,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "interest rates",
+      "inflation",
+      "global market"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "727a6b80523b",
+    "market_sentiment": 0.2,
+    "stocks": {
+      "BAJAJFINSV": 0.8
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "stock performance",
+      "technical breakout"
+    ],
+    "affected_symbols": [
+      "BAJAJFINSV"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "cffed5731a51",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "RELIANCE": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "informational"
+    ],
+    "affected_symbols": [
+      "RELIANCE"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "a2bbc35dcce0",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "SBIN": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "informational"
+    ],
+    "affected_symbols": [
+      "SBIN"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "85ce99f0542d",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "ITC": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "informational"
+    ],
+    "affected_symbols": [
+      "ITC"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "6999639dceee",
+    "market_sentiment": -0.2,
+    "stocks": {
+      "WIPRO": -0.7
+    },
+    "confidence": 0.8,
+    "key_themes": [
+      "stock performance",
+      "negative trend"
+    ],
+    "affected_symbols": [
+      "WIPRO"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "3b8e07dc6d22",
+    "market_sentiment": 0.2,
+    "stocks": {
+      "APOLLOHOSP": 0.7
+    },
+    "confidence": 0.8,
+    "key_themes": [
+      "stock performance",
+      "technical breakout"
+    ],
+    "affected_symbols": [
+      "APOLLOHOSP"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "0b2b84c72102",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "HINDUNILVR": 0.0
+    },
+    "confidence": 0.0,
+    "key_themes": [
+      "informational"
+    ],
+    "affected_symbols": [
+      "HINDUNILVR"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "59fcfabb4c5c",
+    "market_sentiment": 0.7,
+    "stocks": {},
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings momentum",
+      "market outlook",
+      "trade policy"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "b607845e3ee5",
+    "market_sentiment": 0.3,
+    "stocks": {
+      "MOTHERSON": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "stock performance"
+    ],
+    "affected_symbols": [
+      "MOTHERSON"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "9ab7a22c4648",
+    "market_sentiment": 0.6,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "market rally",
+      "FII DII flow",
+      "market indicators"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "3a9f76f63da3",
+    "market_sentiment": 0.8,
+    "stocks": {},
+    "confidence": 0.9,
+    "key_themes": [
+      "emerging markets",
+      "economic outlook",
+      "market leadership"
+    ],
+    "affected_symbols": [
+      "HINDUNILVR"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "0e48472dd830",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.2,
+    "key_themes": [
+      "commodity outlook",
+      "gold",
+      "silver"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "231fbacc1f2f",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "IDEA": -0.2
+    },
+    "confidence": 0.7,
+    "key_themes": [
+      "stock performance",
+      "brokerage view",
+      "telecom sector"
+    ],
+    "affected_symbols": [
+      "IDEA"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "c6bd50278472",
+    "market_sentiment": 0.3,
+    "stocks": {
+      "MOTHERSON": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "stock performance"
+    ],
+    "affected_symbols": [
+      "MOTHERSON"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "e678ed779494",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.3,
+    "key_themes": [
+      "bond market",
+      "inflation data",
+      "market anticipation"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "24bf9a592d1b",
+    "market_sentiment": -0.3,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "IPO performance",
+      "under-subscription"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "bd9177cf42ca",
+    "market_sentiment": -0.4,
+    "stocks": {},
+    "confidence": 0.9,
+    "key_themes": [
+      "IPO performance",
+      "under-subscription"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "10d24ca4c464",
+    "market_sentiment": 0.5,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "IPO outlook",
+      "real estate sector",
+      "economic growth"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "ca1ce00dbdb4",
+    "market_sentiment": 0.3,
+    "stocks": {
+      "M&M": 0.7
+    },
+    "confidence": 0.8,
+    "key_themes": [
+      "earnings forecast",
+      "auto sector",
+      "volume growth"
+    ],
+    "affected_symbols": [
+      "M&M"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "dd86e4d01b2f",
+    "market_sentiment": 0.4,
+    "stocks": {
+      "M&M": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "auto sector",
+      "revenue growth"
+    ],
+    "affected_symbols": [
+      "M&M"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "1abdd9ffd10f",
+    "market_sentiment": 0.2,
+    "stocks": {
+      "MOTHERSON": 0.8
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "price rally",
+      "52-week high"
+    ],
+    "affected_symbols": [
+      "MOTHERSON"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "cc250314bf48",
+    "market_sentiment": -0.2,
+    "stocks": {
+      "BHEL": -0.8
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "OFS",
+      "price drop",
+      "supply overhang"
+    ],
+    "affected_symbols": [
+      "BHEL"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "69cd5911b081",
+    "market_sentiment": -0.1,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "IPO listing",
+      "price volatility",
+      "profit booking"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "afb95aaf8c56",
+    "market_sentiment": 0.3,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "sector rally",
+      "price momentum",
+      "YTD gains"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "0d9b31b4b1ca",
+    "market_sentiment": -0.4,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "global markets",
+      "fiscal policy",
+      "bond yields"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "32031891e0e4",
+    "market_sentiment": 0.2,
+    "stocks": {
+      "BPCL": 0.6,
+      "POWERGRID": 0.6,
+      "SAIL": 0.6
+    },
+    "confidence": 0.8,
+    "key_themes": [
+      "analyst recommendation",
+      "stock picks"
+    ],
+    "affected_symbols": [
+      "BPCL",
+      "POWERGRID",
+      "SAIL"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "bbb0874b7754",
+    "market_sentiment": 0.3,
+    "stocks": {
+      "BRITANNIA": 0.8
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "price rally",
+      "FMCG sector"
+    ],
+    "affected_symbols": [
+      "BRITANNIA"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "1dc54591c58a",
+    "market_sentiment": -0.4,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "currency depreciation",
+      "forex market"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "6e438be67979",
+    "market_sentiment": 0.4,
+    "stocks": {
+      "EICHERMOT": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "price rally",
+      "auto sector"
+    ],
+    "affected_symbols": [
+      "EICHERMOT"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "07ffed7b91f8",
+    "market_sentiment": 0.2,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "commodity prices",
+      "rate cut hopes",
+      "global economic data"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "95012a8d4521",
+    "market_sentiment": 0.3,
+    "stocks": {
+      "TITAN": 0.8
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "price rally",
+      "consumer discretionary"
+    ],
+    "affected_symbols": [
+      "TITAN"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "edc8819ebf28",
+    "market_sentiment": 0.4,
+    "stocks": {
+      "TITAN": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "record high",
+      "price rally"
+    ],
+    "affected_symbols": [
+      "TITAN"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "b611940824dd",
+    "market_sentiment": -0.5,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "global markets",
+      "tech sector",
+      "market correction"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "dabb257b0e99",
+    "market_sentiment": -0.3,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "IPO subscription",
+      "weak demand",
+      "GMP"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "501e4716fc4c",
+    "market_sentiment": -0.3,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "IPO subscription",
+      "weak demand",
+      "GMP"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "be7f35d76104",
+    "market_sentiment": 0.1,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "IPO subscription",
+      "QIB participation",
+      "institutional buying"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "723ed5a2770f",
+    "market_sentiment": 0.5,
+    "stocks": {
+      "RELIANCE": 0.7,
+      "SBIN": 0.7,
+      "ASIANPAINT": 0.7,
+      "BHARTIARTL": 0.7,
+      "TATAMOTORS": 0.7
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "FII inflow",
+      "institutional buying",
+      "Nifty50 stocks"
+    ],
+    "affected_symbols": [
+      "RELIANCE",
+      "SBIN",
+      "ASIANPAINT",
+      "BHARTIARTL",
+      "TATAMOTORS"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "afc3c4e4d7ae",
+    "market_sentiment": 0.5,
+    "stocks": {
+      "RELIANCE": 0.7,
+      "SBIN": 0.7,
+      "ASIANPAINT": 0.7,
+      "BHARTIARTL": 0.7,
+      "TATAMOTORS": 0.7
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "FII inflow",
+      "institutional buying",
+      "Nifty50 stocks"
+    ],
+    "affected_symbols": [
+      "RELIANCE",
+      "SBIN",
+      "ASIANPAINT",
+      "BHARTIARTL",
+      "TATAMOTORS"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "a8e0a4bc9f51",
+    "market_sentiment": 0.3,
+    "stocks": {
+      "APOLLOHOSP": 0.8
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "price rally",
+      "healthcare sector"
+    ],
+    "affected_symbols": [
+      "APOLLOHOSP"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "b72cd743980e",
+    "market_sentiment": -0.4,
+    "stocks": {
+      "JIOFIN": -0.7,
+      "HDFCBANK": -0.7
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "FII outflow",
+      "institutional selling",
+      "Nifty50 stocks"
+    ],
+    "affected_symbols": [
+      "JIOFIN",
+      "HDFCBANK"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "d24e9fed6b22",
+    "market_sentiment": 0.2,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "analyst recommendation",
+      "stock picks",
+      "breakout stocks"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "ca77c136e89c",
+    "market_sentiment": 0.8,
+    "stocks": {},
+    "confidence": 0.9,
+    "key_themes": [
+      "market rally",
+      "sector rally",
+      "Nifty milestone"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "2f742ee9fe90",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.3,
+    "key_themes": [
+      "analyst recommendation",
+      "F&O segment"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "1c9ca8dcbc9e",
+    "market_sentiment": 0.8,
+    "stocks": {},
+    "confidence": 0.9,
+    "key_themes": [
+      "trade deal",
+      "market rally",
+      "sector focus"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "32d4cc3eade6",
+    "market_sentiment": 0.3,
+    "stocks": {
+      "PAYTM": 0.6
+    },
+    "confidence": 0.7,
+    "key_themes": [
+      "earnings turnaround",
+      "company performance",
+      "growth potential"
+    ],
+    "affected_symbols": [
+      "PAYTM"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "14304c8cd04c",
+    "market_sentiment": -0.4,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "IPO subscription",
+      "weak demand",
+      "GMP"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "0875a51e7300",
+    "market_sentiment": -0.4,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "IPO subscription",
+      "weak demand",
+      "GMP"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "15c6f58b423e",
+    "market_sentiment": -0.3,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "IPO subscription",
+      "weak demand",
+      "GMP"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "c23809590339",
+    "market_sentiment": 0.7,
+    "stocks": {},
+    "confidence": 0.9,
+    "key_themes": [
+      "smallcap rally",
+      "earnings growth",
+      "market recovery"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "1bc8c219298f",
+    "market_sentiment": 0.7,
+    "stocks": {},
+    "confidence": 0.9,
+    "key_themes": [
+      "smallcap rally",
+      "earnings growth",
+      "market recovery"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "b71cec898e23",
+    "market_sentiment": 0.5,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "commodity prices",
+      "US macro data",
+      "rate cut expectations"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "fb77c12b459e",
+    "market_sentiment": 0.6,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "commodity prices",
+      "US macro data",
+      "rate cut expectations"
+    ],
+    "affected_symbols": [
+      "RELIANCE"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "f9076c116abf",
+    "market_sentiment": -0.2,
+    "stocks": {
+      "BHEL": -0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "OFS",
+      "PSU sector",
+      "stock specific negative"
+    ],
+    "affected_symbols": [
+      "BHEL"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "25ba61d517a5",
+    "market_sentiment": -0.2,
+    "stocks": {
+      "BHEL": -0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "OFS",
+      "PSU sector",
+      "stock specific negative"
+    ],
+    "affected_symbols": [
+      "BHEL"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "c8a187f7d05c",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.1,
+    "key_themes": [
+      "budget expectations",
+      "economic policy"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "ee7367e6cf1c",
+    "market_sentiment": 0.8,
+    "stocks": {},
+    "confidence": 0.9,
+    "key_themes": [
+      "market outlook",
+      "long-term bullish",
+      "earnings growth"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "4e16860ae787",
+    "market_sentiment": 0.3,
+    "stocks": {},
+    "confidence": 0.5,
+    "key_themes": [
+      "trading recommendations",
+      "intraday trading"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "517172e6b075",
+    "market_sentiment": -0.7,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "IPO subscription",
+      "weak demand"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "04c8c9cd17af",
+    "market_sentiment": -0.6,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "IPO subscription",
+      "weak demand"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "9eae0824f3a2",
+    "market_sentiment": -0.5,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "IPO subscription",
+      "weak demand"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "1dbe6328b2b9",
+    "market_sentiment": 0.6,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "commodity prices",
+      "US macro data",
+      "rate cut expectations"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "2dbddee85a6f",
+    "market_sentiment": 0.8,
+    "stocks": {},
+    "confidence": 0.9,
+    "key_themes": [
+      "rate cut expectations",
+      "commodity prices",
+      "global liquidity"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "61a3ca4e3a37",
+    "market_sentiment": 0.8,
+    "stocks": {},
+    "confidence": 0.9,
+    "key_themes": [
+      "rate cut expectations",
+      "commodity prices",
+      "global liquidity"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "9aac30bae488",
+    "market_sentiment": 0.4,
+    "stocks": {},
+    "confidence": 0.6,
+    "key_themes": [
+      "technical analysis",
+      "bullish momentum"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "d9720d7075ed",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "M&M": 0.0,
+      "ASHOKLEY": 0.0
+    },
+    "confidence": 0.1,
+    "key_themes": [
+      "earnings season",
+      "corporate results"
+    ],
+    "affected_symbols": [
+      "M&M",
+      "ASHOKLEY"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "d19767bd6f7e",
+    "market_sentiment": -0.7,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "IPO listing",
+      "weak demand",
+      "GMP"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "6eead99be8b5",
+    "market_sentiment": 0.6,
+    "stocks": {
+      "EICHERMOT": 0.8
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "auto sector",
+      "corporate results"
+    ],
+    "affected_symbols": [
+      "EICHERMOT"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "bdf6c661a8bb",
+    "market_sentiment": 0.6,
+    "stocks": {
+      "EICHERMOT": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "auto sector",
+      "stock rally"
+    ],
+    "affected_symbols": [
+      "EICHERMOT"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "4f9b3ecdb572",
+    "market_sentiment": 0.7,
+    "stocks": {
+      "EICHERMOT": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "auto sector",
+      "stock rally"
+    ],
+    "affected_symbols": [
+      "EICHERMOT"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "47b45d40a308",
+    "market_sentiment": 0.6,
+    "stocks": {
+      "APOLLOHOSP": 0.8
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "healthcare sector",
+      "corporate results"
+    ],
+    "affected_symbols": [
+      "APOLLOHOSP"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "1ed9bf25cbee",
+    "market_sentiment": 0.6,
+    "stocks": {
+      "APOLLOHOSP": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "healthcare sector",
+      "stock rally"
+    ],
+    "affected_symbols": [
+      "APOLLOHOSP"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "91b485d257e1",
+    "market_sentiment": 0.1,
+    "stocks": {
+      "ABCAPITAL": 0.6,
+      "LTF": 0.6,
+      "IRCTC": -0.6
+    },
+    "confidence": 0.8,
+    "key_themes": [
+      "MSCI rebalancing",
+      "index inclusion",
+      "fund flows"
+    ],
+    "affected_symbols": [
+      "ABCAPITAL",
+      "LTF",
+      "IRCTC"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "1054e2e19cb0",
+    "market_sentiment": 0.7,
+    "stocks": {
+      "TITAN": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "consumer discretionary",
+      "corporate results"
+    ],
+    "affected_symbols": [
+      "TITAN"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "af6f17f4aa54",
+    "market_sentiment": 0.7,
+    "stocks": {
+      "TITAN": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "consumer discretionary",
+      "stock rally"
+    ],
+    "affected_symbols": [
+      "TITAN"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "a93be1bde5f0",
+    "market_sentiment": 0.5,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "technical analysis",
+      "bullish momentum",
+      "market breadth"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "0c2cc68bc053",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.1,
+    "key_themes": [
+      "IPO listing",
+      "SME IPO"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "6fb80dff8d95",
+    "market_sentiment": 0.6,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "commodity prices",
+      "US macro data",
+      "rate cut expectations"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "25c5a8652d10",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.1,
+    "key_themes": [
+      "IPO listing",
+      "SME IPO"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "c7596f24802a",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.1,
+    "key_themes": [
+      "market outlook",
+      "FII-DII data",
+      "currency"
+    ],
+    "affected_symbols": [
+      "INFY",
+      "TATASTEEL"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "c46b84307ee1",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.0,
+    "key_themes": [
+      "cryptocurrency",
+      "investor behavior"
+    ],
+    "affected_symbols": [
+      "ITC"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "2a5611a2f692",
+    "market_sentiment": -0.2,
+    "stocks": {},
+    "confidence": 0.4,
+    "key_themes": [
+      "global market",
+      "AI impact",
+      "sector specific"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "c7c4f1514ec3",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.1,
+    "key_themes": [
+      "currency markets",
+      "global economy"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "544cbfa6801f",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.1,
+    "key_themes": [
+      "market outlook",
+      "trading day preview"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "cabfe523c557",
+    "market_sentiment": 0.6,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "positive opening",
+      "global cues",
+      "GIFT Nifty"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "c1d9196b6763",
+    "market_sentiment": 0.1,
+    "stocks": {
+      "TITAN": 0.7
+    },
+    "confidence": 0.7,
+    "key_themes": [
+      "stock specific gains",
+      "market consolidation"
+    ],
+    "affected_symbols": [
+      "TITAN"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "68edb63847d6",
+    "market_sentiment": -0.4,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "market volatility",
+      "sector weakness",
+      "IT sector",
+      "PSU banks"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "69a48f60edd0",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.5,
+    "key_themes": [
+      "commodity prices",
+      "geopolitics",
+      "oil prices"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "8a5564d64383",
+    "market_sentiment": -0.3,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "global cues",
+      "US market",
+      "economic data",
+      "earnings"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "35d47d1df47c",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.1,
+    "key_themes": [
+      "stocks in focus",
+      "market watch"
+    ],
+    "affected_symbols": [
+      "EICHERMOT",
+      "GRASIM",
+      "TITAN"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "977c00a9c76f",
+    "market_sentiment": 0.2,
+    "stocks": {},
+    "confidence": 0.4,
+    "key_themes": [
+      "global cues",
+      "MSCI rejig",
+      "market overnight"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "a65447fa11e0",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.0,
+    "key_themes": [
+      "investment philosophy"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "f1d0e3cccfcc",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "ABCAPITAL": 0.7,
+      "LTFINANCE": 0.7,
+      "IRCTC": -0.7
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "MSCI rejig",
+      "index inclusion",
+      "index exclusion"
+    ],
+    "affected_symbols": [
+      "ABCAPITAL",
+      "LTFINANCE",
+      "IRCTC"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "f4f5d988c2d1",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.0,
+    "key_themes": [
+      "cryptocurrency",
+      "market downturn"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "0807dd69115c",
+    "market_sentiment": 0.7,
+    "stocks": {},
+    "confidence": 0.9,
+    "key_themes": [
+      "positive opening",
+      "GIFT Nifty",
+      "market outlook"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "60915c633922",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.1,
+    "key_themes": [
+      "stocks in news",
+      "market watch"
+    ],
+    "affected_symbols": [
+      "RELIANCE",
+      "TITAN"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "31229857febc",
+    "market_sentiment": 0.4,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "global cues",
+      "Asian markets",
+      "commodity prices"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "d942b8a48f08",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.1,
+    "key_themes": [
+      "commodity prices",
+      "gold",
+      "silver"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "bf21f997aa63",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.2,
+    "key_themes": [
+      "fundraising",
+      "bond market",
+      "financial institutions"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "8de199c0b564",
+    "market_sentiment": 0.1,
+    "stocks": {
+      "HEROMOTOCO": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "company performance",
+      "auto sector"
+    ],
+    "affected_symbols": [
+      "HEROMOTOCO"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "3418d4d8ddf9",
+    "market_sentiment": -0.2,
+    "stocks": {},
+    "confidence": 0.6,
+    "key_themes": [
+      "retail investment",
+      "mutual fund flows",
+      "investor behavior"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "0601439d1e4e",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.1,
+    "key_themes": [
+      "stock recommendations",
+      "market analysis"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "0c7af65194d3",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.2,
+    "key_themes": [
+      "stock recommendations"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "b15c2ce17d8f",
+    "market_sentiment": 0.3,
+    "stocks": {},
+    "confidence": 0.6,
+    "key_themes": [
+      "liquidity",
+      "monetary policy",
+      "banking system"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "b4973cb3a3a0",
+    "market_sentiment": -0.1,
+    "stocks": {
+      "BHEL": -0.6
+    },
+    "confidence": 0.8,
+    "key_themes": [
+      "divestment",
+      "OFS",
+      "public sector"
+    ],
+    "affected_symbols": [
+      "BHEL"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "a62a3c1793e4",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.3,
+    "key_themes": [
+      "regulation",
+      "SEBI",
+      "financial stability"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "cee17e0dd6ee",
+    "market_sentiment": 0.5,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "FDI",
+      "market expansion",
+      "foreign listings"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "3483e85c9e82",
+    "market_sentiment": -0.1,
+    "stocks": {},
+    "confidence": 0.5,
+    "key_themes": [
+      "ETF flows",
+      "asset allocation",
+      "investor interest"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "d9a93eedf935",
+    "market_sentiment": -0.6,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "FII outflow",
+      "taxation",
+      "regulatory risk",
+      "foreign investment"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "fc563fc9c211",
+    "market_sentiment": 0.1,
+    "stocks": {
+      "PEL": 0.5
+    },
+    "confidence": 0.8,
+    "key_themes": [
+      "fundraising",
+      "NBFC sector"
+    ],
+    "affected_symbols": [
+      "PEL"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "b557ce124c24",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.9,
+    "key_themes": [
+      "government payment",
+      "legal dispute"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "7998b161cd9b",
+    "market_sentiment": 0.2,
+    "stocks": {
+      "AXISBANK": 0.3,
+      "HDFCBANK": 0.3,
+      "KOTAKBANK": 0.3
+    },
+    "confidence": 0.7,
+    "key_themes": [
+      "banking sector",
+      "AI adoption",
+      "cost efficiency"
+    ],
+    "affected_symbols": [
+      "AXISBANK",
+      "HDFCBANK",
+      "KOTAKBANK"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "7e50bf51bd46",
+    "market_sentiment": -0.1,
+    "stocks": {},
+    "confidence": 0.6,
+    "key_themes": [
+      "emerging markets",
+      "debt market"
+    ],
+    "affected_symbols": [
+      "ITC"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "3acf7364b2ed",
+    "market_sentiment": 0.3,
+    "stocks": {
+      "JUBLFOOD": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "consumer discretionary"
+    ],
+    "affected_symbols": [
+      "JUBLFOOD"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "1d7de2e3b8d8",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "RELIANCE": 0.0,
+      "ONGC": 0.0
+    },
+    "confidence": 0.7,
+    "key_themes": [
+      "oil prices",
+      "geopolitical risk"
+    ],
+    "affected_symbols": [
+      "RELIANCE",
+      "ONGC"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "36a0520b27c3",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "AI investment",
+      "corporate finance"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "3b57617b1de3",
+    "market_sentiment": -0.2,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "global economy",
+      "AI concerns",
+      "weak forecast"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "666d9b370a8a",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.9,
+    "key_themes": [
+      "market outlook",
+      "pre-market analysis"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "9338e7544026",
+    "market_sentiment": 0.3,
+    "stocks": {
+      "APOLLOHOSP": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "healthcare sector"
+    ],
+    "affected_symbols": [
+      "APOLLOHOSP"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "445c86fb8a6f",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "private company earnings",
+      "real estate services"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "0068f6ab80a8",
+    "market_sentiment": 0.1,
+    "stocks": {
+      "IIFL": 0.3
+    },
+    "confidence": 0.7,
+    "key_themes": [
+      "fundraising",
+      "NBFC sector",
+      "debt issuance"
+    ],
+    "affected_symbols": [
+      "IIFL"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "5923a7f5b477",
+    "market_sentiment": -0.2,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "F&O tax",
+      "brokerage sector",
+      "market regulation"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "86778508105e",
+    "market_sentiment": 0.1,
+    "stocks": {
+      "GRASIM": 0.5
+    },
+    "confidence": 0.7,
+    "key_themes": [
+      "stock recommendation",
+      "investment outlook"
+    ],
+    "affected_symbols": [
+      "GRASIM"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "d961cd900b8d",
+    "market_sentiment": -0.2,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "US economy",
+      "retail sales",
+      "consumer spending"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "71290d4292bc",
+    "market_sentiment": 0.4,
+    "stocks": {
+      "TCS": 0.5,
+      "INFY": 0.5,
+      "WIPRO": 0.5
+    },
+    "confidence": 0.8,
+    "key_themes": [
+      "IT sector",
+      "retail investment",
+      "AI impact"
+    ],
+    "affected_symbols": [
+      "TCS",
+      "INFY",
+      "WIPRO"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "a3f0325352d3",
+    "market_sentiment": 0.3,
+    "stocks": {
+      "GRASIM": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "diversified conglomerate"
+    ],
+    "affected_symbols": [
+      "GRASIM"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "b61b80761d4d",
+    "market_sentiment": 0.5,
+    "stocks": {},
+    "confidence": 0.9,
+    "key_themes": [
+      "US Fed",
+      "rate cut hopes",
+      "global liquidity"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "dcab577c9960",
+    "market_sentiment": -0.1,
+    "stocks": {
+      "TCS": -0.2,
+      "INFY": -0.2
+    },
+    "confidence": 0.7,
+    "key_themes": [
+      "US market",
+      "tech sector",
+      "market divergence"
+    ],
+    "affected_symbols": [
+      "TCS",
+      "INFY"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "091eb51ce590",
+    "market_sentiment": -0.1,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "commodity prices",
+      "gold",
+      "silver"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "919e4eec3291",
+    "market_sentiment": 0.3,
+    "stocks": {
+      "BRITANNIA": 0.8
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "FMCG sector"
+    ],
+    "affected_symbols": [
+      "BRITANNIA"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "1857487445cf",
+    "market_sentiment": -0.1,
+    "stocks": {
+      "BHEL": -0.3
+    },
+    "confidence": 0.7,
+    "key_themes": [
+      "OFS",
+      "government divestment"
+    ],
+    "affected_symbols": [
+      "BHEL"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "70d894265e65",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "luxury auto",
+      "earnings beat"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "58ee12bc8f32",
+    "market_sentiment": 0.2,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "order win",
+      "railways",
+      "infrastructure spending"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "04b5dd790667",
+    "market_sentiment": 0.4,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "large-cap growth",
+      "sales growth",
+      "market strength"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "4daf228c8c3a",
+    "market_sentiment": 0.1,
+    "stocks": {
+      "BAJFINANCE": 0.1,
+      "CHOLAFIN": 0.1
+    },
+    "confidence": 0.6,
+    "key_themes": [
+      "NBFC regulation",
+      "RBI policy",
+      "financial stability"
+    ],
+    "affected_symbols": [
+      "BAJFINANCE",
+      "CHOLAFIN"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "53bc5e318db9",
+    "market_sentiment": 0.6,
+    "stocks": {
+      "TITAN": 0.9,
+      "SBIN": 0.9,
+      "TATASTEEL": 0.9,
+      "ULTRACEMCO": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "52-week high",
+      "market rally",
+      "large-cap performance"
+    ],
+    "affected_symbols": [
+      "TITAN",
+      "SBIN",
+      "TATASTEEL",
+      "ULTRACEMCO"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "4218bd47431e",
+    "market_sentiment": 0.3,
+    "stocks": {
+      "TORNTPOWER": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "dividend",
+      "power sector"
+    ],
+    "affected_symbols": [
+      "TORNTPOWER"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "7a63d736091a",
+    "market_sentiment": 0.3,
+    "stocks": {
+      "APOLLOHOSP": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "dividend",
+      "healthcare sector"
+    ],
+    "affected_symbols": [
+      "APOLLOHOSP"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "519de1d03354",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "private equity",
+      "IPO anticipation"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "cea5f19b00eb",
+    "market_sentiment": 0.3,
+    "stocks": {},
+    "confidence": 0.6,
+    "key_themes": [
+      "regulatory change",
+      "cryptocurrency",
+      "investment policy"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "10cdc6fd44dc",
+    "market_sentiment": 0.2,
+    "stocks": {
+      "TITAN": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "strong growth",
+      "Q3 results"
+    ],
+    "affected_symbols": [
+      "TITAN"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "d06bceb19dae",
+    "market_sentiment": 0.2,
+    "stocks": {
+      "TITAN": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "strong growth",
+      "Q3 results"
+    ],
+    "affected_symbols": [
+      "TITAN"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "cb5a5758122b",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.2,
+    "key_themes": [
+      "global tech",
+      "AI investment",
+      "corporate finance"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "83b5ed43944c",
+    "market_sentiment": 0.1,
+    "stocks": {},
+    "confidence": 0.5,
+    "key_themes": [
+      "regulatory clarity",
+      "market competition",
+      "equity derivatives"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "e5d97541dcbc",
+    "market_sentiment": 0.0,
+    "stocks": {
+      "OILINDIA": 0.1
+    },
+    "confidence": 0.8,
+    "key_themes": [
+      "earnings report",
+      "dividend announcement",
+      "PSU performance"
+    ],
+    "affected_symbols": [
+      "OILINDIA"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "977c004c9ec9",
+    "market_sentiment": 0.2,
+    "stocks": {
+      "EICHERMOT": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "strong growth",
+      "auto sector"
+    ],
+    "affected_symbols": [
+      "EICHERMOT"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "d0c3a3a1bbc7",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.3,
+    "key_themes": [
+      "market movers",
+      "stock performance"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "60aa32bedbc6",
+    "market_sentiment": 0.2,
+    "stocks": {
+      "EICHERMOT": 0.9
+    },
+    "confidence": 0.9,
+    "key_themes": [
+      "earnings beat",
+      "strong growth",
+      "auto sector"
+    ],
+    "affected_symbols": [
+      "EICHERMOT"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "b06cd4e05c22",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.2,
+    "key_themes": [
+      "global markets",
+      "tech sector",
+      "economic data"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "ce9ee72ddbdd",
+    "market_sentiment": 0.1,
+    "stocks": {},
+    "confidence": 0.6,
+    "key_themes": [
+      "market outlook",
+      "volatility",
+      "investment strategy"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "04684cfb69d8",
+    "market_sentiment": 0.4,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "investment strategy",
+      "market confidence",
+      "global outlook"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "58900e9da83e",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.3,
+    "key_themes": [
+      "commodities",
+      "copper prices",
+      "global demand"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "1cc9e38ef917",
+    "market_sentiment": -0.2,
+    "stocks": {},
+    "confidence": 0.6,
+    "key_themes": [
+      "investor sentiment",
+      "gold investment",
+      "risk aversion"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "0b41afe286c9",
+    "market_sentiment": 0.4,
+    "stocks": {},
+    "confidence": 0.8,
+    "key_themes": [
+      "currency appreciation",
+      "forex market",
+      "economic stability"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "15c1067b63c8",
+    "market_sentiment": 0.0,
+    "stocks": {},
+    "confidence": 0.3,
+    "key_themes": [
+      "investment strategy",
+      "risk management",
+      "financial planning"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "c7571b869cf5",
+    "market_sentiment": 0.3,
+    "stocks": {},
+    "confidence": 0.6,
+    "key_themes": [
+      "IPO subscription",
+      "investor demand",
+      "primary market"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "c4ddeb97a6f6",
+    "market_sentiment": 0.3,
+    "stocks": {},
+    "confidence": 0.6,
+    "key_themes": [
+      "IPO investment",
+      "investor confidence",
+      "primary market"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "6a60b297cdaf",
+    "market_sentiment": 0.8,
+    "stocks": {},
+    "confidence": 0.9,
+    "key_themes": [
+      "market rally",
+      "sector performance",
+      "auto sector"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "c5bb5b9eded8",
+    "market_sentiment": 0.3,
+    "stocks": {
+      "PRAJIND": 0.7,
+      "BSE": 0.7,
+      "FORCEMOT": 0.7
+    },
+    "confidence": 0.8,
+    "key_themes": [
+      "top gainers",
+      "stock performance"
+    ],
+    "affected_symbols": [
+      "PRAJIND",
+      "BSE",
+      "FORCEMOT"
+    ],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "62f5952abeda",
+    "market_sentiment": -0.25,
+    "stocks": {},
+    "confidence": 0.65,
+    "key_themes": [
+      "Inflation concerns",
+      "Safe-haven demand",
+      "Commodity prices"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  },
+  {
+    "headline_id": "9c1fbe004fa2",
+    "market_sentiment": -0.2,
+    "stocks": {},
+    "confidence": 0.7,
+    "key_themes": [
+      "IPO performance",
+      "Investor sentiment",
+      "Primary market"
+    ],
+    "affected_symbols": [],
+    "category": "general",
+    "reasoning": ""
+  }
+]

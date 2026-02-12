@@ -1,0 +1,12 @@
+{
+  "date": "2025-03-10",
+  "breadth": {
+    "advancing": 0,
+    "declining": 0,
+    "unchanged": 15,
+    "ratio": 0.5,
+    "signal": "neutral"
+  },
+  "sentiment_deltas": [],
+  "timestamp": "2026-02-07T19:15:53.689861"
+}
