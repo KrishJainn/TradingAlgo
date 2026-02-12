@@ -32,7 +32,7 @@ import sys
 import time
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 
 import numpy as np
 import pandas as pd
@@ -90,12 +90,15 @@ def _is_market_open() -> bool:
 
 
 def _seconds_until_market_open() -> float:
-    """Seconds until next market open (09:15 IST today or tomorrow)."""
+    """Seconds until next market open (09:15 IST), skipping weekends/holidays."""
     now = _now_ist()
     target = now.replace(hour=MARKET_OPEN_IST[0], minute=MARKET_OPEN_IST[1],
                          second=0, microsecond=0)
     if now >= target:
         # Already past today's open — aim for tomorrow
+        target += timedelta(days=1)
+    # Skip weekends and holidays
+    while not is_trading_day(target.date()):
         target += timedelta(days=1)
     return (target - now).total_seconds()
 
@@ -370,14 +373,7 @@ class ExitMonitor:
             # Log the decision
             self._log_exit_decision(sym, decision, decision.details)
 
-            # Sync state back to position (MFE/MAE, peak, histories)
-            pos.high_water_mark = pos_state.peak_price
-            pos.max_favorable_excursion = pos_state.max_favorable_excursion
-            pos.max_adverse_excursion = pos_state.max_adverse_excursion
-            pos.remaining_fraction = pos_state.remaining_fraction
-            pos.staged_exits_done = pos_state.staged_exits_done
-
-            # Execute exit if triggered
+            # Execute exit if triggered (before state sync — close deletes position)
             if decision.should_exit:
                 reason_str = decision.reason.value
                 exits_triggered += 1
@@ -410,20 +406,20 @@ class ExitMonitor:
                         f"urgency={decision.urgency:.2f} | "
                         f"[{pos.player_id}]"
                     )
+            else:
+                # No exit — sync state back to position (MFE/MAE, peak)
+                # Only for positions that are still open (not closed above)
+                if pid in tracker.positions:
+                    pos.high_water_mark = pos_state.peak_price
+                    pos.max_favorable_excursion = pos_state.max_favorable_excursion
+                    pos.max_adverse_excursion = pos_state.max_adverse_excursion
+                    pos.remaining_fraction = pos_state.remaining_fraction
+                    pos.staged_exits_done = pos_state.staged_exits_done
 
         # Save updated positions (MFE/MAE synced even if no exits)
         tracker._save()
 
         elapsed_ms = int((time.monotonic() - cycle_start) * 1000)
-
-        # Summary log
-        ws_summary = ""
-        if n_positions > 0 and prices:
-            scores = []
-            for pid, pos in position_items:
-                # Re-read from log would be complex; skip for summary
-                pass
-            ws_summary = ""
 
         logger.info(
             f"Cycle: {n_positions} positions | "
@@ -470,7 +466,10 @@ class ExitMonitor:
             # Check market hours
             if not _is_market_open():
                 now = _now_ist()
-                if now.hour >= MARKET_CLOSE_IST[0] and now.minute >= MARKET_CLOSE_IST[1]:
+                close_time = now.replace(hour=MARKET_CLOSE_IST[0],
+                                         minute=MARKET_CLOSE_IST[1],
+                                         second=0, microsecond=0)
+                if now >= close_time:
                     # After close — sleep until tomorrow
                     logger.info(
                         f"Market closed for today ({now.strftime('%H:%M')} IST). "

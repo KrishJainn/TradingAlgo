@@ -54,6 +54,7 @@ import json
 import logging
 import math
 import os
+from copy import deepcopy
 
 # Load .env file so GEMINI_API_KEY is available
 try:
@@ -2448,6 +2449,123 @@ class DailyRunner:
             report["steps_completed"].append("12_evolution (failed)")
             logger.error(f"  Evolution error: {e}")
             self._save_state()
+
+    def _step_12b_exit_evolution(self, report: Dict) -> None:
+        """Step 12b: Co-evolve SmartExitEngine parameters.
+
+        Runs AFTER player evolution (Step 12) to optimise exit parameters
+        for the updated entry signals.  Only triggered when Step 12 was
+        triggered (co-evolution: entries first, then exits).
+
+        Uses genetic algorithm: 20 population, tournament selection,
+        uniform crossover, adaptive Gaussian mutation.
+        """
+        # Only run if player evolution was triggered this step
+        if not report.get("evolution_triggered", False):
+            return
+
+        if not _HAS_EXIT_EVOLUTION:
+            logger.debug("[Step 12b] exit_evolution not available — skipped")
+            return
+
+        if not _HAS_SMART_EXIT:
+            return
+
+        logger.info("[Step 12b] EXIT EVOLUTION — Optimising SmartExitEngine params...")
+
+        try:
+            from backtest_exit_comparison import (
+                load_data, generate_entry_signals, compute_regime_sequence,
+                PLAYERS_CONFIG, BARS_PER_DAY,
+            )
+
+            # Load data (reuse cached if possible)
+            data, indicator_data = load_data()
+            if len(data) < 5:
+                report["warnings"].append("Exit evolution: insufficient data")
+                report["steps_completed"].append("12b_exit_evolution (insufficient data)")
+                return
+
+            # Configs + regime
+            configs = deepcopy(self._evolved_configs) if self._evolved_configs else deepcopy(PLAYERS_CONFIG)
+
+            sample_df = list(data.values())[0]
+            total_days = min(30, len(sample_df) // BARS_PER_DAY)
+            regime_sequence, hmm_model, regime_state_map = compute_regime_sequence(data, total_days)
+
+            # Generate entry signals
+            entry_events, signal_map = generate_entry_signals(
+                data, indicator_data, configs, regime_sequence, total_days,
+            )
+
+            if len(entry_events) < 10:
+                report["warnings"].append("Exit evolution: too few entry signals")
+                report["steps_completed"].append("12b_exit_evolution (few signals)")
+                return
+
+            # Load previous best genome
+            params_path = Path(__file__).parent / "data" / "evolved_exit_params.json"
+            prev_best = load_evolved_params(params_path)
+
+            # Run evolution (reduced population for daily use)
+            evo_engine = ExitEvolutionEngine(
+                population_size=15,
+                n_generations=20,
+                plateau_patience=5,
+                seed=int(datetime.now().timestamp()) % 10000,
+            )
+
+            best = evo_engine.evolve(
+                entry_signals=entry_events,
+                data=data,
+                indicator_data=indicator_data,
+                signal_map=signal_map,
+                player_configs=configs,
+                regime_sequence=regime_sequence,
+                total_days=total_days,
+                hmm_model=hmm_model,
+                regime_state_map=regime_state_map,
+                initial_genome=prev_best,
+                verbose=False,
+            )
+
+            # Save evolved params
+            trigger_type = report.get("evolution_trigger_type", "unknown")
+            save_evolved_params(best, params_path, metadata={
+                "trigger": trigger_type,
+                "evolution_date": datetime.now().isoformat(),
+                "regime": report.get("regime", {}).get("current", "unknown"),
+            })
+
+            # Reload into SmartExitEngine
+            if self._exit_engine is not None:
+                self._exit_engine._load_evolved_params()
+
+            # Log improvement
+            improvement = ""
+            if prev_best and prev_best.fitness_score > -999:
+                delta = best.fitness_score - prev_best.fitness_score
+                improvement = f", delta={delta:+.3f}"
+
+            logger.info(
+                f"  Exit evolution complete — fitness={best.fitness_score:.3f}, "
+                f"sharpe={best.sharpe:.2f}, capture={best.avg_capture_ratio:.3f}"
+                f"{improvement}"
+            )
+
+            report["steps_completed"].append(f"12b_exit_evolution ({trigger_type})")
+            report["exit_evolution"] = {
+                "fitness": round(best.fitness_score, 3),
+                "sharpe": round(best.sharpe, 2),
+                "capture_ratio": round(best.avg_capture_ratio, 3),
+                "generation": best.generation,
+            }
+
+        except Exception as e:
+            report["warnings"].append(f"Exit evolution failed: {e}")
+            report["steps_completed"].append("12b_exit_evolution (failed)")
+            logger.error(f"  Exit evolution error: {e}")
+            logger.error(traceback.format_exc())
 
     def _step_13_report(self, today: str, report: Dict) -> None:
         """Step 13: Generate and save daily report."""

@@ -152,17 +152,20 @@ class ExitParameterGenome:
         """Uniform crossover: each gene from either parent (50/50).
 
         Returns a new genome (neither parent is modified).
+        Child genes are clipped to valid ranges after selection.
         """
         child_genes: Dict[str, float] = {}
         for gene_name in self.GENE_RANGES:
+            lo, hi = self.GENE_RANGES[gene_name]
             if np.random.random() < 0.5:
-                child_genes[gene_name] = self.genes.get(
+                val = self.genes.get(
                     gene_name, self._default_value(gene_name),
                 )
             else:
-                child_genes[gene_name] = other.genes.get(
+                val = other.genes.get(
                     gene_name, self._default_value(gene_name),
                 )
+            child_genes[gene_name] = float(np.clip(val, lo, hi))
         return ExitParameterGenome(
             genes=child_genes,
             generation=max(self.generation, other.generation) + 1,
@@ -348,6 +351,13 @@ def evaluate_genome(
         )
 
         metrics = compute_metrics(players, total_days, "evo")
+
+        # Penalize genomes that produce zero trades (over-aggressive exits)
+        if metrics.get("trade_count", 0) == 0:
+            logger.warning("[ExitEvolution] Genome produced zero trades")
+            genome.fitness_score = -999.0
+            genome.evaluated = True
+            return -999.0, metrics
 
         sharpe = metrics.get("sharpe", 0.0)
         max_dd_pct = metrics.get("max_drawdown_pct", 0.0)  # e.g. -0.66
@@ -721,7 +731,7 @@ def main():
     print(f"       {len(entry_events)} entry signals")
 
     # 4. Load previous best (if exists)
-    params_path = Path("data/evolved_exit_params.json")
+    params_path = Path(__file__).parent / "data" / "evolved_exit_params.json"
     prev_best = load_evolved_params(params_path)
     if prev_best:
         print(f"       Previous best: fitness={prev_best.fitness_score:.3f}")

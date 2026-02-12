@@ -903,7 +903,33 @@ def compute_metrics(
         total_partial += state.partial_exit_count
         team_equity_curves.append(state.equity_curve)
 
-    n_trades = len(all_trades)
+    n_trade_events = len(all_trades)
+
+    # ── Consolidate partial exits into logical trades ─────────────
+    # Group partials + final close by (symbol, player_id, entry_price, direction)
+    # to count each position as 1 logical trade with aggregated PnL.
+    position_groups: Dict[tuple, Dict] = {}
+    for t in all_trades:
+        key = (t["symbol"], t["player_id"], t["entry_price"], t["direction"])
+        if key not in position_groups:
+            position_groups[key] = {
+                "total_pnl": 0.0,
+                "total_quantity": 0,
+                "bars_held": 0,
+                "mfe": t.get("mfe", 0.0),
+                "mae": t.get("mae", 0.0),
+            }
+        g = position_groups[key]
+        g["total_pnl"] += t["pnl"]
+        g["total_quantity"] += t.get("quantity", 0)
+        # bars_held: take the max (final close has the full duration)
+        g["bars_held"] = max(g["bars_held"], t.get("bars_held", 0))
+        # MFE/MAE: take the extremes across all partial records
+        g["mfe"] = max(g["mfe"], t.get("mfe", 0.0))
+        g["mae"] = min(g["mae"], t.get("mae", 0.0))
+
+    logical_trades = list(position_groups.values())
+    n_trades = len(logical_trades)
 
     # ── Returns ───────────────────────────────────────────────────
     total_initial = INITIAL_CAPITAL * len(players)
@@ -922,9 +948,12 @@ def compute_metrics(
         daily_returns.append(team_pnl / total_initial)
 
     daily_arr = np.array(daily_returns) if daily_returns else np.array([0.0])
+    # Risk-free rate: Indian 10Y ≈ 6.5% annual → daily
+    rf_daily = 0.065 / 252
+    excess_returns = daily_arr - rf_daily
     sharpe = (
-        float(np.mean(daily_arr) / np.std(daily_arr) * np.sqrt(252))
-        if np.std(daily_arr) > 0 else 0.0
+        float(np.mean(excess_returns) / np.std(excess_returns) * np.sqrt(252))
+        if np.std(excess_returns) > 0 else 0.0
     )
 
     # ── Max drawdown (team equity curve) ──────────────────────────
@@ -939,21 +968,24 @@ def compute_metrics(
     dd = (eq_series - peak) / peak
     max_dd = float(dd.min()) if len(dd) > 0 else 0.0
 
-    # ── Win rate / profit factor ──────────────────────────────────
-    winners = [t for t in all_trades if t["pnl"] > 0]
-    losers = [t for t in all_trades if t["pnl"] <= 0]
-    win_rate = len(winners) / n_trades if n_trades > 0 else 0.0
+    # ── Win rate / profit factor (using logical trades) ───────────
+    logical_winners = [t for t in logical_trades if t["total_pnl"] > 0]
+    logical_losers = [t for t in logical_trades if t["total_pnl"] <= 0]
+    win_rate = len(logical_winners) / n_trades if n_trades > 0 else 0.0
 
-    gross_profit = sum(t["pnl"] for t in winners) if winners else 0.0
-    gross_loss = abs(sum(t["pnl"] for t in losers)) if losers else 1.0
-    profit_factor = gross_profit / gross_loss if gross_loss > 0 else 0.0
+    gross_profit = sum(t["total_pnl"] for t in logical_winners) if logical_winners else 0.0
+    gross_loss = abs(sum(t["total_pnl"] for t in logical_losers)) if logical_losers else 0.0
+    if gross_loss > 0:
+        profit_factor = min(gross_profit / gross_loss, 999.0)
+    else:
+        profit_factor = 999.0 if gross_profit > 0 else 0.0
 
-    avg_win = gross_profit / len(winners) if winners else 0.0
-    avg_loss = gross_loss / len(losers) if losers else 0.0
+    avg_win = gross_profit / len(logical_winners) if logical_winners else 0.0
+    avg_loss = gross_loss / len(logical_losers) if logical_losers else 0.0
 
-    # ── Avg holding period ────────────────────────────────────────
+    # ── Avg holding period (using logical trades) ─────────────────
     avg_hold = (
-        sum(t.get("bars_held", 0) for t in all_trades) / n_trades
+        sum(t["bars_held"] for t in logical_trades) / n_trades
         if n_trades > 0 else 0.0
     )
 
@@ -987,6 +1019,7 @@ def compute_metrics(
         "profit_factor": round(profit_factor, 2),
         "avg_hold_bars": round(avg_hold, 1),
         "trade_count": n_trades,
+        "trade_event_count": n_trade_events,
         "partial_exit_count": total_partial,
         "avg_capture_ratio": round(avg_capture, 3),
         "avg_edge_ratio": round(avg_edge, 3),

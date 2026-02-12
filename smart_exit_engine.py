@@ -391,7 +391,7 @@ class SmartExitEngine:
         2. Compute unrealised P&L %
         3. Check hard stops (always override — checked FIRST)
         4. Check staged profit taking
-        5. Evaluate all 8 signals
+        5. Evaluate all 10 signals
         6. Weighted voting → ExitDecision
 
         Parameters
@@ -1283,6 +1283,8 @@ class SmartExitEngine:
         except Exception:
             return 0.0
 
+        if transmat.ndim != 2 or transmat.shape[0] != transmat.shape[1]:
+            return 0.0
         n_states = transmat.shape[0]
         if current_state_idx >= n_states:
             return 0.0
@@ -1305,8 +1307,12 @@ class SmartExitEngine:
             p_adverse = 0.0
 
         # ── Regime mismatch ────────────────────────────────────────────
-        entry_regime_title = position.entry_regime.capitalize() if position.entry_regime else ""
-        regime_mismatch = 0.3 if regime_title != entry_regime_title else 0.0
+        # If entry_regime is unknown, skip mismatch penalty (don't penalize missing data)
+        if position.entry_regime:
+            entry_regime_title = position.entry_regime.capitalize()
+            regime_mismatch = 0.3 if regime_title != entry_regime_title else 0.0
+        else:
+            regime_mismatch = 0.0
 
         # ── Combined score ─────────────────────────────────────────────
         score = instability * 0.5 + p_adverse * 0.3 + regime_mismatch * 0.2
